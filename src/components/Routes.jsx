@@ -8,8 +8,9 @@ import {
 } from 'react-router-dom';
 
 // Components
-import Home from './Home.jsx';
-
+import Home from './Views/Home.jsx'; 
+import ConfigurationList from './Views/ConfigurationList.jsx'; 
+import EvaluationList from './Views/EvaluationList.jsx'; 
 class Routes extends Component {
   render() {
     return (
@@ -17,6 +18,8 @@ class Routes extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={ Home } />
+            <Route exact path="/Configurations" component={ ConfigurationList } />
+            <Route exact path="/Evaluations" component={ EvaluationList } />
             <Route path="*" render={() => <h1>404 NOT FOUND</h1>} />
           </Switch>
         </div>

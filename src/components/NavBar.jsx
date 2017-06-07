@@ -15,6 +15,7 @@ onSubmit(){
     <div className="NavBar-Container">
       <h1 className="NavBar-Heading">{this.props.title}</h1>
       <button className="NavBar-Button">{this.props.button_label}</button>
+      
     </div>
     );
   }

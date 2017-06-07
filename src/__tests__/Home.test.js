@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Home from '../components/Home.jsx';
+import Home from '../components/Views/Home.jsx';
 import NavBar from '../components/NavBar.jsx';
 import Table from '../components/Table.jsx';
 

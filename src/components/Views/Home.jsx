@@ -4,8 +4,8 @@
 import React, { Component } from 'react';
 
 //Components
-import NavBar from  './NavBar.jsx'
-import Table from './Table.jsx'
+import NavBar from  '../NavBar.jsx'
+import Table from '../Table.jsx'
 
 
 class Home extends Component {
@@ -14,6 +14,7 @@ class Home extends Component {
   <div className="Home-container">
     <NavBar title="Test Runner" button_label="options"/>
     <Table />
+    
   </div>
     );
   }
