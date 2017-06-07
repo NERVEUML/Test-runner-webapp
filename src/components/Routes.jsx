@@ -1,3 +1,5 @@
+/* /src/components/Routes.jsx  */
+
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -7,7 +9,6 @@ import {
 
 // Components
 import Home from './Home.jsx';
-
 
 class Routes extends Component {
   render() {

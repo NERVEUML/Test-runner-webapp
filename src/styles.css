@@ -1,24 +1,52 @@
+/* /src/style.css */
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Home-container{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 4%;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    background-color:rgb(198, 241, 237);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.NavBar-Container{
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: black;
   color: white;
+  align-items: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+NavBar-Heading{
+  width: 80%;
+}
+.NavBar-Button{
+  width: 20%;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Table-container{
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  align-items: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
 }
