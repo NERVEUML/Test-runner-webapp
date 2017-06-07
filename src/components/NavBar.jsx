@@ -2,7 +2,7 @@
 
 //Libraies
 import React, { Component } from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
 
@@ -12,11 +12,11 @@ onSubmit(){
 }
   render() {
     return (
-    <div className="NavBar-Container">
-      <h1 className="NavBar-Heading">{this.props.title}</h1>
-      <button className="NavBar-Button">{this.props.button_label}</button>
-      
-    </div>
+        <div className="navContainer">
+          <NavLink exact activeClassName="activeLink" to="/" className="link" >Home</NavLink>
+          <NavLink activeClassName="activeLink" to="/Configurations" className="link">Configuration List</NavLink>
+          <NavLink activeClassName="activeLink" to="/Evaluations" className="link">Evaluation List</NavLink>
+        </div>
     );
   }
 }

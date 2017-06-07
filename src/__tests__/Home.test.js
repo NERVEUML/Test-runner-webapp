@@ -27,7 +27,7 @@ it('Home Component', () => {
   const component = shallow(
   <Home> 
       <NavBar title="ran_title" /> {/*Basic NavBar with options button */} 
-        <myTable />   
+        <Table />   
   </Home> );
   expect(component);
 });
