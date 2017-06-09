@@ -1,15 +1,15 @@
-/* /src/__tests__/Home.test.js  */
+/* /src/__tests__/GpsField.test.js  */
 
 //Libraries
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import Home from '../components/Views/Home.jsx';
+import GpsField from '../components/Eval_Parts/GpsField.jsx';
 
 //Call to create a Shallow rendering of component
-const wrapper = shallow(<Home />)
+const wrapper = shallow(<GpsField />)
 
-describe('Home Component', () => {
+describe('GpsField Component', () => {
   test('render', () => {
     expect(wrapper.exists()).toBe(true)
   })

@@ -12,10 +12,13 @@ onSubmit(){
 }
   render() {
     return (
-        <div className="navContainer">
-          <NavLink exact activeClassName="activeLink" to="/" className="link" >Home</NavLink>
-          <NavLink activeClassName="activeLink" to="/Configurations" className="link">Configuration List</NavLink>
-          <NavLink activeClassName="activeLink" to="/Evaluations" className="link">Evaluation List</NavLink>
+      <div>
+        <div className="placeholder"/>
+          <div className="navContainer">
+            <NavLink exact activeClassName="activeLink" to="/" className="link" >Home</NavLink>
+            <NavLink activeClassName="activeLink" to="/Configurations" className="link">Configuration List</NavLink>
+            <NavLink activeClassName="activeLink" to="/Evaluations" className="link">Evaluation List</NavLink>
+          </div>
         </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Row extends Component {
+class Timer extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class Row extends Component {
     }
 }
 
-export default Row;
+export default Timer;

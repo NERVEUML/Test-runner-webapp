@@ -1,15 +1,15 @@
-/* /src/__tests__/Home.test.js  */
+/* /src/__tests__/EvaluationForm.test.js  */
 
 //Libraries
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import Home from '../components/Views/Home.jsx';
+import EvaluationForm from '../components/EvaluationForm.jsx';
 
 //Call to create a Shallow rendering of component
-const wrapper = shallow(<Home />)
+const wrapper = shallow(<EvaluationForm />)
 
-describe('Home Component', () => {
+describe('EvaluationForm Component', () => {
   test('render', () => {
     expect(wrapper.exists()).toBe(true)
   })

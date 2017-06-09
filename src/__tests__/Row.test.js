@@ -1,15 +1,15 @@
-/* /src/__tests__/Home.test.js  */
+/* /src/__tests__/Row.test.js  */
 
 //Libraries
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import Home from '../components/Views/Home.jsx';
+import Row from '../components/Table_Parts/Row.jsx';
 
 //Call to create a Shallow rendering of component
-const wrapper = shallow(<Home />)
+const wrapper = shallow(<Row />)
 
-describe('Home Component', () => {
+describe('Row Component', () => {
   test('render', () => {
     expect(wrapper.exists()).toBe(true)
   })

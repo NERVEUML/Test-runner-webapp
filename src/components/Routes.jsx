@@ -11,6 +11,7 @@ import {
 import Home from './Views/Home.jsx'; 
 import ConfigurationList from './Views/ConfigurationList.jsx'; 
 import EvaluationList from './Views/EvaluationList.jsx'; 
+
 class Routes extends Component {
   render() {
     return (

@@ -1,28 +1,16 @@
-/* /src/__tests__/myTable.test.js  */
+/* /src/__tests__/Table.test.js  */
 
+//Libraries
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme'
+//Component To Be Tested
 import Table from '../components/Table.jsx';
-import Row from  '../components/Table_Parts/Row.jsx'
-import Cell from '../components/Table_Parts/Cell.jsx';
 
-test('Table component Renders', () => {
-  // Render
-  const component = shallow(
-    <Table /> );
-  expect(component);
-});
+//Call to create a Shallow rendering of component
+const wrapper = shallow(<Table />)
 
-test('Row component Renders', () => {
-  // Render
-  const component = shallow(
-    <Row /> );
-  expect(component);
-});
-
-test('Cell component Renders', () => {
-  // Render
-  const component = shallow(
-    <Cell /> );
-  expect(component);
+describe('Table Form Component', () => {
+  test('render', () => {
+    expect(wrapper.exists()).toBe(true)
+  })
 });
