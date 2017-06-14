@@ -1,6 +1,6 @@
 /* /src/components/EvaluationList.jsx  */
 
-//Libraies
+//Libraries
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
 class EvaluationList extends Component {
