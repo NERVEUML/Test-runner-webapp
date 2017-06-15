@@ -1,4 +1,4 @@
-![logo](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png){: .center-image }
+![logo](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png)
 
 This app is created to make a web application be cross platform. The application is responsible for having a way to evaluation individual run on an obstacle course for robots. This app not only saves them in a concise way on the local device but also gives you the options to export them to Google Drive for backups and hard copy of the data.
 
