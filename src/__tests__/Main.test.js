@@ -4,12 +4,12 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import Home from '../components/Views/Home.jsx';
+import Main from '../components/Main.jsx';
 
 //Call to create a Shallow rendering of component
-const wrapper = shallow(<Home />)
+const wrapper = shallow(<Main />)
 
-describe('Home Component', () => {
+describe('Main Component', () => {
   test('render', () => {
     expect(wrapper.exists()).toBe(true)
   })

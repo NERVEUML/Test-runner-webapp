@@ -1,7 +1,5 @@
 /* /src/style.css */
 
-.App {}
-
 .Home-container {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -45,7 +43,6 @@
     display: inline;
     font-size: 20px;
     font-weight: 400;
-    height: -10vh;
     color: white;
     margin: 0 50px;
     padding: 20px 20px;
@@ -85,4 +82,34 @@
 
 .View {
     background-color: white;
+}
+
+.Evaluation {
+    font-family: 'Comic Sans MS';
+    width: 320px;
+    height: 400px;
+    color: white;
+    font-size: 32px;
+    background-color: #0047ab;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 15px;
+    text-align: left;
+    justify-content: space-around;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.Eval-title p {
+    font-weight: bold;
+    display: inline;
+}
+
+.Eval-data {
+    font-size: 20px;
+}
+
+.moreButton {
+    align-content: flex-end;
 }

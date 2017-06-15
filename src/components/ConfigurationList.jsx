@@ -1,8 +1,8 @@
 /* /src/components/ConfigurationList.jsx  */
 
-//Libraies
+//Libraries
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from './NavBar';
 class ConfigurationList extends Component {
   render() {
     return (

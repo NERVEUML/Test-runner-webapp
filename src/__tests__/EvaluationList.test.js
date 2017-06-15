@@ -4,7 +4,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import EvaluationList from '../components/Views/EvaluationList.jsx';
+import EvaluationList from '../components/EvaluationList.jsx';
 
 //Call to create a Shallow rendering of component
 const wrapper = shallow(<EvaluationList />)
