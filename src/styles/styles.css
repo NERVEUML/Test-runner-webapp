@@ -1,7 +1,5 @@
 /* /src/style.css */
 
-.App {}
-
 .Home-container {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -45,7 +43,6 @@
     display: inline;
     font-size: 20px;
     font-weight: 400;
-    height: -10vh;
     color: white;
     margin: 0 50px;
     padding: 20px 20px;
@@ -85,4 +82,21 @@
 
 .View {
     background-color: white;
+}
+
+.Evaluation {
+    font-family: 'Abyssinica SL';
+    width: 320px;
+    height: 465px;
+    color: white;
+    font-size: 24px;
+    background-color: #0047ab;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 15px;
+    text-align: left;
+}
+
+.Evaluation-title {
+    display: inline;
 }
