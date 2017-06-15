@@ -18,7 +18,7 @@ Enter the newly cloned directory and start the process of installing all package
 
 ``` $ npm install ```
 
-Then run on [localhost on port 300](http://localhost:300)
+Then run on [localhost on port 3000](http://localhost:3000)
 
 ``` $ npm start ```
 
