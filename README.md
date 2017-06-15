@@ -39,7 +39,7 @@ Open Browser and you should see the app.
 
 ### Break down into end to end tests
 
-See my [Testing_Rules](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/_tests_/Testing_Rules.md) File
+See my [Testing_Rules](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/__tests__/Testing_Rules.md) File
 
 ### And coding style tests
 
