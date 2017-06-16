@@ -1,4 +1,7 @@
+
 <p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png"></p>
+
+>>>>>>> d6262c87465620defcdf4ba3d8e83ac5425d9295
 
 [![npm (scoped)](https://img.shields.io/npm/v/@cycle/core.svg)]() <br />
 
