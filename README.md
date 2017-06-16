@@ -1,5 +1,5 @@
 
-<p align="center"><img width="100"src="https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png"></p>
+<p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png"></p>
 
 
 [![npm (scoped)](https://img.shields.io/npm/v/@cycle/core.svg)]() <br />
