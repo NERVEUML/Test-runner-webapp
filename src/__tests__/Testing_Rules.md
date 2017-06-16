@@ -6,7 +6,6 @@
 
  
 ## Test Basic Render: 
-- Table
 - Routes
 - NavBar
 - Home
@@ -14,8 +13,6 @@
 - ConfigurationForm
 - EvaluationList
 - ConfigurationList
-- Cell
-- Row
 - GpsField
 - ResultForm
 - Timer 
