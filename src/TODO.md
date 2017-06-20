@@ -1,8 +1,8 @@
 # Made after Repository was Created
 | ID  | Task   |  Status | Date Completed   | Notes  |
 |:-:|:-|:-:|:-:|:-:|
-| 1 | Create Home (more like landing Page)  |  Not Completed |   |   |
-| 2  |  test Home Page |  Not Completed  |   |   |
+| 1 | Create Home (more like landing Page)  | Completed | 6/17/19  |  Made a more basic layout |
+| 2  |  test Home Page | Completed  | 6/17/19  | Still Renders Perfectly and links work   |
 | 3  |  create tests for evaluation forms |  Not Completed  |   |   |
 | 4  |  create smaller evaluation form components |  Not Completed  |   |   |
 | 5  |   test saving the evaluation form data | Not Completed   |   |   |
@@ -12,7 +12,9 @@
 | 9  |   test the data being exported to JSON file in local directory | Not Completed   |   |   |
 | 10 |  implement the exporting locally   | Not Completed   |   |   |
 | 11 |   test if JSON is converting to CSV|  Not Completed  |   |   |
-
+|  12 | Created/Implemented GPS Component  |  Completed|  6/18/17 | Still Buggy needs more testing|
+|  13 | Created/ Implmented Basic Result Input Form Component  |  Completed|  6/19/17 | Havin Validation isses will resove with Testing |
+|  14 | Updated Styling to make valid for newly implemented Componets  |  Completed|  6/2o/17 | Will be a constant Process |
 
 # Completed up to the creation of  the table above
 | ID  | Task   |  Status | Notes  |
