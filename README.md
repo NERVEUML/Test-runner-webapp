@@ -20,7 +20,7 @@ In order to see this app run locally on your machine simply
 
 [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/)
 
-### Installing
+### Usage
 
 Enter the newly cloned directory and start the process of installing all packages and dependencies.
 
@@ -32,13 +32,13 @@ Then run on [localhost on port 3000](http://localhost:3000)
 
 Open Browser and you should see the app.
 
-## Running the tests
+## Running tests
 
  I am using  Jest framework made by Facebook along with the Enzyme library to control my automated tests.
 
- Run Tests by 
+ Run tests by 
 ``` $ npm test ```
-//To run continuously
+to run continuously
 ``` $ jest --watch ```
 
 ### Break down into end to end tests
@@ -47,7 +47,7 @@ See my [Testing_Rules](https://github.com/NERVEUML/Test-runner-webapp/blob/maste
 
 ### And coding style tests
 
-Using Stylus 
+Using Stylus and Semantic UI
 
 ## Deployment
 
@@ -60,18 +60,11 @@ TBD: Could be setup to be hosted on Raspberry Pi or local desktop with public ad
 * [Jest](https://facebook.github.io/jest/) - Used for large scale testing 
 * [Enzyme](http://airbnb.io/enzyme/) - Used Test render components
 * [Stylus](http://stylus-lang.com/) - Used for Styling
-
-
-
+* [Semantic UI](https://react.semantic-ui.com/introduction) - Used for Styling
 
 ## Authors
 
 * **Joseph Meli** - *Initial work* - [JosephMeli](https://github.com/JosephMeli)
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 TBD

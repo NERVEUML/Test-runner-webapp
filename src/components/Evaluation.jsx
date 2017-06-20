@@ -9,7 +9,7 @@ import GpsField from './Eval_Parts/GpsField';
 import ResultForm from './Eval_Parts/ResultForm';
 import Stopwatch from './Eval_Parts/Stopwatch';
 class EvaluationForm extends Component {
-
+// Eval still needs place for run and Attempts numbers
   render() {
 
     return (

@@ -5,15 +5,11 @@
     //TODO: Write a test to validate these JSON objects for future testing 
     //TODO: Write functions to check format of data objects
 
-    //The basic info a form will get on each team 
-    "Evaluation_header": {
-        "team": "NERVE",
-        "task": "12-2",
-        "ID": "1"
-    },
 
     //The details of all info needed for each run 
-    "Evaluation_body": {
+    "Evaluation": {
+        "team": "NERVE",
+        "task": "12-2",
         "Attempt": "2",
         "Notes": "This is notes about each attempt about what the performer accomplished.",
         "Time": "5:30:22",

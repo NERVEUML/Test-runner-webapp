@@ -1,11 +1,11 @@
 # Made after Repository was Created
 | ID  | Task   |  Status | Date Completed   | Notes  |
 |:-:|:-|:-:|:-:|:-:|
-| 1 | Create Home (more like landing Page)  |  Completed |  6/16 |  created a better way to navigate |
+| 1 | Create Home (more like landing Page)  |  Completed |  6/16/17 |  created a better way to navigate |
 | 2  |  test Home Page |  Not Completed  |   |   |
 | 3  |  create tests for evaluation forms |  Not Completed  |   |   |
-| 4  |  create smaller evaluation form components |  Not Completed  |   |
-| 5  |   test saving the evaluation form data | Not Completed   |   |   |
+| 4  |  create smaller evaluation form components | Completed  |  6/20/17 |
+| 5  |   test saving the evaluation form data | Not Completed   |   |  |
 | 6  |  implement saving the data to react state |  Not Completed  |    |
 | 7  |  test Redux is handling the data | Not Completed   |   |   |
 | 8  |  implement Redux managing the data with the Store object | Not Completed   |   |   |
@@ -13,8 +13,12 @@
 | 10 |  implement the exporting locally   | Not Completed   |   |   |
 | 11 |   test if JSON is converting to CSV|  Not Completed  |   |   |
 |  12 | Created/Implemented GPS Component  |  Completed|  6/18/17 |Still Buggy needs more testing|
-|  13 | Created/ Implemented Basic Result Input Form Component  |  Completed|  6/19/17 | Having Validation issues will resolve with Testing|
+|  13 | Created/ Implemented Result Form Component  |  Completed|  6/19/17 | Having Validation issues will resolve with Testing|
 |  14 | Updated Styling to make valid for newly implemented Components  |  Completed|  6/20/17 | Will be a constant Process |
+|  15 | Created/Implemented  Timer Component |  Completed|  6/20/17 | Need to change how its presented|
+|  16 | Styling for Evaluation Form |  Completed|  6/20/17 | |
+|  17 | Added Semantic UI Styling to save time|  Completed|  6/20/17 | |
+
 
 # Completed up to the creation of  the table above before 6/15/17
 | ID  | Task |  Status | Notes  |

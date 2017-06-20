@@ -14,24 +14,29 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     
-    ["lap", "update", "reset", "toggle"].forEach((method) => {
+    ["goal", "update", "reset", "toggle"].forEach((method) => {
     	this[method] = this[method].bind(this);
     });
 
     this.state = this.initialState = {
       isRunning: false,
-      lapTimes: [],
+      goalTimes: [],
       timeElapsed: 0,
     };
   }
+  
+  //Checks if the clock was started
+  // this.state.isRunning == true then clearInterval
+  // this.state.isRunning == false then call startTimer
   toggle() {
     this.setState({isRunning: !this.state.isRunning}, () => {
       this.state.isRunning ? this.startTimer() : clearInterval(this.timer)
     });
   }
-  lap() {
-    const {lapTimes, timeElapsed} = this.state;
-    this.setState({lapTimes: lapTimes.concat(timeElapsed)});
+//Assigns the "lap or goal"
+  goal() {
+    const {goalTimes, timeElapsed} = this.state;
+    this.setState({goalTimes: goalTimes.concat(timeElapsed)});
   }
   reset() {
     clearInterval(this.timer);
@@ -47,7 +52,7 @@ class Stopwatch extends React.Component {
     this.startTime = Date.now();
   }
   render() {
-    const {isRunning, lapTimes, timeElapsed} = this.state;
+    const {isRunning, goalTimes, timeElapsed} = this.state;
     return (
       <Container textAlign ='center'>
       <h1> Stopwatch </h1>
@@ -56,12 +61,12 @@ class Stopwatch extends React.Component {
           {isRunning ? 'Run Complete' : 'Run Start'}
         </Button>
         <Button
-          onClick={isRunning ? this.lap : this.reset}
+          onClick={isRunning ? this.goal : this.reset}
           disabled={!isRunning && !timeElapsed}
          >
           {isRunning || !timeElapsed ? 'Goal Reached' : 'Reset'}
         </Button>
-        {lapTimes.length > 0 && <LapTimes lapTimes={lapTimes} />}
+        {goalTimes.length > 0 && <GoalTimes goalTimes={goalTimes} />}
       </Container>
     );
   }
@@ -88,18 +93,18 @@ class TimeElapsed extends React.Component {
   }
 }
 
-class LapTimes extends React.Component {
+class GoalTimes extends React.Component {
   render() {
-    const rows = this.props.lapTimes.map((lapTime, index) =>
+    const rows = this.props.goalTimes.map((goalTime, index) =>
       <tr key={++index}>
         <td>{index}</td>
-        <td><TimeElapsed timeElapsed={lapTime} /></td>
+        <td><TimeElapsed timeElapsed={goalTime} /></td>
       </tr>
     );
     return (
-      <table id="lap-times">
+      <table id="Goal-times">
         <thead>
-          <th>Goal</th>
+          <th>Goal Reached</th>
           <th>Time</th>
         </thead>
         <tbody>{rows}</tbody>
