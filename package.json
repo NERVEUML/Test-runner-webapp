@@ -6,6 +6,7 @@
     "fixed-data-table": "^0.6.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-form": "^1.2.8",
     "react-geolocated": "^1.0.3",
     "react-router-dom": "^4.1.1",
     "react-table": "^6.2.0",
