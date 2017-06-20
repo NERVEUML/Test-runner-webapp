@@ -2,10 +2,11 @@
 
 //Libraries
 import React, { Component } from 'react';
+import {Container} from 'semantic-ui-react';
 //Components
 import NavBar from  './NavBar.jsx'
-import GpsField from './Eval_Parts/GpsField';
-import ResultForm from './Eval_Parts/ResultForm';
+import Evaluation from './Evaluation.jsx';
+
 class Main extends Component {
   render() {
 
@@ -13,10 +14,9 @@ class Main extends Component {
     <div className="Main-container">
 
       <NavBar />
-      <div className="View">
-      <GpsField />
-      <ResultForm />
-      </div>
+      <Container textAlign='center'>
+        <Evaluation />
+      </Container>
      
     </div>
     );

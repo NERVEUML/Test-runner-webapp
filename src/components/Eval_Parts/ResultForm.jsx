@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Container, Button} from 'semantic-ui-react';
 import {
   Form,
   Text,
@@ -9,7 +10,9 @@ import {
 class ResultForm extends Component {
     render() {
     return (
-      <div>
+      
+      <Container textAlign="center">
+      <h1> Result Form </h1>
         <Form
           // Validating your form is super easy, just use the `validate` life-cycle method
           validate={values => {
@@ -110,15 +113,15 @@ class ResultForm extends Component {
 
                 {/* // Since this is the parent form, let's put a submit button in there ;) */}
                 {/* // You can submit your form however you want, as long as you call the `submitForm` callback */}
-                <button>
+                <Button>
                   Submit
-                </button>
+                </Button>
                 </form>
             )
           }}
 
                 </Form>
-            </div>
+            </Container>
         );
     }
 }

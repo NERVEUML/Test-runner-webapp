@@ -2,13 +2,14 @@
 
 //Libraries
 import React, { Component } from 'react';
+import {Container} from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 
 class NavBar extends Component {
   render() {
     return (
-      <div>
+      <Container fluid>
         <div className="placeholder"/>
           <div className="navContainer">
           <NavLink to="/">  
@@ -18,7 +19,7 @@ class NavBar extends Component {
             <NavLink activeClassName="activeLink" to="/Configurations" className="link">Configuration List</NavLink>
             <NavLink activeClassName="activeLink" to="/Evaluations" className="link">Evaluation List</NavLink>
           </div>
-        </div>
+        </Container>
     );
   }
 }
