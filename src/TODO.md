@@ -9,7 +9,7 @@
 | 6  |  implement saving the data to react state |  Not Completed  |   |   |
 | 7  |  test Redux is handling the data | Not Completed   |   |   |
 | 8  |  implement Redux managing the data with the Store object | Not Completed   |   |   |
-| 9  |   test the data being exported to JSON file in local directory | Not Completed   |   |   |
+| 9  |  test the data being exported to JSON file in local directory | Not Completed   |   |   |
 | 10 |  implement the exporting locally   | Not Completed   |   |   |
 | 11 |   test if JSON is converting to CSV|  Not Completed  |   |   |
 |  12 | Created/Implemented GPS Component  |  Completed|  6/18/17 | Still Buggy needs more testing|
@@ -17,8 +17,8 @@
 |  14 | Updated Styling to make valid for newly implemented Componets  |  Completed|  6/2o/17 | Will be a constant Process |
 
 # Completed up to the creation of  the table above
-| ID  | Task   |  Status | Notes  |
-|:-:|:-|:-:|:-:|:-:|
+| ID  | Task |  Status | Notes  |
+|:-:|:-|:-:|:-:|
 |  1 | Created test suite for automated testing |  Completed|   |
 |  2 | Implemented Tests for all need components |  Completed|   basic render |
 |  3 | setup Stylus Styling|  Completed|   |
