@@ -9,10 +9,10 @@ class Coords extends React.Component {
       : !this.props.isGeolocationEnabled
         ? <div>Geolocation is not enabled</div>
         : this.props.coords
-          ? <table>
+          ? <table className="gps-data">
             <tbody>
-              <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
-              <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
+              <tr><td>latitude: </td><td>{this.props.coords.latitude}</td></tr>
+              <tr><td>longitude: </td><td>{this.props.coords.longitude}</td></tr>
             </tbody>
           </table>
           : <div>Getting the location data&hellip; </div>;

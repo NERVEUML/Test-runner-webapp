@@ -1,37 +1,37 @@
 {
-  "name": "test-runner-webapp",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "fixed-data-table": "^0.6.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-geolocated": "^1.0.3",
-    "react-router-dom": "^4.1.1",
-    "react-table": "^6.2.0",
-    "react-typist": "^1.1.1"
-  },
-  "devDependencies": {
-    "babel-jest": "^20.0.3",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "chai": "^4.0.2",
-    "create-react-app-stylus": "^1.1.1",
-    "enzyme": "^2.8.2",
-    "jest": "^20.0.4",
-    "react-addons-test-utils": "^15.5.1",
-    "react-redux": "^5.0.5",
-    "react-router-redux": "^4.0.8",
-    "react-scripts": "1.0.7",
-    "react-test-renderer": "^15.5.4",
-    "redux": "^3.6.0",
-    "regenerator-runtime": "^0.10.5",
-    "sinon": "^2.3.4"
-  },
-  "scripts": {
-    "start": "react-scripts-with-stylus start /src/styles/index.styl",
-    "build": "react-scripts-with-stylus build /src/styles/index.styl",
-    "test": "jest",
-    "eject": "react-scripts eject"
-  }
+    "name": "test-runner-webapp",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "fixed-data-table": "^0.6.4",
+        "react": "^15.5.4",
+        "react-dom": "^15.5.4",
+        "react-geolocated": "^1.0.3",
+        "react-router-dom": "^4.1.1",
+        "react-table": "^6.2.0",
+        "react-typist": "^1.1.1"
+    },
+    "devDependencies": {
+        "babel-jest": "^20.0.3",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "chai": "^4.0.2",
+        "create-react-app-stylus": "^1.1.1",
+        "enzyme": "^2.8.2",
+        "jest": "^20.0.4",
+        "react-addons-test-utils": "^15.5.1",
+        "react-redux": "^5.0.5",
+        "react-router-redux": "^4.0.8",
+        "react-scripts": "1.0.7",
+        "react-test-renderer": "^15.5.4",
+        "redux": "^3.6.0",
+        "regenerator-runtime": "^0.10.5",
+        "sinon": "^2.3.4"
+    },
+    "scripts": {
+        "start": "react-scripts-with-stylus start /src/styles/index.styl",
+        "build": "react-scripts-with-stylus build /src/styles/index.styl",
+        "test": "jest",
+        "eject": "react-scripts eject"
+    }
 }

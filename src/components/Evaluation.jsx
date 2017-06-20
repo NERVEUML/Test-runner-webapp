@@ -21,7 +21,7 @@ class EvaluationForm extends Component {
         <p> Result: {this.props.result}</p>
         <p> Success Percentage: {this.props.success_percent}</p>
         <button class="moreButton"> 
-            <img src ="../media/assets/more.png" alt="detail" />
+            <img src ="../media/more.png" alt="detail" />
         </button>
     </div>
    

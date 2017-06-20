@@ -1,7 +1,7 @@
 # Made after Repository was Created
 | ID  | Task   |  Status | Date Completed   | Notes  |
 |:-:|:-|:-:|:-:|:-:|
-| 1 | Create Home (more like landing Page)  |  Not Completed |   |   |
+| 1 | Create Home (more like landing Page)  |  Completed |  6/16 |  created a better way to navigate |
 | 2  |  test Home Page |  Not Completed  |   |   |
 | 3  |  create tests for evaluation forms |  Not Completed  |   |   |
 | 4  |  create smaller evaluation form components |  Not Completed  |   |   |

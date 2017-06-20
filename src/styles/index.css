@@ -69,3 +69,23 @@ h1 a:focus {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.gps-container {
+  background-color: #0047ab;
+  width: 400px;
+  height: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gps-data {
+  font-size: 20px;
+  color: #fff;
+}
+.gps-button {
+  margin: 10px;
+}

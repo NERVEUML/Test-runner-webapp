@@ -9,10 +9,12 @@ class GpsField extends Component {
     this._onButtonClick = this._onButtonClick.bind(this);
   }
 
+//This will Hide the component of Coords and then re-call it on press 
   _onButtonClick() {
-    this.setState({
-      showComponent: true,
-    });
+        this.setState({
+        showComponent: !this.state.showComponent,
+        });
+    
   }
     render() {
         return (
