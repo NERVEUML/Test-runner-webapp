@@ -23,7 +23,7 @@ class ResultForm extends Component {
               team,
               result,
               success
-            } = values;
+            } = values
             return {
               team: !team ? 'A  team name is required' : undefined,
               result: !result ? 'A result is required' : undefined,
@@ -31,7 +31,8 @@ class ResultForm extends Component {
             }
           }}
         
-        > {({ values, submitForm, addValue, removeValue, getError }) => {
+        > 
+        {({ values, submitForm, addValue, removeValue, getError }) => {
             // This is a stateless component, but you can use any valid react component to render your form.
             // Forms also supply plenty of useful props for your components to utilize. See the docs for a complete list.
             return (
