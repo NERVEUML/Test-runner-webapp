@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 //Components
 import NavBar from  './NavBar.jsx'
 import GpsField from './Eval_Parts/GpsField';
+import ResultForm from './Eval_Parts/ResultForm';
 class Main extends Component {
   render() {
 
@@ -14,6 +15,7 @@ class Main extends Component {
       <NavBar />
       <div className="View">
       <GpsField />
+      <ResultForm />
       </div>
      
     </div>
