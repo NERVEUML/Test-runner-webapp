@@ -1,6 +1,6 @@
 /* /src/components/EvaluationForm.jsx  */
 
-//Libraies
+//Libraries
 import React, { Component } from 'react';
 
 class EvaluationForm extends Component {

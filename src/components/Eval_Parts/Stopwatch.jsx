@@ -1,3 +1,6 @@
+/* /src/components/Eval_Parts/Stopwatch.jsx  */
+
+//Libraries
 import React from 'react';
 import { Button, Container } from 'semantic-ui-react';
 
@@ -24,7 +27,7 @@ class Stopwatch extends React.Component {
       timeElapsed: 0,
     };
   }
-  
+
   //Checks if the clock was started
   // this.state.isRunning == true then clearInterval
   // this.state.isRunning == false then call startTimer

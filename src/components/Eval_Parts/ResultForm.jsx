@@ -1,3 +1,6 @@
+/* /src/components/Eval_Parts/ResultForm.jsx  */
+
+//Libraries
 import React, { Component } from 'react';
 import {Container, Button} from 'semantic-ui-react';
 import {

@@ -1,15 +1,15 @@
-/* /src/__tests__/Timer.test.js  */
+/* /src/__tests__/Stopwatch.test.js  */
 
 //Libraries
 import React from 'react';
 import { shallow } from 'enzyme'
 //Component To Be Tested
-import Timer from '../components/Eval_Parts/Timer.jsx';
+import Stopwatch from '../components/Eval_Parts/Stopwatch.jsx';
 
 //Call to create a Shallow rendering of component
-const wrapper = shallow(<Timer />)
+const wrapper = shallow(<Stopwatch />)
 
-describe('Timer Component', () => {
+describe('Stopwatch Component', () => {
   test('render', () => {
     expect(wrapper.exists()).toBe(true)
   })

@@ -1,3 +1,6 @@
+/* /src/components/Eval_Parts/Coords.jsx  */
+
+//Libraries
 import React from 'react';
 import {geolocated} from 'react-geolocated';
 

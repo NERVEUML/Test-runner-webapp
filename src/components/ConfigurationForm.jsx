@@ -1,6 +1,6 @@
 /* /src/components/ConfigurationForm.jsx  */
 
-//Libraies
+//Libraries
 import React, { Component } from 'react';
 
 class ConfigurationForm extends Component {

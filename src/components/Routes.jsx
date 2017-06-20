@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 // Components
-import Main from './Main.jsx'; 
+import App from './App'; 
 import ConfigurationList from './ConfigurationList.jsx'; 
 import EvaluationList from './EvaluationList.jsx'; 
 
@@ -18,7 +18,7 @@ class Routes extends Component {
       <Router >
         <div>
           <Switch>
-            <Route exact path="/" component={ Main } />
+            <Route exact path="/" component={ App } />
             <Route exact path="/Configurations" component={ ConfigurationList } />
             <Route exact path="/Evaluations" component={ EvaluationList } />
             <Route path="*" render={() => <h1>404 NOT FOUND</h1>} />
