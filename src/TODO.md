@@ -14,9 +14,9 @@
 | 11 |   test if JSON is converting to CSV|  Not Completed  |   |   |
 |  12 | Created/Implemented GPS Component  |  Completed|  6/18/17 | Still Buggy needs more testing|
 |  13 | Created/ Implmented Basic Result Input Form Component  |  Completed|  6/19/17 | Havin Validation isses will resove with Testing |
-|  14 | Updated Styling to make valid for newly implemented Componets  |  Completed|  6/2o/17 | Will be a constant Process |
+|  14 | Updated Styling to make valid for newly implemented Componets  |  Completed|  6/20/17 | Will be a constant Process |
 
-# Completed up to the creation of  the table above
+# Completed up to the creation of  the table above before 6/15/17
 | ID  | Task |  Status | Notes  |
 |:-:|:-|:-:|:-:|
 |  1 | Created test suite for automated testing |  Completed|   |
