@@ -13,32 +13,32 @@ class EvaluationForm extends Component {
   render() {
 
     return (
-  <Container textAlign='center'>
-    <Header as='h2' icon>
-      <Icon name='book' />
-        Evaluation Form
-      <Header.Subheader>
-        Log all of the task statistics here.
-      </Header.Subheader>
-    </Header>
-   <Grid rows={3} relaxed>
-      <Grid.Row>
-        <Segment color='green'>
-          <GpsField />
-        </Segment>
-      </Grid.Row>
-      <Grid.Row>
-        <Segment color='blue'>
-          <ResultForm />
-        </Segment>
-      </Grid.Row>
-      <Grid.Row>
-        <Segment color='purple'>
-          <Stopwatch />
-        </Segment>
-      </Grid.Row>
-      </Grid>
-  </Container>
+      <Container textAlign='center'>
+        <Header as='h2' icon>
+          <Icon name='book' />
+            Evaluation Form
+          <Header.Subheader>
+            Log all of the task statistics here.
+          </Header.Subheader>
+        </Header>
+        <Grid rows={3} relaxed>
+          <Grid.Row>
+            <Segment color='green'>
+              <GpsField />
+            </Segment>
+          </Grid.Row>
+          <Grid.Row>
+            <Segment color='blue'>
+              <ResultForm />
+            </Segment>
+          </Grid.Row>
+          <Grid.Row>
+            <Segment color='purple'>
+              <Stopwatch />
+            </Segment>
+          </Grid.Row>
+        </Grid>
+      </Container>
     );
   }
 }

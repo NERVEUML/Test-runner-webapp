@@ -11,11 +11,11 @@ import {
 } from 'react-form';
 
 class ResultForm extends Component {
-    render() {
+  render() {
     return (
       
       <Container textAlign="center">
-      <h1> Result Form </h1>
+        <h1> Result Form </h1>
         <Form
           // Validating your form is super easy, just use the `validate` life-cycle method
           validate={values => {
@@ -23,16 +23,15 @@ class ResultForm extends Component {
               team,
               result,
               success
-            } = values
+            } = values;
             return {
-                team: !team ? 'A  team name is required' : undefined,
-                result: !result ? 'A result is required' : undefined,
-                success: !success ? 'A success is required' :undefined
+              team: !team ? 'A  team name is required' : undefined,
+              result: !result ? 'A result is required' : undefined,
+              success: !success ? 'A success is required' :undefined
             }
           }}
         
-        >
-       {({ values, submitForm, addValue, removeValue, getError }) => {
+        > {({ values, submitForm, addValue, removeValue, getError }) => {
             // This is a stateless component, but you can use any valid react component to render your form.
             // Forms also supply plenty of useful props for your components to utilize. See the docs for a complete list.
             return (
@@ -65,7 +64,7 @@ class ResultForm extends Component {
                         label: "Saftey Take over",
                         value: 'saftey Take Over'
                       },
-                    {
+                      {
                         label: 'Vehicle Crashed',
                         value: 'Vehicle Crashed'
                       },
@@ -77,7 +76,7 @@ class ResultForm extends Component {
                   />
                 </div>
                 <div>
-                <h3>Success %:</h3>
+                  <h3>Success %:</h3>
                   <Select // This is the built-in Select formInput
                     field="status"
                     options={[
@@ -119,14 +118,14 @@ class ResultForm extends Component {
                 <Button>
                   Submit
                 </Button>
-                </form>
+              </form>
             )
           }}
 
-                </Form>
-            </Container>
-        );
-    }
+        </Form>
+      </Container>
+    );
+  }
 }
 
 export default ResultForm;

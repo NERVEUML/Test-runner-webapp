@@ -6,10 +6,10 @@ import NavBar from './NavBar';
 class ConfigurationList extends Component {
   render() {
     return (
-  <div className="ConfigurationList-container">
-  <NavBar />
-  <h1>My ConfigurationList</h1>
-  </div>
+      <div className="ConfigurationList-container">
+        <NavBar />
+        <h1>My ConfigurationList</h1>
+      </div>
     );
   }
 }

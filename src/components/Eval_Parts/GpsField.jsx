@@ -8,7 +8,7 @@ import { Button,Container,  } from 'semantic-ui-react';
 import Coords from './Coords';
 
 class GpsField extends Component {
- constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       showComponent: false,
@@ -16,27 +16,27 @@ class GpsField extends Component {
     this.onButtonClick = this.onButtonClick.bind(this);
   }
 
-//This will Hide the component of Coords and then re-call it on press 
-onButtonClick() {
-        this.setState({
-        showComponent: !this.state.showComponent,
-});
+  //This will Hide the component of Coords and then re-call it on press 
+  onButtonClick() {
+    this.setState({
+      showComponent: !this.state.showComponent,
+    });
     
   }
-    render() {
-        return (
-            <Container className="gps-container" textAlign='center'>
-            <h1>GPS </h1>
-            <br />
-            <br />
-                <Button onClick={this.onButtonClick}>Get GPS Coordinates</Button>
-                    {this.state.showComponent ?
-                    <Coords /> :
-                     null
-                    }
-            </Container>
-        );
-    }
+  render() {
+    return (
+      <Container className="gps-container" textAlign='center'>
+        <h1>GPS </h1>
+        <br />
+        <br />
+        <Button onClick={this.onButtonClick}>Get GPS Coordinates</Button>
+        {this.state.showComponent ?
+          <Coords /> :
+          null
+        }
+      </Container>
+    );
+  }
 }
 
 export default GpsField;

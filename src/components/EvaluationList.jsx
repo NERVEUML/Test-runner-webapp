@@ -6,10 +6,10 @@ import NavBar from './NavBar';
 class EvaluationList extends Component {
   render() {
     return (
-  <div className="EvaluationList-container">
-  <NavBar />
-  <h1>EvaluationList </h1>
-  </div>
+      <div className="EvaluationList-container">
+        <NavBar />
+        <h1>EvaluationList </h1>
+      </div>
     );
   }
 }

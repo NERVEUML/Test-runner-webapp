@@ -7,7 +7,7 @@ import { Button, Container } from 'semantic-ui-react';
 
 const leftPad = (width, n) => {
   if ((n + '').length > width) {
-	  return n;
+    return n;
   }
   const padding = new Array(width).join('0');
   return (padding + n).slice(-width);
@@ -17,8 +17,8 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     
-    ["goal", "update", "reset", "toggle"].forEach((method) => {
-    	this[method] = this[method].bind(this);
+    ['goal', 'update', 'reset', 'toggle'].forEach((method) => {
+      this[method] = this[method].bind(this);
     });
 
     this.state = this.initialState = {
@@ -36,7 +36,7 @@ class Stopwatch extends React.Component {
       this.state.isRunning ? this.startTimer() : clearInterval(this.timer)
     });
   }
-//Assigns the "lap or goal"
+  //Assigns the "lap or goal"
   goal() {
     const {goalTimes, timeElapsed} = this.state;
     this.setState({goalTimes: goalTimes.concat(timeElapsed)});
@@ -58,7 +58,7 @@ class Stopwatch extends React.Component {
     const {isRunning, goalTimes, timeElapsed} = this.state;
     return (
       <Container textAlign ='center'>
-      <h1> Stopwatch </h1>
+        <h1> Stopwatch </h1>
         <TimeElapsed id="timer" timeElapsed={timeElapsed} />
         <Button onClick={this.toggle}>
           {isRunning ? 'Run Complete' : 'Run Start'}
@@ -66,7 +66,7 @@ class Stopwatch extends React.Component {
         <Button
           onClick={isRunning ? this.goal : this.reset}
           disabled={!isRunning && !timeElapsed}
-         >
+        >
           {isRunning || !timeElapsed ? 'Goal Reached' : 'Reset'}
         </Button>
         {goalTimes.length > 0 && <GoalTimes goalTimes={goalTimes} />}
