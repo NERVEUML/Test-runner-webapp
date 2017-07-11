@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import {Container} from 'semantic-ui-react';
 //Components
 import NavBar from  './NavBar.jsx';
-import Evaluation from './Evaluation.jsx';
 
 class Main extends Component {
   render() {
@@ -15,7 +14,6 @@ class Main extends Component {
 
         <NavBar />
         <Container textAlign='center'>
-          <Evaluation />
         </Container>
      
       </div>

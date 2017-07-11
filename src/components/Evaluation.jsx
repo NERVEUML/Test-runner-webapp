@@ -1,46 +1,48 @@
 /* /src/components/Evaluation.jsx  */
 
 //Libraries
-import React, { Component } from 'react';
-import {Grid, Segment, Container , Header, Icon} from 'semantic-ui-react';
+import React from 'react';
+import {Card, Statistic, Segment, Header, Label} from 'semantic-ui-react';
+const Evaluation = (props) => {
+        return (
+        <Card fluid >
+        <Header>Team: {props.team}</Header>
+    
+        <div className='middle aligned content'>
+          <div className='header'>
+           Task:{props.task}
+          </div>
+          <div className='description'>
+              <Label>Attempt:</Label>{props.attempt} 
+            <p>
+             <Label> Notes:</Label>{props.notes} <br />
+              <Label>Result:</Label>{props.result} <br />
+             <Segment>
+              <Statistic  color='blue'>
+                <Statistic.Value>{props.time}</Statistic.Value>
+                <Statistic.Label >Time</Statistic.Label>
+              </Statistic>
+              <Statistic color='blue'>
+                <Statistic.Value>{props.goalTime}</Statistic.Value>
+                <Statistic.Label>Goal Time</Statistic.Label>
+              </Statistic>
+              <Statistic color='blue'>
+                <Statistic.Value>{props.gpsLong}</Statistic.Value>
+                <Statistic.Label>GPS Longitude</Statistic.Label>
+              </Statistic>
+               <Statistic color='blue'>
+                <Statistic.Value>{props.gpsLat}</Statistic.Value>
+                <Statistic.Label>GPS Latitude</Statistic.Label>
+              </Statistic >
+              <Statistic color='blue'>
+                <Statistic.Value>{props.successPercentage}</Statistic.Value>
+                <Statistic.Label>Success Percentage</Statistic.Label>
+              </Statistic>
+             </Segment>
+            </p>
+          </div>
+        </div>
+      </Card>
+      );}
 
-//Components
-import GpsField from './Eval_Parts/GpsField';
-import ResultForm from './Eval_Parts/ResultForm';
-import Stopwatch from './Eval_Parts/Stopwatch';
-class EvaluationForm extends Component {
-// Eval still needs place for run and Attempts numbers
-  render() {
-
-    return (
-      <Container textAlign='center'>
-        <Header as='h2' icon>
-          <Icon name='book' />
-            Evaluation Form
-          <Header.Subheader>
-            Log all of the task statistics here.
-          </Header.Subheader>
-        </Header>
-        <Grid rows={3} relaxed>
-          <Grid.Row>
-            <Segment color='green'>
-              <GpsField />
-            </Segment>
-          </Grid.Row>
-          <Grid.Row>
-            <Segment color='blue'>
-              <ResultForm />
-            </Segment>
-          </Grid.Row>
-          <Grid.Row>
-            <Segment color='purple'>
-              <Stopwatch />
-            </Segment>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    );
-  }
-}
-
-export default EvaluationForm;
+export default Evaluation;
