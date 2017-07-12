@@ -18,7 +18,7 @@
 |  15 | Created/Implemented  Timer Component |  Completed|  6/20/17 | Need to change how its presented|
 |  16 | Styling for Evaluation Form |  Completed|  6/20/17 | |
 |  17 | Added Semantic UI Styling to save time|  Completed|  6/20/17 | |
-
+|  18 | Created Live load of Evaluations |  Completed| 7/11/17 | |
 
 # Completed up to the creation of  the table above before 6/15/17
 | ID  | Task |  Status | Notes  |

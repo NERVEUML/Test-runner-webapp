@@ -14,3 +14,8 @@ describe('EvaluationList Component', () => {
     expect(wrapper.exists()).toBe(true)
   })
 });
+
+// maps all evaluations from file to the page 
+
+//on button click can edit Evaluation
+

@@ -17,8 +17,7 @@
         "babel-preset-react": "^6.24.1",
         "create-react-app-stylus": "^1.1.1",
         "enzyme": "^2.8.2",
-        "eslint": "^4.0.0",
-        "eslint-plugin-react": "^7.1.0",
+        "eslint": "^3.19.0",
         "jest": "^20.0.4",
         "react-addons-test-utils": "^15.5.1",
         "react-redux": "^5.0.5",
@@ -31,7 +30,6 @@
         "start": "react-scripts-with-stylus start /src/styles/index.styl",
         "build": "react-scripts-with-stylus build /src/styles/index.styl",
         "test": "jest",
-        "eject": "react-scripts eject",
-        "start:server": "http-server -p 9000 ./build"
+        "eject": "react-scripts eject"
     }
 }

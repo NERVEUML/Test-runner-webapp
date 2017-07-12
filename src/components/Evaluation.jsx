@@ -5,16 +5,11 @@ import React from 'react';
 import {Card, Statistic, Segment, Header, Label} from 'semantic-ui-react';
 const Evaluation = (props) => {
         return (
+        <div className="evaluations">
         <Card fluid >
         <Header>Team: {props.team}</Header>
-    
-        <div className='middle aligned content'>
-          <div className='header'>
-           Task:{props.task}
-          </div>
-          <div className='description'>
+           <Label attached='top'> Task: </Label>{props.task}
               <Label>Attempt:</Label>{props.attempt} 
-            <p>
              <Label> Notes:</Label>{props.notes} <br />
               <Label>Result:</Label>{props.result} <br />
              <Segment>
@@ -39,10 +34,8 @@ const Evaluation = (props) => {
                 <Statistic.Label>Success Percentage</Statistic.Label>
               </Statistic>
              </Segment>
-            </p>
-          </div>
-        </div>
       </Card>
+    </div>
       );}
 
 export default Evaluation;

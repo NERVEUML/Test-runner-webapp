@@ -7,6 +7,15 @@ import {
   Switch
 } from 'react-router-dom';
 
+require("eslint/package.json"); // eslint is a peer dependency. 
+
+require("eslint-plugin-jsx-a11y/package.json"); // eslint-plugin-jsx-a11y is a peer dependency. 
+
+require("eslint-plugin-import/package.json"); // eslint-plugin-import is a peer dependency. 
+
+require("eslint-plugin-react/package.json"); // eslint-plugin-react is a peer dependency. 
+var eslintConfigAirbnb = require("eslint-config-airbnb")
+
 // Components
 import App from './App'; 
 import ConfigurationList from './ConfigurationList.jsx'; 
