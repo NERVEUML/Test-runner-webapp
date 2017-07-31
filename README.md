@@ -7,13 +7,13 @@
 This app is created to make a web application be cross platform. The application is responsible for having a way to evaluation individual run on an obstacle course for robots. This app not only saves them in a concise way on the local device but also gives you the options to export them to Google Drive for backups and hard copy of the data.
 
 ## Features
- 
- See my [TODO](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/TODO.md) file to track my features implemented progress
 
+ See my [TODO](https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/TODO.md) file to track my features implemented progress
+ See my [Trello](https://trello.com/b/cCI4Jc4l)  will soon be migrating to this full time 
 ## Getting Started
 
 In order to see this app run locally on your machine simply
- 
+
 ``` $ git clone  git@github.com:NERVEUML/Test-runner-webapp.git ```
 
 ### Prerequisites
@@ -36,7 +36,7 @@ Open Browser and you should see the app.
 
  I am using  Jest framework made by Facebook along with the Enzyme library to control my automated tests.
 
- Run tests by 
+ Run tests by
 ``` $ npm test ```
 to run continuously
 ``` $ jest --watch ```
@@ -57,7 +57,7 @@ TBD: Could be setup to be hosted on Raspberry Pi or local desktop with public ad
 
 * [React](https://facebook.github.io/react/) - Front-End web framework used
 * [Redux](http://redux.js.org/) - Data Management for localStorage and React State
-* [Jest](https://facebook.github.io/jest/) - Used for large scale testing 
+* [Jest](https://facebook.github.io/jest/) - Used for large scale testing
 * [Enzyme](http://airbnb.io/enzyme/) - Used Test render components
 * [Stylus](http://stylus-lang.com/) - Used for Styling
 * [Semantic UI](https://react.semantic-ui.com/introduction) - Used for Styling

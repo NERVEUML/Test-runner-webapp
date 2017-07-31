@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Form, Button} from 'semantic-ui-react';
 
 const TeamForm = (props) => {
@@ -20,4 +20,3 @@ const TeamForm = (props) => {
 }
 
 export default TeamForm;
-
