@@ -1,12 +1,12 @@
-/* /data/sample_data.json */
+/* /sampleData/sample_data.js */
 
- //Example Data to use in testing of the application 
+ //Example Data to use in testing of the application
 
-    //TODO: Write a test to validate these JSON objects for future testing 
+    //TODO: Write a test to validate these JSON objects for future testing
     //TODO: Write functions to check format of data objects
 
- const evaluationSamples = 
-      [  
+ const evaluationSamples =
+      [
         {
             id: 1,
             team: 'NERVE',

@@ -13,7 +13,7 @@ const TeamForm = (props) => {
                          <label>Task</label>
                          <input placeholder='Last Name' />
                     </Form.Field>
-                    <Button onSubmit={props.onSubmit()} type='submit'>Submit</Button>
+                    <Button>Submit</Button>
                  </Form>
             </div>
         );

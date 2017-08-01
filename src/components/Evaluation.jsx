@@ -2,16 +2,16 @@
 
 //Libraries
 import React from 'react';
-import {Card, Statistic, Segment, Header, Label} from 'semantic-ui-react';
+import {Card, Statistic, Segment, Label} from 'semantic-ui-react';
 const Evaluation = (props) => {
         return (
         <div className="evaluations">
         <Card fluid >
-        <Header>Team: {props.team}</Header>
-           <Label attached='top'> Task: </Label>{props.task}
-              <Label>Attempt:</Label>{props.attempt} 
-             <Label> Notes:</Label>{props.notes} <br />
-              <Label>Result:</Label>{props.result} <br />
+          <Label>Team:</Label>{props.team}
+          <Label>Task:</Label>{props.task}
+          <Label>Attempt:</Label>{props.attempt}
+          <Label>Notes:</Label>{props.notes} <br />
+          <Label>Result:</Label>{props.result} <br />
              <Segment>
               <Statistic  color='blue'>
                 <Statistic.Value>{props.time}</Statistic.Value>

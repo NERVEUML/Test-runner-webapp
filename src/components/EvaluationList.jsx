@@ -1,14 +1,11 @@
 import React from 'react';
 import Evaluation from './Evaluation';
 import NavBar from  './NavBar.jsx';
-import evaluationSamples from  '../eval_data.js';
+import evaluationSamples from  '../sampleData/eval_data.js';
 import {Segment} from 'semantic-ui-react'
 class EvaluationList extends React.Component {
   render() {
     // eslint-disable-next-line
-     const evaluations = evaluationSamples.sort((a, b) => (
-      b.votes - a.votes
-    ));
     const evaluationComponents = evaluationSamples.map((evaluation) => (
           <Evaluation
             key={'evaluation-' + evaluation.id}
@@ -20,9 +17,9 @@ class EvaluationList extends React.Component {
             time={evaluation.time}
             goalTime={evaluation.goalTime}
             gpsLong={evaluation.gpsLong}
-            gpsLat={evaluation.gpsLat}    
-            result={evaluation.result}  
-            successPercentage={evaluation.successPercentage}        
+            gpsLat={evaluation.gpsLat}
+            result={evaluation.result}
+            successPercentage={evaluation.successPercentage}
           />
         ));
     return (

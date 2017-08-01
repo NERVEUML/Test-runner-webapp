@@ -14,16 +14,16 @@ const courses =[
   {course: 'course'}
 ]
 class Main extends Component {
-constructor(props){
-  super(props);
-  this.onSubmit = this.onSubmit.bind(this);
-  this.state ={
-    teams:[teams],
-    team :'',
-    courses:[courses],
-    course: ''
-  };
-}
+  constructor(props){
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state ={
+      teams:[teams],
+      team :'',
+      courses:[courses],
+      course: ''
+    };
+  }
 
   onSubmit(event){
     event.preventDefault();
