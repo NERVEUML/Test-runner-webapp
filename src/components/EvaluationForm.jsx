@@ -2,7 +2,7 @@
 
 //Libraries
 import React, { Component } from 'react';
-import {Grid, Segment, Container , Header, Icon} from 'semantic-ui-react';
+import {Grid, Segment, Container , Header, Icon,Form} from 'semantic-ui-react';
 
 import GpsField from './Eval_Parts/GpsField';
 import ResultForm from './Eval_Parts/ResultForm';
@@ -19,12 +19,7 @@ class EvaluationForm extends Component {
             Log all of the task statistics here.
           </Header.Subheader>
         </Header>
-        <Grid rows={3} relaxed>
-          <Grid.Row>
-            <Segment color='green'>
-              <GpsField />
-            </Segment>
-          </Grid.Row>
+        <Grid rows={2} relaxed>
           <Grid.Row>
             <Segment color='blue'>
               <ResultForm />
@@ -36,6 +31,9 @@ class EvaluationForm extends Component {
             </Segment>
           </Grid.Row>
         </Grid>
+        <Form>
+          <Form.Button primary>Save</Form.Button>
+        </Form>
       </Container>
       </div>
     );

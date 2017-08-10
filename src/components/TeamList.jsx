@@ -3,6 +3,7 @@
 //Libraries
 import React, { Component } from 'react';
 import {Grid, Button, Segment, Label} from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 //Components
 
 
@@ -23,7 +24,8 @@ const Team = (props) => {
                </Grid.Column>
                <Grid.Column>
                  <Segment>
-                  <Button primary>Edit</Button> <Button secondary>GPS</Button>
+                    <NavLink to="/EvaluationForm" className="link"><Button primary>Edit</Button></NavLink>
+                    <NavLink to="/GPSForm" className="link"> <Button secondary>GPS</Button></NavLink>
                   </Segment>
                </Grid.Column>
              </Grid.Row>
