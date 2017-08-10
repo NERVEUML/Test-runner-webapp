@@ -9,6 +9,7 @@ const Evaluation = (props) => {
         <Card fluid >
           <Label>Team:</Label>{props.team}
           <Label>Task:</Label>{props.task}
+          <Label>Config:</Label>{props.config}
           <Label>Attempt:</Label>{props.attempt}
           <Label>Notes:</Label>{props.notes} <br />
           <Label>Result:</Label>{props.result} <br />

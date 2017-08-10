@@ -5,6 +5,7 @@ const TeamForm = (props) => {
         return (
             <div>
                 <Form>
+                  <Form.Group widths='equal'>
                     <Form.Field>
                         <label>Team</label>
                         <input placeholder='First Name' />
@@ -13,7 +14,9 @@ const TeamForm = (props) => {
                          <label>Task</label>
                          <input placeholder='Last Name' />
                     </Form.Field>
-                    <Button>Submit</Button>
+                    <Button >Submit</Button>
+                  </Form.Group>
+
                  </Form>
             </div>
         );

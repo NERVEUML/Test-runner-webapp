@@ -6,12 +6,13 @@ import {Container} from 'semantic-ui-react';
 //Components
 import NavBar from  './NavBar.jsx';
 import TeamForm from './TeamForm.jsx';
+import TeamList from './TeamList';
 
 const teams =[
   {team: 'team'}
 ]
-const courses =[
-  {course: 'course'}
+const tasks =[
+  {task: 'task'}
 ]
 class Main extends Component {
   constructor(props){
@@ -20,8 +21,8 @@ class Main extends Component {
     this.state ={
       teams:[teams],
       team :'',
-      courses:[courses],
-      course: ''
+      tasks:[tasks],
+      task: ''
     };
   }
 
@@ -31,16 +32,16 @@ class Main extends Component {
     const newTeam = {
       team: this.state.team
     }
-    const courses = this.state.courses;
+    const tasks = this.state.tasks;
     const newCourse = {
-      course: this.state.course
+      task: this.state.task
     }
     teams.push(newTeam);
-    courses.push(newCourse);
+    tasks.push(newCourse);
     this.setState({
       teams:[teams],
       team :'',
-      courses:[courses],
+      tasks:[tasks],
       course: ''
     });
   }
@@ -53,6 +54,7 @@ class Main extends Component {
         <NavBar />
         <Container textAlign='center'>
           <TeamForm onSubmit={this.onSubmit} />
+          <TeamList />
         </Container>
 
       </div>

@@ -13,6 +13,7 @@ class EvaluationList extends React.Component {
             team={evaluation.team}
             task={evaluation.task}
             attempt={evaluation.attempt}
+            config={evaluation.config}
             notes={evaluation.notes}
             time={evaluation.time}
             goalTime={evaluation.goalTime}

@@ -18,7 +18,8 @@
             gpsLong: 41.40338,
             gpsLat: 2.17403,
             result: 'Reach goal, but team take over',
-            successPercentage: '75%'
+            successPercentage: '75%',
+            config: 'SpaceShip'
         },
         {
             id: 2,
@@ -31,7 +32,8 @@
             gpsLong: 41.40338,
             gpsLat: 2.17403,
             result: 'crashed',
-            successPercentage: '0%'
+            successPercentage: '0%',
+            config: 'SpaceShip'
         }
       ];
 export default evaluationSamples;
