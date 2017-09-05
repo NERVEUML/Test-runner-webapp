@@ -18,7 +18,6 @@ const Home = props => (
         <NavBar />
         <Container textAlign='center'>
           <Button  color='red' onClick={() => props.changePage()}>Make Config</Button>
-
           <TeamForm onSubmit={this.onSubmit} />
           <TeamList />
         </Container>

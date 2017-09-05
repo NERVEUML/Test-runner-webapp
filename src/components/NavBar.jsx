@@ -3,7 +3,7 @@
 //Libraries
 import React, { Component } from 'react';
 import {Container} from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 
 class NavBar extends Component {
@@ -12,7 +12,7 @@ class NavBar extends Component {
       <Container fluid>
         <div className="placeholder"/>
         <div className="navContainer">
-          <NavLink to="/">  
+          <NavLink to="/">
             <img  className="nav-img" src={require('../media/assets/Logo.png')} alt="logo" />
           </NavLink>
           <NavLink exact activeClassName="activeLink" to="/" className="link" >Home</NavLink>
