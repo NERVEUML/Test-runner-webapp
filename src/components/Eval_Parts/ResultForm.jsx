@@ -13,7 +13,7 @@ import {
 class ResultForm extends Component {
   render() {
     return (
-      
+
       <Container textAlign="center">
         <h1> Result Form </h1>
         <Form
@@ -30,8 +30,8 @@ class ResultForm extends Component {
               success: !success ? 'A success is required' :undefined
             }
           }}
-        
-        > 
+
+        >
         {({ values, submitForm, addValue, removeValue, getError }) => {
             // This is a stateless component, but you can use any valid react component to render your form.
             // Forms also supply plenty of useful props for your components to utilize. See the docs for a complete list.
@@ -54,25 +54,26 @@ class ResultForm extends Component {
                     options={[
                       {
                         // You can ship it some options like usual
-                        label: 'Completion',
-                        value: 'Complete'
+                        label: 'Reaturn To Start',
+                        value: 'Reaturn To Start'
                       },
                       {
-                        label: 'Pilot Take over',
-                        value: 'Pilot Take over'
+                        label: 'Team Call, Non-Crash',
+                        value: 'Team Call, Non-Crash'
                       },
                       {
-                        label: "Saftey Take over",
-                        value: 'saftey Take Over'
+                        label: 'Team Call, Crash',
+                        value: 'Team Call, Crash'
                       },
                       {
-                        label: 'Vehicle Crashed',
-                        value: 'Vehicle Crashed'
+                        label: "Elevation Break",
+                        value: 'Elevation Break'
                       },
                       {
-                        label: 'Vehicle Landed',
-                        value: 'Vehicle Landed'
+                        label: 'Saftey Call',
+                        value: 'Saftey Call'
                       },
+
                     ]}
                   />
                 </div>
