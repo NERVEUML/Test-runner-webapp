@@ -4,17 +4,17 @@ import {Form, Button} from 'semantic-ui-react';
 const TeamForm = (props) => {
         return (
             <div>
-                <Form>
+                <Form onSubmit={props.onSubmit}>
                   <Form.Group widths='equal'>
                     <Form.Field>
                         <label>Team</label>
-                        <input placeholder='First Name' />
+                        <input onChange={props.onTChange} placeholder='First Name' />
                     </Form.Field>
                      <Form.Field>
                          <label>Task</label>
-                         <input placeholder='Last Name' />
+                         <input onChange={props.onAChange} placeholder='Last Name' />
                     </Form.Field>
-                    <Button onSubmit={props.onSubmit}>Submit</Button>
+                    <Button>Submit</Button>
                   </Form.Group>
 
                  </Form>
