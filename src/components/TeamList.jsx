@@ -14,7 +14,7 @@ import localStorage from 'local-storage';
 class TeamList extends Component {
   render() {
     
-    //console.log(myState);
+    console.log(this);
     // const  TeamComponents = myState.map((state) => (
     //   <Team
     //     key={'state-' + state.id}
