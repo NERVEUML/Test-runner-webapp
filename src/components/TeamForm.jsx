@@ -14,7 +14,7 @@ const TeamForm = (props) => {
                          <label>Task</label>
                          <input placeholder='Last Name' />
                     </Form.Field>
-                    <Button >Submit</Button>
+                    <Button onSubmit={props.onSubmit}>Submit</Button>
                   </Form.Group>
 
                  </Form>

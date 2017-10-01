@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import {Grid, Segment, Container , Header, Icon,Form} from 'semantic-ui-react';
 
-import GpsField from './Eval_Parts/GpsField';
+
 import ResultForm from './Eval_Parts/ResultForm';
 import Stopwatch from './Eval_Parts/Stopwatch';
 class EvaluationForm extends Component {

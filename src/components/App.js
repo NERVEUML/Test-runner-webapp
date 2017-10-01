@@ -28,6 +28,9 @@ class Main extends Component {
 
   onSubmit(event){
     event.preventDefault();
+    console.log('====================================');
+    console.log(this.state);
+    console.log('====================================')
     const teams = this.state.teams;
     const newTeam = {
       team: this.state.team
@@ -44,19 +47,19 @@ class Main extends Component {
       tasks:[tasks],
       course: ''
     });
+
   }
+
 
   render() {
 
     return (
       <div className="Main-container">
-
         <NavBar />
         <Container textAlign='center'>
           <TeamForm onSubmit={this.onSubmit} />
           <TeamList />
         </Container>
-
       </div>
     );
   }
