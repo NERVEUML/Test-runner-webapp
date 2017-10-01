@@ -13,10 +13,14 @@
 - ConfigurationForm
 - EvaluationList
 - ConfigurationList
+
 - GpsField
+
 - ResultForm
-- Timer 
+
+- Timer
 
 
-# Resources:
+## Resources
+
 https://medium.com/selleo/testing-react-components-best-practices-2f77ac302d12
