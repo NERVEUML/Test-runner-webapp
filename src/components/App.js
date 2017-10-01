@@ -27,6 +27,7 @@ class Main extends Component {
     this.setState((prevState, props) => ({
       id: prevState.id + 1
     })); 
+   // localStorage.setItem('state', JSON.stringify(this.state));
       event.preventDefault();
       console.log(this.state);
 
