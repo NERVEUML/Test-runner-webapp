@@ -27,7 +27,6 @@ class Main extends Component {
     this.setState((prevState, props) => ({
       id: prevState.id + 1
     })); 
-    
       event.preventDefault();
       console.log(this.state);
 
