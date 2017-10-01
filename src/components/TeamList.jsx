@@ -25,7 +25,7 @@ class TeamList extends Component {
     return (
       
       <div className="TeamList-container">
-    
+        <Team  team="Mit"  task="1-1"/>
 
       </div>
     );
