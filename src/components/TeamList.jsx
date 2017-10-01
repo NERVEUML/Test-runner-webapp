@@ -4,8 +4,33 @@
 import React, { Component } from 'react';
 import {Grid, Button, Segment, Label} from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import localStorage from 'local-storage';
 //Components
 
+//TODO make the lists of teams and task generate automatically on new 
+// TODO Save them to local Storage 
+
+
+class TeamList extends Component {
+  render() {
+    
+    console.log(this);
+    // const  TeamComponents = myState.map((state) => (
+    //   <Team
+    //     key={'state-' + state.id}
+    //     team={state.team}
+    //     task={state.task}
+    //   />
+    // ));
+    return (
+      
+      <div className="TeamList-container">
+    
+
+      </div>
+    );
+  }
+}
 
 const Team = (props) => {
         return (
@@ -35,19 +60,7 @@ const Team = (props) => {
         );
 }
 
-class TeamList extends Component {
-  render() {
-    return (
-      <div className="TeamList-container">
-          <Team team='MIT' task='1-1' />
-          <Team team='MIT' task='1-1' />
-          <Team team='MIT' task='1-1' />
-          <Team team='MIT' task='1-1' />
 
-      </div>
-    );
-  }
-}
 
 
 export default TeamList;

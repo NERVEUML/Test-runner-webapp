@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Evaluation from './Evaluation';
 import NavBar from  './NavBar.jsx';
 import evaluationSamples from  '../sampleData/eval_data.js';
 import {Segment} from 'semantic-ui-react'
-class EvaluationList extends React.Component {
+class EvaluationList extends Component {
   render() {
-    // eslint-disable-next-line
+  
+    console.log(evaluationSamples);
+
     const evaluationComponents = evaluationSamples.map((evaluation) => (
           <Evaluation
             key={'evaluation-' + evaluation.id}
