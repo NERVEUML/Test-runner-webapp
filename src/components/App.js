@@ -3,7 +3,7 @@
 //Libraries
 import React, { Component } from 'react';
 import {Container} from 'semantic-ui-react';
-import localStorage from 'local-storage';
+//import localStorage from 'local-storage';
 //Components
 import NavBar from  './NavBar.jsx';
 import TeamForm from './TeamForm.jsx';
@@ -23,13 +23,13 @@ class Main extends Component {
   }
 
   handleSubmit(event) {
-    alert('A team was submitted: ' + this.state.teams + this.state.tasks);
+    //alert('A team was submitted: ' + this.state.teams + this.state.tasks);
     this.setState((prevState, props) => ({
       id: prevState.id + 1
     })); 
    // localStorage.setItem('state', JSON.stringify(this.state));
       event.preventDefault();
-      console.log(this.state);
+      //console.log(this.state);
 
   }
   handleTeamChange(event) {

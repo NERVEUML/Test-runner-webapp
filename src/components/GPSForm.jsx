@@ -7,14 +7,15 @@ import {Form, Segment, Header } from 'semantic-ui-react';
 
 import GpsField from  './Eval_Parts/GpsField';
 class GPSForm extends Component {
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
   render() {
     return (
-      <div>
+      <div >
         <NavBar />
-      <div className="GPSForm-container">
+        <div className='behindForm'>
+        <div className="GPSForm-container ">
           <Segment color='green'>
             <Header> {this.props.team} </Header>
             <GpsField />
@@ -22,6 +23,7 @@ class GPSForm extends Component {
               <Form.Button primary>Save</Form.Button>
             </Form>
           </Segment>
+      </div>
       </div>
     </div>
     );

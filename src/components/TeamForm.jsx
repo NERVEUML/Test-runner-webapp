@@ -3,7 +3,7 @@ import {Form, Button} from 'semantic-ui-react';
 
 const TeamForm = (props) => {
         return (
-            <div>
+            <div className='TeamForm'>
                 <Form onSubmit={props.onSubmit}>
                   <Form.Group widths='equal'>
                     <Form.Field>

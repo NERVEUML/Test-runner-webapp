@@ -6,8 +6,6 @@ import {Segment} from 'semantic-ui-react'
 class EvaluationList extends Component {
   render() {
   
-    console.log(evaluationSamples);
-
     const evaluationComponents = evaluationSamples.map((evaluation) => (
           <Evaluation
             key={'evaluation-' + evaluation.id}

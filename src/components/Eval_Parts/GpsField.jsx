@@ -30,10 +30,12 @@ class GpsField extends Component {
         <br />
         <br />
         <Button onClick={this.onButtonClick}>Get GPS Coordinates</Button>
+        <div className='coords'>
         {this.state.showComponent ?
           <Coords /> :
           null
         }
+        </div>
       </Container>
     );
   }

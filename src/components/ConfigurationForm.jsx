@@ -17,7 +17,13 @@ class ConfigurationForm extends Component {
       Height:'',
       Weight:''
   };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleAirFrameChange = this.handleAirFrameChange.bind(this);
+    this.handleRotorsChange = this.handleRotorsChange.bind(this);
+    this.handleFlightControllerChange = this.handleFlightControllerChange.bind(this);
+    this.handleBatteryChange = this.handleBatteryChange.bind(this);
+    this.handleHeightChange = this.handleHeightChange.bind(this);
+    this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -27,17 +33,27 @@ class ConfigurationForm extends Component {
     })); 
       event.preventDefault();
       console.log(this.state);
-
   }
-  handleChange(event) {
+  handleNameChange(event) {
     this.setState({ Name: event.target.value });
+  }
+  handleAirFrameChange(event){
     this.setState({ AirFrame: event.target.value });
+  }
+  handleRotorsChange(event){
     this.setState({ Rotors: event.target.value });
+  }
+  handleFlightControllerChange(event){
     this.setState({ FlightController: event.target.value });
+  }
+  handleBatteryChange(event){
     this.setState({ Battery: event.target.value });
-    this.setState({ Height: event.target.value });
+  }
+  handleWeightChange(event){
     this.setState({ Weight: event.target.value });
-    console.log(this.state);
+  }
+  handleHeightChange(event){
+    this.setState({ Height: event.target.value });
   }
   render() {
     return (
@@ -47,15 +63,15 @@ class ConfigurationForm extends Component {
         <Segment color='blue'>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths='equal'>
-            <Form.Input onChange={this.handleChange} label='Name' placeholder='SpaceShip' />
-            <Form.Input onChange={this.handleChange} label='Air Frame' placeholder='airFrame' />
-            <Form.Input onChange={this.handleChange} label='Rotors' placeholder='Rotors' />
+            <Form.Input onChange={this.handleNameChange} label='Name' placeholder='SpaceShip' />
+            <Form.Input onChange={this.handleAirFrameChange} label='Air Frame' placeholder='airFrame' />
+            <Form.Input onChange={this.handleRotorsChange} label='Rotors' placeholder='Rotors' />
           </Form.Group>
             <Form.Group inline>
-              <Form.Input onChange={this.handleChange} label='Flight Controller' placeholder='Pixhawk' />
-              <Form.Input onChange={this.handleChange} label='Battery' placeholder='s6' />
-              <Form.Input onChange={this.handleChange} label='Height' placeholder='22' />
-              <Form.Input onChange={this.handleChange} label='Weight' placeholder='4' />
+              <Form.Input onChange={this.handleFlightControllerChange} label='Flight Controller' placeholder='Pixhawk' />
+              <Form.Input onChange={this.handleBatteryChange} label='Battery' placeholder='s6' />
+              <Form.Input onChange={this.handleHeightChange} label='Height' placeholder='22' />
+              <Form.Input onChange={this.handleWeightChange} label='Weight' placeholder='4' />
           </Form.Group>
         <Form.Button primary>Save</Form.Button>
       </Form>

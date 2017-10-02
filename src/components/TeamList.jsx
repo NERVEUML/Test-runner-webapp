@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import {Grid, Button, Segment, Label} from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import localStorage from 'local-storage';
+//import localStorage from 'local-storage';
 //Components
 
 //TODO make the lists of teams and task generate automatically on new 
@@ -14,19 +14,22 @@ import localStorage from 'local-storage';
 class TeamList extends Component {
   render() {
     
-    console.log(this.state);
-    // const  TeamComponents = myState.map((state) => (
-    //   <Team
-    //     key={'state-' + state.id}
-    //     team={state.team}
-    //     task={state.task}
-    //   />
-    // ));
+    const TeamComponents = Object.keys(this.props.list.id).map(function(run,index){
+      console.log('Hi');
+      return(
+        <Team
+          key={run.id}
+          team={run.teams}
+          task={run.tasks}
+        />
+      );
+  });
     return (
       
       <div className="TeamList-container">
+        {TeamComponents}
         <Team  team="Mit"  task="1-1"/>
-
+        
       </div>
     );
   }
@@ -35,7 +38,7 @@ class TeamList extends Component {
 const Team = (props) => {
         return (
             <div className="team">
-              <Grid  rows='equl' columns='equal'>
+              <Grid  rows='equal' columns='equal'>
                 <Grid.Row>
                 <Grid.Column>
                   <Segment>

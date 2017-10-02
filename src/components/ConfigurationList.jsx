@@ -2,7 +2,9 @@ import React from 'react';
 import Configuration from './Configuration';
 import NavBar from  './NavBar.jsx';
 import configurationSamples from  '../sampleData/config_data';
-import {Segment} from 'semantic-ui-react'
+import {Segment} from 'semantic-ui-react';
+
+
 class ConfigurationList extends React.Component {
   render() {
     const configurationComponents = configurationSamples.map((configuration) => (
