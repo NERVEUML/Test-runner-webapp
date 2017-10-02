@@ -2,7 +2,7 @@
 
 //Libraries
 import React, { Component } from 'react';
-import { Segment, Container , Header, Icon,Form} from 'semantic-ui-react';
+import { Segment,Form} from 'semantic-ui-react';
 
 
 import NavBar from './NavBar';
@@ -13,7 +13,7 @@ const optionsForResult = [
   { key: 'tcnc', text: 'Team Call, Non Crash', value: 'Team Call Non Crash' },
   { key: 'tc', text: 'Team Call, Crash', value: 'Team Call Crash' },
   { key: 'eb', text: 'Elevation Break', value: 'Elevation Break' },
-  { key: 'sc', text: 'Saftey Call', value: 'Saftey Call' },
+  { key: 'sc', text: 'Safety Call', value: 'Safety Call' },
 ]
 const optionsForSuccessPercentage = [
   { key: 'z', text: '0%', value: '0' },
@@ -68,22 +68,13 @@ class EvaluationForm extends Component {
       <div>
       <NavBar />
       <div className="ConfigurationForm-container">
-      <Container textAlign='center'>
-        <Header as='h2' icon>
-          <Icon name='book' />
-          Evaluation Form
-          <Header.Subheader>
-            Log all of the task statistics here.
-          </Header.Subheader>
-        </Header>
-        </Container>
       <Segment color='blue'>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths='equal'>
             <Form.Input onChange={this.handleNameChange} label='Name' placeholder='Nerve' />
             <Form.Select onChange={this.handleResultChange} label='Result'  options={optionsForResult} placeholder='Result' />
             <Form.Select onChange={this.handleSuccessChange} label='Success' options={optionsForSuccessPercentage}placeholder='Succes Rate' />
-            <Form.TextArea onChange={this.handleNotesChange} label='Notes' placeholder='What Else Happended ....' />
+            <Form.TextArea onChange={this.handleNotesChange} label='Notes' placeholder='What Else Happened ....' />
             </Form.Group>
           <Form.Button primary>Save</Form.Button>
         </Form>

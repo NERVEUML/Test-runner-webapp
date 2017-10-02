@@ -29,7 +29,7 @@ const Evaluation = (props) => {
                <Statistic color='blue'>
                 <Statistic.Value>{props.gpsLat}</Statistic.Value>
                 <Statistic.Label>GPS Latitude</Statistic.Label>
-              </Statistic >
+              </Statistic>
               <Statistic color='blue'>
                 <Statistic.Value>{props.successPercentage}</Statistic.Value>
                 <Statistic.Label>Success Percentage</Statistic.Label>

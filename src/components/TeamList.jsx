@@ -14,20 +14,19 @@ import { NavLink } from 'react-router-dom';
 class TeamList extends Component {
   render() {
     
-    const TeamComponents = Object.keys(this.props.list.id).map(function(run,index){
-      console.log('Hi');
-      return(
-        <Team
-          key={run.id}
-          team={run.teams}
-          task={run.tasks}
-        />
-      );
-  });
+  //   const TeamComponents = Object.keys(this.props.list.id).map(function(run,index){
+  //     return(
+  //       <Team
+  //         key={run.id}
+  //         team={run.teams}
+  //         task={run.tasks}
+  //       />
+  //     );
+  // });
     return (
       
       <div className="TeamList-container">
-        {TeamComponents}
+        
         <Team  team="Mit"  task="1-1"/>
         
       </div>

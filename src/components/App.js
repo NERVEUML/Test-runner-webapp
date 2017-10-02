@@ -3,11 +3,13 @@
 //Libraries
 import React, { Component } from 'react';
 import {Container} from 'semantic-ui-react';
-//import localStorage from 'local-storage';
+
 //Components
 import NavBar from  './NavBar.jsx';
 import TeamForm from './TeamForm.jsx';
 import TeamList from './TeamList';
+
+
 
 class Main extends Component {
   constructor(props) {
@@ -21,15 +23,41 @@ class Main extends Component {
     this.handleTaskChange = this.handleTaskChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+ // Need lifecycle method for grabbing localStorage once its saved
+ //componenDidMount()
+ componentDidMount(){
+   var myVal = localStorage.getItem(this.state.id);
+   console.log(myVal);
+   myVal = JSON.parse(myVal);
+   if( myVal != null){
+    let newTeamVal= myVal.teams;
+    let newTaskVal= myVal.tasks;
+    let newIdVal= myVal.id;
 
+   console.log( newIdVal + ' ' + newTeamVal +  ' ' + newTaskVal) 
+
+    this.setState({ id: newIdVal });
+    console.log(this.state)
+    this.setState({ teams: newTeamVal });
+    console.log(this.state)
+    this.setState({ tasks: newTaskVal });
+   }
+  console.log(this.state)
+  
+ }
+ // local storage get item
   handleSubmit(event) {
     //alert('A team was submitted: ' + this.state.teams + this.state.tasks);
     this.setState((prevState, props) => ({
       id: prevState.id + 1
     })); 
-   // localStorage.setItem('state', JSON.stringify(this.state));
+    let value = JSON.stringify(this.state);
+    console.log(value);
+    //TODO add unique key while adding to local storage
+    localStorage.setItem(this.state.id, value);
+
       event.preventDefault();
-      //console.log(this.state);
+      console.log(this.state);
 
   }
   handleTeamChange(event) {

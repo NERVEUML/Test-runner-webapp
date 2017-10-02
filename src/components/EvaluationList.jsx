@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Evaluation from './Evaluation';
 import NavBar from  './NavBar.jsx';
 import evaluationSamples from  '../sampleData/eval_data.js';
-import {Segment} from 'semantic-ui-react'
+import {Segment} from 'semantic-ui-react';
+
 class EvaluationList extends Component {
   render() {
   
