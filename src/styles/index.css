@@ -81,7 +81,9 @@ h1 a:focus {
   box-sizing: border-box;
 }
 .behindForm {
-  background-color: #000;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
   padding: 35px;
 }
 .gps-data {
