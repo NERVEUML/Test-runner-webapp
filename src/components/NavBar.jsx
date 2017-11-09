@@ -13,7 +13,7 @@ class NavBar extends Component {
         <div className="placeholder"/>
         <div className="navContainer">
           <NavLink to="/">
-            <img  className="nav-img" src={require('../media/assets/Logo.png')} alt="logo" />
+            <img className="nav-img" src={require('../media/assets/Logo.png')} alt="logo" />
           </NavLink>
           <NavLink exact activeClassName="activeLink" to="/" className="link" >Home</NavLink>
           <NavLink activeClassName="activeLink" to="/Configurations" className="link">Configuration List</NavLink>
