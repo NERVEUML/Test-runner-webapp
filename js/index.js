@@ -1,0 +1,2 @@
+window.store = require('store');
+
