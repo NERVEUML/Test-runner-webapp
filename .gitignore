@@ -6,3 +6,4 @@
 /res
 config.xml
 package-lock.json
+.DS_Store
