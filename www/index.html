@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+    <head>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/semantic/dist/semantic.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <title>
+            Test Runner
+        </title>
+    </head>
+    <body>
+        <div id='app' class='app'>
+        <!--navbar --> 
+            <div id='navbar' class="navContainer ui fluid container">
+                <div clas="placeholder">
+                    <h4>Navbar</h4>
+                    <!-- <img src="" alt="Home icon"/> -->
+                    <button class='link' onclick="showPageOne()"> Home</button>
+                    <button class='link' onclick="showPageSix()">Configurations</button>
+                    <button class='link' onclick="showPageThree()">Evaluations</button>
+
+                    <button class='link' onclick="showPageFive()"> Add Config</button>
+
+                    <button onclick="showPageTwo()">edit </button>
+                    <button onclick="showPageFour()">GPS</button>
+                </div>
+            </div>
+
+            <!-- PAGE 1 -->
+
+
+            <!-- run form -->
+            <div id='runform'>
+                <h4>Run Form</h4>
+                <form action="">
+                    Team:<br>
+                    <input type="text" name="team" placeholder="NERVE">
+                    <br>Task:<br>
+                    <input type="text" name="task" placeholder="1-1">
+                    <br>
+                    <input type="submit" value="Submit">
+                </form> 
+                <div id='runlist'>
+                
+                </div>
+            </div>
+
+
+            <!-- PAGE 2 -->
+
+
+            <!--evaluation -->
+            <div id='evaluationform'>
+                <h4>Evaluation Form</h4>
+                <form>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+
+            <!-- PAGE 3 -->
+
+            <div id='evaluationlist'>
+                <h4> Evaluation List</h4>
+            </div>
+
+            <!-- PAGE 4 -->
+
+            <div id='gpsform'>
+                <h4> GPS Form</h4>
+            </div>
+
+            <!-- PAGE 5 -->
+
+            <!--configuration-->
+            <div id='configurationform' class="pageFive">
+                <h4>Configuration Form</h4>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+    
+            </div>
+
+            <!-- PAGE 6 -->
+
+            <div id='configurationlist' class ='pageSix'>
+                <h4>Configuration List</h4>
+            </div>
+            <script src="bundle.js" type="text/javascript"></script>
+            <script src="js/main.js" type="text/javascript"></script>
+        </div>
+    
+    </body>
+    </html>
+    
+
+
