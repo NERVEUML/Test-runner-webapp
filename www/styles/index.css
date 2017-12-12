@@ -19,6 +19,14 @@ body {
     display: flex;
     margin: 15px;
 }
+.navContainer button{
+    border: none;
+    background: none;
+}
+
+.activeLinklink {
+    border-bottom:  dotted blue;
+}
 .nav-img {
     height: 60px;
     margin-right: 30px;

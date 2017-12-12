@@ -15,18 +15,18 @@ function addTeam (teamArray){
 
 
 function addConfigs (configsArray){
-    
+
 }
 
 function addEvals (evalArray){
-    
+
 }
 
 // Page 1 Show ids: navbar, runform
 // Hide: evaluationform,evaluationlist, gpsform, configurationform, configurationlist
 function showPageOne(){
     //show
-    document.getElementById('navbar').style.display = 'block';
+
     document.getElementById('runform').style.display = 'block';
 
     //hide
@@ -35,13 +35,12 @@ function showPageOne(){
     document.getElementById('gpsform').style.display = 'none';
     document.getElementById('configurationform').style.display = 'none';
     document.getElementById('configurationlist').style.display = 'none';
-}ss
+}
 
 // Page 2 Show ids: navbar, evaluationform
 // Hide: runform ,evaluationlist, gpsform, configurationform, configurationlist
 function showPageTwo(){
     //show
-    document.getElementById('navbar').style.display = 'block';
     document.getElementById('evaluationform').style.display = 'block';
 
     //hide
@@ -56,7 +55,7 @@ function showPageTwo(){
 // Hide: runform, evaluationform, gpsform, configurationform, configurationlist
 function showPageThree(){
     //show
-    document.getElementById('navbar').style.display = 'block';
+
     document.getElementById('evaluationlist').style.display = 'block';
 
     //hide
@@ -111,3 +110,9 @@ function showPageSix(){
     document.getElementById('gpsform').style.display = 'none';
     document.getElementById('configurationform').style.display = 'none';
 }
+
+function save(){
+    console.log("save success Full");
+}
+
+setInterval( save , 10000);
