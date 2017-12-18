@@ -1,29 +1,31 @@
 //DATA Modals to save all important info
-var validTeams = []
+
+var validRuns = []
 var validConfigs = []
 var evals = []
 
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
-        // document ready
-        console.log("document ready ");
         showPage(1);
     }
 };
-function addTeam (teamArray){
 
+
+function addItem (){
+    var item = {team:'', task:''};
+    var teamValue= this.team.value;
+    console.log(teamValue);
+    var taskValue= this.task.value;
+    console.log(taskValue);
+    item.team = teamValue;
+    item.task = taskValue;
+    console.log(item);
+    validRuns.push(item);
+    console.log(validRuns);
 }
 
-
-function addConfigs (configsArray){
-
-}
-
-function addEvals (evalArray){
-
-}
 function showPage(page){
-    let pages = ['runform','evaluationform','evaluationlist','gpsform','configurationform','configurationlist'];
+    let pages = ['home','evaluationform','evaluationlist','gpsform','configurationform','configurationlist'];
     let i = 0;
     for(i ; i < pages.length; i++){
         if(page == i + 1){
@@ -35,6 +37,9 @@ function showPage(page){
 }
 
 function save(){
+    localStorage.setItem('runs',JSON.stringify(validRuns));
+    localStorage.setItem('configs',JSON.stringify(validConfigs));
+    localStorage.setItem('evals',JSON.stringify(evals));
     console.log("save success Full");
 }
 
