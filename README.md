@@ -1,9 +1,9 @@
 <p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png"></p>
 
 # Test Runner Web App
-    GXM rebuild of an app designed to log autonomous data logs
+GXM rebuild of an app designed to log autonomous data logs
 
-#In order to see this app run locally on your machine simply
+### In order to see this app run locally on your machine simply
 
 ``` $ git clone  git@github.com:NERVEUML/Test-runner-webapp.git ```
 
@@ -30,10 +30,10 @@ this spins up a python2 simpleHTTPServer on port 3000. This means you can save a
 * and custom CSS
 
 ## Built With
-[HTML 5](https://developer.mozilla.org/en-US/docs/Learn/HTML)
-[JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-[Semantic UI](https://semantic-ui.com/)
-[CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+* [HTML 5](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+* [Semantic UI](https://semantic-ui.com/)
+* [CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
 
 ## Authors
 
