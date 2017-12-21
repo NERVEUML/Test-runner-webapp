@@ -34,35 +34,28 @@ document.onreadystatechange = () => {
   }
 };
 
-// fucntion is trigger by and onclick fucntion of submit button
+// fucntion addTeam() is trigger by and onclick fucntion of submit button
 // function gets values from form by taking them by name.value
 // Then the fucntion takes the the GLOBAL var INDEX and sets the new
 // element to save to that index and then increments INDEX
+//Intiates a save to local storage 
+// Triggers the 
 function addTEAM(e) {
   event.preventDefault(e);
-  let tempTeam = document.getElementById('runform').team.value;
-  let tempTask = document.getElementById('runform').task.value;
+  let runForm = document.getElementById('runform');
+  let tempTeam = runForm.team.value;
+  let tempTask = runForm.task.value;
   validRuns[INDEX] = {
     team: tempTeam,
     task: tempTask,
   };
+  save();
   INDEX += 1;
+  createRunElements();
+  runform.team.value = '';
+  runform.task.value = '';
 }
 
-// makes life easier when trying to crete elements with lots of nested items
-function createElementExtended(type, _divname, parentDiv, _className, _id) {
-  let temp = document.createElement(type);
-  _divname.className = _className;
-  _divname.id = _id;
-  parentDiv.appendChild(_divname);
-}
-
-// TODO: Solve issue with adding new element using unique ID's
-
-
-
-// TODO: need to create a function that loads all possible run from LS
-// TODO: need a function that creates a new element based on run Markup 
 const runList = document.getElementById('runlist');
 function createRunElements() {
   //loads global array to save to temp 
@@ -72,26 +65,45 @@ function createRunElements() {
      let taskValue =validRuns[x].task;
      console.log(teamValue);
      console.log(taskValue);
-     
-    runList.innerHTML =  `
-    <div id='run' class=" ui four column grid  segment">
-      <div class="stretched row">
-          <div class="column">
-              <div id='team' class="ui ">${teamValue}</div>
-          </div>
-          <div class="column">
-              <div id='task' class="ui ">${taskValue}</div>
-          </div>
-          <div class="column">
-              <button onclick="showPage(4)">GPS</button>
-          </div>
-          <div class="column">
-              <button onclick="showPage(2)">Edit </button>
-          </div>
-    
+    if(x === 0){
+      runList.innerHTML =  `
+      <div id='run${x}' class=" ui four column grid  segment">
+        <div class="stretched row">
+            <div class="column">
+                <div id='team' class="ui ">${teamValue}</div>
+            </div>
+            <div class="column">
+                <div id='task' class="ui ">${taskValue}</div>
+            </div>
+            <div class="column">
+                <button onclick="showPage(4)">GPS</button>
+            </div>
+            <div class="column">
+                <button onclick="showPage(2)">Edit </button>
+            </div>
+        </div>
       </div>
-    </div>
-    `;
+      `;
+    } else if( x!== null || x > 0){
+      document.getElementById(`run${x - 1}`).insertAdjacentHTML('afterend', `
+      <div id='run${x}' class=" ui four column grid  segment">
+        <div class="stretched row">
+            <div class="column">
+                <div id='team' class="ui ">${teamValue}</div>
+            </div>
+            <div class="column">
+                <div id='task' class="ui ">${taskValue}</div>
+            </div>
+            <div class="column">
+                <button onclick="showPage(4)">GPS</button>
+            </div>
+            <div class="column">
+                <button onclick="showPage(2)">Edit </button>
+            </div>
+        </div>
+      </div>
+      `);
+    }
   }
 }
 
@@ -108,10 +120,11 @@ function save() {
         console.log(`Error: ${e}`);
     }
 }
+
 function resetDev(){
   localStorage.clear();
   INDEX=0;
   validRuns= [];
 }
 
-setInterval(save, 2000);
+setInterval(save, 20000);
