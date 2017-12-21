@@ -1,28 +1,26 @@
 <!DOCTYPE html>
+
 <head>
-<link rel="stylesheet" href="styles/index.css">
-<link rel="stylesheet" type="text/css" href="styles/semantic/dist/semantic.min.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="styles/semantic/dist/semantic.min.js"></script>
-<title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/semantic/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="styles/semantic/dist/semantic.min.js"></script>
+    <title>
         Test Runner
     </title>
 </head>
+
 <body>
     <div id='app' class='app'>
-    <!--navbar --> 
+        <!--navbar -->
         <div id='navbar' class="navContainer ui fluid container">
             <div clas="placeholder">
-                <img onclick="showPage(1)" class="nav-img" src="Logo.png"  alt="Home icon"/>
+                <img onclick="showPage(1)" class="nav-img" src="Logo.png" alt="Home icon" />
                 <button class='link' onclick="showPage(1)"> Home</button>
                 <button class='link' onclick="showPage(6)">Configurations</button>
                 <button class='link' onclick="showPage(3)">Evaluations</button>
                 <button class='link' onclick="showPage(5)"> Add Config</button>
-
-             
             </div>
         </div>
 
@@ -30,10 +28,10 @@
 
 
         <!-- run form -->
-        <div  id='home'>
+        <div id='home'>
             <div class="ui container segment">
                 <h4>Run Form</h4>
-                <form id ='runform' class="ui form">
+                <form id='runform' class="ui form">
                     <div class="inline fields  equal width ">
                         <div class="field">
                             <label>Team </label>
@@ -45,7 +43,7 @@
                         </div>
                     </div>
                     <input class="ui button" type="submit" onclick="addTEAM()">
-                </form> 
+                </form>
             </div>
 
             <div id='runlist' class="ui  container">
@@ -56,16 +54,15 @@
                             <div id='team' class="ui ">Team</div>
                         </div>
                         <div class="column">
-                                <div id='task' class="ui ">Task</div>
+                            <div id='task' class="ui ">Task</div>
                         </div>
                         <div class="column">
-                                <button onclick="showPage(4)">GPS</button>
+                            <button onclick="showPage(4)">GPS</button>
                         </div>
                         <div class="column">
-                                <button onclick="showPage(2)">Edit </button>
-                                
+                            <button onclick="showPage(2)">Edit </button>
                         </div>
-                   
+
                     </div>
                 </div>
                 <!-- End of a single Run -->
@@ -80,11 +77,11 @@
         <div id='evaluationform'>
             <h4>Evaluation Form</h4>
             <form>
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
         </div>
 
         <!-- PAGE 3 -->
@@ -114,11 +111,12 @@
 
         <!-- PAGE 6 -->
 
-        <div id='configurationlist' class ='pageSix'>
+        <div id='configurationlist' class='pageSix'>
             <h4>Configuration List</h4>
         </div>
         <script src="js/main.js" type="text/javascript"></script>
     </div>
 
 </body>
+
 </html>

@@ -8,7 +8,6 @@
     "semantic-ui": "^2.2.13",
     "store": "^2.0.12"
   },
-  "devDependencies": {},
   "scripts": {
     "dev": "pushd www; python2 -m SimpleHTTPServer 3000; popd;"
   },
