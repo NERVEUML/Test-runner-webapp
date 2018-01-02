@@ -7,7 +7,7 @@ let INDEX = 0;
 // This takes all pages by IDs and show and hides them based on what page 
 // should be displayed
 function showPage(page) {
-  const pages = ['home', 'evaluationform', 'evaluationlist', 'gpsform', 'configurationform', 'configurationlist'];
+  const pages = ['home', 'evaluationPage', 'evaluationlist', 'gpsform', 'configurationPage', 'configurationlist'];
   let i = 0;
   for (i; i < pages.length; i += 1) {
     if (page === i + 1) {

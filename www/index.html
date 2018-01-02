@@ -6,6 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="styles/semantic/dist/semantic.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/helpers.js" type="text/javascript"></script>
     <title>
         Test Runner
     </title>
@@ -74,14 +76,47 @@
 
 
         <!--evaluation -->
-        <div id='evaluationform'>
+        <div id='evaluationPage'>
             <h4>Evaluation Form</h4>
-            <form>
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
+            <form id='evaluationForm' class="ui form">
+                <div class=" ">
+                    <div class="field">
+                        <label>Team:</label>
+                        <input type="text" name="team" placeholder="NERVE">
+                    </div>
+                    <div class="field">
+                        <label>Task</label>
+                        <input type="text" name="task" placeholder="1-1">
+                    </div>
+                    <div class="field">
+                        <label>Result</label>
+                        <select>
+                            <option value="Return_To_Start">Return To Start</option>
+                            <option value="Team_Call_Non_Crash">Team Call, Non Crash</option>
+                            <option value="Team_Call_Crash">Team Call, Crash</option>
+                            <option value="Elevation_Break">Elevation Break</option>
+                            <option value="Saftey_Call">Saftey Call</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Success Percentage</label>
+                        <select>
+                            <option value="0">0%</option>
+                            <option value="25">25%</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            <option value="100">100%</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Notes</label>
+                        <textarea>
+                           
+                        </textarea>
+                    </div>
+                </div>
+                <input class="ui button" type="submit" onclick="addEval()">
+            </form>
         </div>
 
         <!-- PAGE 3 -->
@@ -91,22 +126,64 @@
         </div>
 
         <!-- PAGE 4 -->
-
+        <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
         <div id='gpsform'>
             <h4> GPS Form</h4>
+
+            <button class="ui button" onclick="getLocation()">Get Location</button>
+            <p id="coords">
+
+            </p>
         </div>
 
         <!-- PAGE 5 -->
 
         <!--configuration-->
-        <div id='configurationform' class="pageFive">
+        <div id='configurationPage' class="pageFive">
             <h4>Configuration Form</h4>
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-
+            <form id='configurationForm' class="ui form">
+                <div class=" ">
+                    <div class="field">
+                        <label>Team:</label>
+                        <input type="text" name="team" placeholder="NERVE">
+                    </div>
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" name="Name" placeholder="Config Name">
+                    </div>
+                    <div class="field">
+                        <label>Air Frame</label>
+                        <input type="text" name="AirFrame" placeholder="F450">
+                    </div>
+                    <div class="field">
+                        <label>Rotors</label>
+                        <input type="text" name="Rotors" placeholder="Rotors">
+                    </div>
+                    <div class="field">
+                        <label>Battery</label>
+                        <input type="text" name="Battery" placeholder="Battery">
+                    </div>
+                    <div class="field">
+                        <label>Flight Controller</label>
+                        <input type="text" name="Flight_Controller" placeholder="Flight Controller">
+                    </div>
+                    <div class="field">
+                        <label>Height</label>
+                        <input type="text" name="Height" placeholder="Height">
+                    </div>
+                    <div class="field">
+                        <label>Weight</label>
+                        <input type="text" name="Weight" placeholder="Weight">
+                    </div>
+                    <div class="field">
+                        <label>Notes</label>
+                        <textarea>
+                           
+                        </textarea>
+                    </div>
+                </div>
+                <input class="ui button" type="submit" onclick="addEval()">
+            </form>
         </div>
 
         <!-- PAGE 6 -->
@@ -114,7 +191,7 @@
         <div id='configurationlist' class='pageSix'>
             <h4>Configuration List</h4>
         </div>
-        <script src="js/main.js" type="text/javascript"></script>
+
     </div>
 
 </body>
