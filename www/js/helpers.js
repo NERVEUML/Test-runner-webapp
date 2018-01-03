@@ -7,8 +7,24 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    let result = `<p> Latitude: ${position.coords.latitude} Longitude: ${position.coords.longitude} </p>`
-    console.log(result);
+    let result = `<table class="ui celled table">
+    <thead>
+      <tr><th>Latitude</th>
+      <th>Longitude</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>
+            ${position.coords.latitude} 
+        </td>
+        <td>
+            ${position.coords.longitude}
+        </td>
+      </tr>
+    </tbody>
+  </table>`
+        
+         console.log(result);
     document.getElementById('coords').innerHTML= result;
    
 }

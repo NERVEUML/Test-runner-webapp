@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles/semantic/dist/semantic.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
+
     <script src="styles/semantic/dist/semantic.min.js"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/helpers.js" type="text/javascript"></script>
@@ -16,14 +17,14 @@
 <body>
     <div id='app' class='app'>
         <!--navbar -->
-        <div id='navbar' class="navContainer ui fluid container">
-            <div clas="placeholder">
-                <img onclick="showPage(1)" class="nav-img" src="Logo.png" alt="Home icon" />
-                <button class='link' onclick="showPage(1)"> Home</button>
-                <button class='link' onclick="showPage(6)">Configurations</button>
-                <button class='link' onclick="showPage(3)">Evaluations</button>
-                <button class='link' onclick="showPage(5)"> Add Config</button>
+        <div id='navbar' class="ui blue inverted stackable container menu">
+            <div class='nav-img item' onclick="showPage(1)">
+                <img class="" src="Logo.png" alt="Home icon" />
             </div>
+            <a id="homeLink" class='item' onclick="showPage(1)"> Home</a>
+            <a id="configLink" class='item' onclick="showPage(6)">Configurations</a>
+            <a id="evalLink" class='item' onclick="showPage(3)">Evaluations</a>
+            <a id="addConfigLink" class='item' onclick="showPage(5)"> Add Config</a>
         </div>
 
         <!-- PAGE 1 -->
@@ -31,24 +32,23 @@
 
         <!-- run form -->
         <div id='home'>
-            <div class="ui container segment">
-                <h4>Run Form</h4>
+            <div class="ui container">
+                <h3>Run Form</h3>
                 <form id='runform' class="ui form">
-                    <div class="inline fields  equal width ">
-                        <div class="field">
+                    <div class="doubling stackable two column ui grid container">
+                        <div class="column field">
                             <label>Team </label>
                             <input type="text" name="team" placeholder="NERVE">
                         </div>
-                        <div class="field">
+                        <div class="column field">
                             <label>Task</label>
                             <input type="text" name="task" placeholder="1-1">
                         </div>
                     </div>
-                    <input class="ui button" type="submit" onclick="addTEAM()">
+                    <input class="ui blue button" type="submit" onclick="addTEAM()">
                 </form>
             </div>
-
-            <div id='runlist' class="ui  container">
+            <div id='runlist' class="ui container">
                 <!--- Start of a single Run -->
                 <div id='run' class=" ui four column grid  segment">
                     <div class="stretched row">
@@ -59,138 +59,145 @@
                             <div id='task' class="ui ">Task</div>
                         </div>
                         <div class="column">
-                            <button onclick="showPage(4)">GPS</button>
+                            <button class="ui blue button" onclick="showPage(4)">GPS</button>
                         </div>
                         <div class="column">
-                            <button onclick="showPage(2)">Edit </button>
+                            <button class="ui blue button" onclick="showPage(2)">Edit </button>
                         </div>
-
                     </div>
                 </div>
                 <!-- End of a single Run -->
             </div>
         </div>
+    </div>
 
 
-        <!-- PAGE 2 -->
+    <!-- PAGE 2 -->
 
 
-        <!--evaluation -->
-        <div id='evaluationPage'>
-            <h4>Evaluation Form</h4>
-            <form id='evaluationForm' class="ui form">
-                <div class=" ">
-                    <div class="field">
-                        <label>Team:</label>
-                        <input type="text" name="team" placeholder="NERVE">
-                    </div>
-                    <div class="field">
-                        <label>Task</label>
-                        <input type="text" name="task" placeholder="1-1">
-                    </div>
-                    <div class="field">
-                        <label>Result</label>
-                        <select>
-                            <option value="Return_To_Start">Return To Start</option>
-                            <option value="Team_Call_Non_Crash">Team Call, Non Crash</option>
-                            <option value="Team_Call_Crash">Team Call, Crash</option>
-                            <option value="Elevation_Break">Elevation Break</option>
-                            <option value="Saftey_Call">Saftey Call</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label>Success Percentage</label>
-                        <select>
-                            <option value="0">0%</option>
-                            <option value="25">25%</option>
-                            <option value="50">50%</option>
-                            <option value="75">75%</option>
-                            <option value="100">100%</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label>Notes</label>
-                        <textarea>
-                           
-                        </textarea>
-                    </div>
+    <!--evaluation -->
+    <div class='ui container' id='evaluationPage'>
+        <h3>Evaluation Form</h3>
+        <form id='evaluationForm' class="ui form">
+            <div class="doubling stackable three column ui grid container">
+                <div class="column field">
+                    <label>Team</label>
+                    <input type="text" name="team" placeholder="NERVE">
                 </div>
-                <input class="ui button" type="submit" onclick="addEval()">
-            </form>
-        </div>
-
-        <!-- PAGE 3 -->
-
-        <div id='evaluationlist'>
-            <h4> Evaluation List</h4>
-        </div>
-
-        <!-- PAGE 4 -->
-        <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
-        <div id='gpsform'>
-            <h4> GPS Form</h4>
-
-            <button class="ui button" onclick="getLocation()">Get Location</button>
-            <p id="coords">
-
-            </p>
-        </div>
-
-        <!-- PAGE 5 -->
-
-        <!--configuration-->
-        <div id='configurationPage' class="pageFive">
-            <h4>Configuration Form</h4>
-            <form id='configurationForm' class="ui form">
-                <div class=" ">
-                    <div class="field">
-                        <label>Team:</label>
-                        <input type="text" name="team" placeholder="NERVE">
-                    </div>
-                    <div class="field">
-                        <label>Name</label>
-                        <input type="text" name="Name" placeholder="Config Name">
-                    </div>
-                    <div class="field">
-                        <label>Air Frame</label>
-                        <input type="text" name="AirFrame" placeholder="F450">
-                    </div>
-                    <div class="field">
-                        <label>Rotors</label>
-                        <input type="text" name="Rotors" placeholder="Rotors">
-                    </div>
-                    <div class="field">
-                        <label>Battery</label>
-                        <input type="text" name="Battery" placeholder="Battery">
-                    </div>
-                    <div class="field">
-                        <label>Flight Controller</label>
-                        <input type="text" name="Flight_Controller" placeholder="Flight Controller">
-                    </div>
-                    <div class="field">
-                        <label>Height</label>
-                        <input type="text" name="Height" placeholder="Height">
-                    </div>
-                    <div class="field">
-                        <label>Weight</label>
-                        <input type="text" name="Weight" placeholder="Weight">
-                    </div>
-                    <div class="field">
-                        <label>Notes</label>
-                        <textarea>
-                           
-                        </textarea>
-                    </div>
+                <div class="column field">
+                    <label>Task</label>
+                    <input type="text" name="task" placeholder="1-1">
                 </div>
-                <input class="ui button" type="submit" onclick="addEval()">
-            </form>
-        </div>
+                <div class="column field">
+                    <label>Result</label>
+                    <select>
+                        <option value="Return_To_Start">Return To Start</option>
+                        <option value="Team_Call_Non_Crash">Team Call, Non Crash</option>
+                        <option value="Team_Call_Crash">Team Call, Crash</option>
+                        <option value="Elevation_Break">Elevation Break</option>
+                        <option value="Saftey_Call">Saftey Call</option>
+                    </select>
+                </div>
+                <div class="column field">
+                    <label>Success Percentage</label>
+                    <select>
+                        <option value="0">0%</option>
+                        <option value="25">25%</option>
+                        <option value="50">50%</option>
+                        <option value="75">75%</option>
+                        <option value="100">100%</option>
+                    </select>
+                </div>
+                <div class=" column  field">
+                    <label>Notes</label>
+                    <textarea>
 
-        <!-- PAGE 6 -->
+                    </textarea>
+                </div>
+            </div>
+            <input class="ui blue button" type="submit" onclick="addEval()">
+        </form>
+    </div>
 
-        <div id='configurationlist' class='pageSix'>
-            <h4>Configuration List</h4>
+    <!-- PAGE 3 -->
+
+    <div class='ui container' id='evaluationlist'>
+        <h3> Evaluation List</h3>
+    </div>
+
+    <!-- PAGE 4 -->
+    <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
+    <div class='ui container' id='gpsform'>
+        <div class="ui stackable two column vertically divided grid container">
+        <h3 class="row"> GPS Form</h3>
+        <div class="row">
+        <button class="ui blue button" onclick="getLocation()">
+            Get Location
+            <i class="location arrow icon"></i>
+        </button>
+        <button class="ui blue button">Submit</button>
+    </div>
+        <div class="row" id="coords">
+
         </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5 -->
+
+    <!--configuration-->
+    <div class='ui container segement' id='configurationPage'>
+        <h3>Configuration Form</h3>
+        <form id='configurationForm' class="ui form">
+            <div class="doubling stackable three column ui grid container">
+                <div class="column field">
+                    <label>Team</label>
+                    <input type="text" name="team" placeholder="NERVE">
+                </div>
+                <div class="column field">
+                    <label>Name</label>
+                    <input type="text" name="Name" placeholder="Config Name">
+                </div>
+                <div class="column field">
+                    <label>Air Frame</label>
+                    <input type="text" name="AirFrame" placeholder="F450">
+                </div>
+                <div class="column field">
+                    <label>Rotors</label>
+                    <input type="text" name="Rotors" placeholder="Rotors">
+                </div>
+                <div class=" column field">
+                    <label>Battery</label>
+                    <input type="text" name="Battery" placeholder="Battery">
+                </div>
+                <div class="column field">
+                    <label>Flight Controller</label>
+                    <input type="text" name="Flight_Controller" placeholder="Flight Controller">
+                </div>
+                <div class="column field">
+                    <label>Height</label>
+                    <input type="text" name="Height" placeholder="Height">
+                </div>
+                <div class="column field">
+                    <label>Weight</label>
+                    <input type="text" name="Weight" placeholder="Weight">
+                </div>
+                <div class="column field">
+                    <label>Notes</label>
+                    <textarea>
+
+                    </textarea>
+                </div>
+            </div>
+            <input class="ui blue button" type="submit" onclick="addEval()">
+        </form>
+    </div>
+
+    <!-- PAGE 6 -->
+
+    <div class='ui container' id='configurationlist' class='pageSix'>
+        <h3>Configuration List</h3>
+    </div>
 
     </div>
 

@@ -57,16 +57,17 @@ function addTEAM(e) {
 }
 
 const runList = document.getElementById('runlist');
+
 function createRunElements() {
   //loads global array to save to temp 
   console.log(validRuns);
-  for (x= 0; x< validRuns.length;x += 1){
-     let teamValue =validRuns[x].team;
-     let taskValue =validRuns[x].task;
-     console.log(teamValue);
-     console.log(taskValue);
-    if(x === 0){
-      runList.innerHTML =  `
+  for (x = 0; x < validRuns.length; x += 1) {
+    let teamValue = validRuns[x].team;
+    let taskValue = validRuns[x].task;
+    console.log(teamValue);
+    console.log(taskValue);
+    if (x === 0) {
+      runList.innerHTML = `
       <div id='run${x}' class=" ui four column grid  segment">
         <div class="stretched row">
             <div class="column">
@@ -84,7 +85,7 @@ function createRunElements() {
         </div>
       </div>
       `;
-    } else if( x!== null || x > 0){
+    } else if (x !== null || x > 0) {
       document.getElementById(`run${x - 1}`).insertAdjacentHTML('afterend', `
       <div id='run${x}' class=" ui four column grid  segment">
         <div class="stretched row">
@@ -116,15 +117,15 @@ function save() {
     localStorage.setItem('evals', JSON.stringify(evals));
     localStorage.setItem('index', INDEX);
     console.log('save success full');
-  }  catch(e){
-        console.log(`Error: ${e}`);
-    }
+  } catch (e) {
+    console.log(`Error: ${e}`);
+  }
 }
 
-function resetDev(){
+function resetDev() {
   localStorage.clear();
-  INDEX=0;
-  validRuns= [];
+  INDEX = 0;
+  validRuns = [];
 }
 
 setInterval(save, 20000);
