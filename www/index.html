@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" type="text/css" href="styles/semantic/dist/semantic.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-
     <script src="styles/semantic/dist/semantic.min.js"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/helpers.js" type="text/javascript"></script>
@@ -32,7 +30,7 @@
 
         <!-- run form -->
         <div id='home'>
-            <div class="ui container">
+            <div class="ui segment container">
                 <h3>Run Form</h3>
                 <form id='runform' class="ui form">
                     <div class="doubling stackable two column ui grid container">
@@ -76,7 +74,7 @@
 
 
     <!--evaluation -->
-    <div class='ui container' id='evaluationPage'>
+    <div class='ui segment container' id='evaluationPage'>
         <h3>Evaluation Form</h3>
         <form id='evaluationForm' class="ui form">
             <div class="doubling stackable three column ui grid container">
@@ -108,6 +106,22 @@
                         <option value="100">100%</option>
                     </select>
                 </div>
+                <div class="column field">
+                    <label>Config</label>
+                    <select>
+                        <option value="TBD">will load all options soon</option>
+
+                    </select>
+                </div>
+                <div class="column field">
+                    <label>Stop Watch</label>
+                    <div id="time">
+
+                    </div>
+                    <div id="goalTime">
+
+                    </div>
+                </div>
                 <div class=" column  field">
                     <label>Notes</label>
                     <textarea>
@@ -121,32 +135,32 @@
 
     <!-- PAGE 3 -->
 
-    <div class='ui container' id='evaluationlist'>
+    <div class='ui segment container' id='evaluationlist'>
         <h3> Evaluation List</h3>
     </div>
 
     <!-- PAGE 4 -->
     <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
-    <div class='ui container' id='gpsform'>
+    <div class='ui  segment container' id='gpsform'>
         <div class="ui stackable two column vertically divided grid container">
-        <h3 class="row"> GPS Form</h3>
-        <div class="row">
-        <button class="ui blue button" onclick="getLocation()">
-            Get Location
-            <i class="location arrow icon"></i>
-        </button>
-        <button class="ui blue button">Submit</button>
-    </div>
-        <div class="row" id="coords">
+            <h3 class="row"> GPS Form</h3>
+            <div class="row">
+                <button class="ui blue button" onclick="getLocation()">
+                    Get Location
+                    <i class="location arrow icon"></i>
+                </button>
+                <button class="ui blue button">Submit</button>
+            </div>
+            <div class="row" id="coords">
 
-        </div>
+            </div>
         </div>
     </div>
 
     <!-- PAGE 5 -->
 
     <!--configuration-->
-    <div class='ui container segement' id='configurationPage'>
+    <div class='ui segment container' id='configurationPage'>
         <h3>Configuration Form</h3>
         <form id='configurationForm' class="ui form">
             <div class="doubling stackable three column ui grid container">
@@ -195,7 +209,7 @@
 
     <!-- PAGE 6 -->
 
-    <div class='ui container' id='configurationlist' class='pageSix'>
+    <div class='ui segment container' id='configurationlist'>
         <h3>Configuration List</h3>
     </div>
 

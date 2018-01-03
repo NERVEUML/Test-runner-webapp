@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.12 - Statistic
+ * # Semantic UI 2.2.13 - Statistic
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -102,11 +102,11 @@
 
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 4rem;
   font-weight: normal;
   line-height: 1em;
-  color: #1B1C1D;
+  color: #191919;
   text-transform: uppercase;
   text-align: center;
 }
@@ -117,10 +117,10 @@
 
 .ui.statistics .statistic > .label,
 .ui.statistic > .label {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 1em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
   text-align: center;
 }
@@ -320,17 +320,17 @@
 .ui.red.statistics .statistic > .value,
 .ui.statistics .red.statistic > .value,
 .ui.red.statistic > .value {
-  color: #DB2828;
+  color: #FF4136;
 }
 .ui.orange.statistics .statistic > .value,
 .ui.statistics .orange.statistic > .value,
 .ui.orange.statistic > .value {
-  color: #F2711C;
+  color: #FF851B;
 }
 .ui.yellow.statistics .statistic > .value,
 .ui.statistics .yellow.statistic > .value,
 .ui.yellow.statistic > .value {
-  color: #FBBD08;
+  color: #FFCB08;
 }
 .ui.olive.statistics .statistic > .value,
 .ui.statistics .olive.statistic > .value,
@@ -340,17 +340,17 @@
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21BA45;
+  color: #2ECC40;
 }
 .ui.teal.statistics .statistic > .value,
 .ui.statistics .teal.statistic > .value,
 .ui.teal.statistic > .value {
-  color: #00B5AD;
+  color: #39CCCC;
 }
 .ui.blue.statistics .statistic > .value,
 .ui.statistics .blue.statistic > .value,
 .ui.blue.statistic > .value {
-  color: #2185D0;
+  color: #0074D9;
 }
 .ui.violet.statistics .statistic > .value,
 .ui.statistics .violet.statistic > .value,
@@ -360,12 +360,12 @@
 .ui.purple.statistics .statistic > .value,
 .ui.statistics .purple.statistic > .value,
 .ui.purple.statistic > .value {
-  color: #A333C8;
+  color: #A24096;
 }
 .ui.pink.statistics .statistic > .value,
 .ui.statistics .pink.statistic > .value,
 .ui.pink.statistic > .value {
-  color: #E03997;
+  color: #D9499A;
 }
 .ui.brown.statistics .statistic > .value,
 .ui.statistics .brown.statistic > .value,
@@ -375,7 +375,7 @@
 .ui.grey.statistics .statistic > .value,
 .ui.statistics .grey.statistic > .value,
 .ui.grey.statistic > .value {
-  color: #767676;
+  color: #CCCCCC;
 }
 
 /*--------------
@@ -433,7 +433,7 @@
 .ui.inverted.purple.statistics .statistic > .value,
 .ui.statistics .inverted.purple.statistic > .value,
 .ui.inverted.purple.statistic > .value {
-  color: #DC73FF;
+  color: #CDC6FF;
 }
 .ui.inverted.pink.statistics .statistic > .value,
 .ui.statistics .inverted.pink.statistic > .value,
@@ -555,12 +555,6 @@
 .ui.huge.statistic > .text.value {
   font-size: 2.5rem !important;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

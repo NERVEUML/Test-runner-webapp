@@ -1,4 +1,4 @@
-
+// Get gps coordinates for attempts
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -28,3 +28,4 @@ function showPosition(position) {
     document.getElementById('coords').innerHTML= result;
    
 }
+// Stopwatch
