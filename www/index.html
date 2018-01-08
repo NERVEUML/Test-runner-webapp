@@ -43,7 +43,7 @@
                             <input type="text" name="task" placeholder="1-1">
                         </div>
                     </div>
-                    <input class="ui blue button" type="submit" onclick="addTEAM()">
+                    <input class="ui blue button" type="submit" onclick="saveToArray('runs')">
                 </form>
             </div>
             <div id='runlist' class="ui container">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="column field">
                     <label>Result</label>
-                    <select>
+                    <select name="result">
                         <option value="Return_To_Start">Return To Start</option>
                         <option value="Team_Call_Non_Crash">Team Call, Non Crash</option>
                         <option value="Team_Call_Crash">Team Call, Crash</option>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="column field">
                     <label>Success Percentage</label>
-                    <select>
+                    <select name="percent">
                         <option value="0">0%</option>
                         <option value="25">25%</option>
                         <option value="50">50%</option>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="column field">
                     <label>Config</label>
-                    <select>
+                    <select name="config">
                         <option value="TBD">will load all options soon</option>
 
                     </select>
@@ -124,12 +124,12 @@
                 </div>
                 <div class=" column  field">
                     <label>Notes</label>
-                    <textarea>
+                    <textarea name ='notes'>
 
                     </textarea>
                 </div>
             </div>
-            <input class="ui blue button" type="submit" onclick="addEval()">
+            <input class="ui blue button" type="submit" onclick="saveToArray('evals')">
         </form>
     </div>
 
@@ -170,40 +170,40 @@
                 </div>
                 <div class="column field">
                     <label>Name</label>
-                    <input type="text" name="Name" placeholder="Config Name">
+                    <input type="text" name="name" placeholder="Config Name">
                 </div>
                 <div class="column field">
                     <label>Air Frame</label>
-                    <input type="text" name="AirFrame" placeholder="F450">
+                    <input type="text" name="airFrame" placeholder="F450">
                 </div>
                 <div class="column field">
                     <label>Rotors</label>
-                    <input type="text" name="Rotors" placeholder="Rotors">
+                    <input type="text" name="rotors" placeholder="Rotors">
                 </div>
                 <div class=" column field">
                     <label>Battery</label>
-                    <input type="text" name="Battery" placeholder="Battery">
+                    <input type="text" name="battery" placeholder="Battery">
                 </div>
                 <div class="column field">
                     <label>Flight Controller</label>
-                    <input type="text" name="Flight_Controller" placeholder="Flight Controller">
+                    <input type="text" name="flightController" placeholder="Flight Controller">
                 </div>
                 <div class="column field">
                     <label>Height</label>
-                    <input type="text" name="Height" placeholder="Height">
+                    <input type="text" name="height" placeholder="Height">
                 </div>
                 <div class="column field">
                     <label>Weight</label>
-                    <input type="text" name="Weight" placeholder="Weight">
+                    <input type="text" name="weight" placeholder="Weight">
                 </div>
                 <div class="column field">
                     <label>Notes</label>
-                    <textarea>
+                    <textarea name="notes">
 
                     </textarea>
                 </div>
             </div>
-            <input class="ui blue button" type="submit" onclick="addEval()">
+            <input class="ui blue button" type="submit" onclick="aveToArray('configs')">
         </form>
     </div>
 

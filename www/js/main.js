@@ -1,22 +1,11 @@
 let validRuns = [];
 let validConfigs = [];
-let evals = [];
+let validEvals = [];
+let validlocations = [];
 
 let INDEX = 0;
 
-// This takes all pages by IDs and show and hides them based on what page 
-// should be displayed
-function showPage(page) {
-  const pages = ['home', 'evaluationPage', 'evaluationlist', 'gpsform', 'configurationPage', 'configurationlist'];
-  let i = 0;
-  for (i; i < pages.length; i += 1) {
-    if (page === i + 1) {
-      document.getElementById(pages[i]).style.display = 'block';
-    } else {
-      document.getElementById(pages[i]).style.display = 'none';
-    }
-  }
-}
+
 
 // Runs on page to process what page to show
 // Also handles loading LocalStorage loading from old content
@@ -34,27 +23,148 @@ document.onreadystatechange = () => {
   }
 };
 
-// fucntion addTeam() is trigger by and onclick fucntion of submit button
-// function gets values from form by taking them by name.value
-// Then the fucntion takes the the GLOBAL var INDEX and sets the new
-// element to save to that index and then increments INDEX
-//Intiates a save to local storage 
-// Triggers the 
-function addTEAM(e) {
-  event.preventDefault(e);
+// #TODO: Create a way to illustrate that the back button is not an option
+/* 
+  Description:
+    This is the paging function, has a value of all page ids
+    stored in an array and then will show or hide the neccessary 
+    elements. This effect will create the Paging effect
+  Parameters: Takes the page value of 1,2, ... 6 
+  Returns: Nothing
+*/
+function showPage(page) {
+  const pages = ['home', 'evaluationPage', 'evaluationlist',
+    'gpsform', 'configurationPage', 'configurationlist'
+  ];
+  let i = 0;
+  for (i; i < pages.length; i += 1) {
+    if (page === i + 1) {
+      document.getElementById(pages[i]).style.display = 'block';
+    } else {
+      document.getElementById(pages[i]).style.display = 'none';
+    }
+  }
+}
+/* 
+  Description:
+    takes all form values and saves to an object
+  Parameters: None
+  Returns: the created object
+*/
+function storeRuns() {
   let runForm = document.getElementById('runform');
   let tempTeam = runForm.team.value;
   let tempTask = runForm.task.value;
-  validRuns[INDEX] = {
+  let run = {
     team: tempTeam,
     task: tempTask,
   };
-  save();
-  INDEX += 1;
-  createRunElements();
-  runform.team.value = '';
-  runform.task.value = '';
+  console.log(run);
+  return run;
 }
+/* 
+  Description:
+    takes all form values and saves to an object
+  Parameters: None
+  Returns: the created object
+*/
+function storeEvals() {
+  let evaluationForm = document.getElementById('evaluationForm');
+  let tempTeam = evaluationForm.team.value;
+  let tempTask = evaluationForm.task.value;
+  let tempResult = evaluationForm.result.value;
+  let tempPercent = evaluationForm.percent.value;
+  let tempConfig = evaluationForm.config.value;
+  //let tempTime = evaluationForm.time.value;
+  //let tempGoalTime = evaluationForm.goalTime.value;
+  let tempNotes = evaluationForm.notes.value;
+  let eval = {
+    team: tempTeam,
+    task: tempTask,
+    result: tempResult,
+    percent: tempPercent,
+    config: tempConfig,
+    //time: tempTime,
+    //goalTime: tempGoalTime,
+    notes: tempNotes,
+
+  };
+  console.log(eval);
+  return eval;
+}
+
+function gibObjectFromForm( idname ){
+  var x = document.getElementById( idname );
+  var e = x.elements;
+  var kvobject = {};
+  for( var i = 0; i < e.length; i ++ ){
+    kvobject[ e[i].name ] = e[i].value;
+  }
+  return kvobject;
+}
+/* 
+  Description:
+    takes all form values and saves to an object
+  Parameters: None
+  Returns: the created object
+*/
+function storeConfigs() {
+  let configurationForm = document.getElementById('configurationForm');
+  let tempTeam = configurationForm.team.value;
+  let tempName = configurationForm.name.value;
+  let tempairFrame = configurationForm.airFrame.value;
+  let tempRotors = configurationForm.rotors.value;
+  let tempBattery = configurationForm.battery.value;
+  let tempflightController = configurationForm.flightController.value;
+  let tempHeight = configurationForm.height.value;
+  let tempNotes = configurationForm.notes.value;
+  let config = {
+    team: tempTeam,
+    name: tempName,
+    airFrame: tempairFrame,
+    rotors: tempRotors,
+    battery: tempBattery,
+    flightController: tempflightController,
+    height: tempHeight,
+    notes: tempNotes,
+
+  };
+  console.log(config);
+  return config;
+}
+
+/* 
+Description:
+  function that takes in object and adds 
+  to the end and array.
+Parameters: the Object Select Method:
+          Object Select -> Will decdie what fucntion to call and grab the neccessary
+          Form Values.
+          objSelect Should values: runs, configs,evals
+Returns: that Array 
+*/
+function saveToArray(e,objSelect){
+  event.preventDefault(e);
+  if(objSelect === 'runs'){
+    let tempObj = storeRuns(objSelect);
+    let tempArray = validRuns;
+  }else if( objSelect === 'configs'){
+    let tempObj = storeConfigs(objSelect);
+    let tempArray = validConfigs;
+  }else if( objSelect === 'evals'){
+    let tempObj = storeEvals(objSelect);
+    let tempArray = validEvals;
+  }
+
+  console.log(' trying to test array type:' + Array.isArray(tempArray));
+  console.log(tempObj);
+  tempArray.push(tempObj);
+  console.log(tempArray);
+  return tempArray;
+
+}
+
+
 
 const runList = document.getElementById('runlist');
 
@@ -108,24 +218,51 @@ function createRunElements() {
   }
 }
 
-// Function used to save the arrays every sssso often in this case
-// the function is being call every 2 seconds for dev purposes
-function save() {
-  try {
-    localStorage.setItem('runs', JSON.stringify(validRuns));
-    localStorage.setItem('configs', JSON.stringify(validConfigs));
-    localStorage.setItem('evals', JSON.stringify(evals));
-    localStorage.setItem('index', INDEX);
-    console.log('save success full');
-  } catch (e) {
-    console.log(`Error: ${e}`);
-  }
-}
 
-function resetDev() {
-  localStorage.clear();
-  INDEX = 0;
-  validRuns = [];
-}
+// function compareArrays(arr1, arr2) {
+//   console.log('arr1: ' + typeof (arr1) + ' arr2: ' + typeof (arr2));
+//   if (arr1.length !== arr2.length)
+//     return false;
+//   for (var i = arr1.length; i--;) {
+//     if (arr1[i] !== arr2[i])
+//       return false;
+//   }
 
-setInterval(save, 20000);
+//   return true;
+// }
+
+
+// function save() {
+//   if (!(compareArrays(validRuns, localStorage.getItem('runs')))) {
+//     localStorage.setItem('runs', JSON.stringify(validRuns));
+//     console.log('save succesful to Local Storage');
+//   } else {
+//     console.log('nothing to save')
+//   }
+//   if (!(compareArrays(validConfigs, localStorage.getItem('configs')))) {
+//     localStorage.setItem('configs', JSON.stringify(validConfigs));
+//     console.log('save succesful to Local Storage');
+//   } else {
+//     console.log('nothing to save')
+//   }
+//   if (!(compareArrays(evals, localStorage.getItem('evals')))) {
+//     localStorage.setItem('evals', JSON.stringify(evals));
+//     console.log('save succesful to Local Storage');
+//   } else {
+//     console.log('nothing to save')
+//   }
+//   if (!(compareArrays(validlocations, localStorage.getItem('locations')))) {
+//     localStorage.setItem('locations', JSON.stringify(validlocations));
+//     console.log('save succesful to Local Storage');
+//   } else {
+//     console.log('nothing to save')
+//   }
+// }
+
+// function resetDev() {
+//   localStorage.clear();
+//   INDEX = 0;
+//   validRuns = [];
+// }
+
+// setInterval(save, 20000);
