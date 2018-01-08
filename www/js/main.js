@@ -1,27 +1,25 @@
-let validRuns = [];
-let validConfigs = [];
-let validEvals = [];
-let validlocations = [];
+var allthings = {
+  runs: [],
+  configs: [],
+  evals: [],
+  locations: [],
+}
+
 
 let INDEX = 0;
-
-
 
 // Runs on page to process what page to show
 // Also handles loading LocalStorage loading from old content
 document.onreadystatechange = () => {
-  if (document.readyState === 'complete') {
-    showPage(1);
-    const tempIndex = localStorage.getItem('index');
-    if (tempIndex !== 0 || tempIndex !== INDEX) {
-      INDEX = tempIndex;
-    }
-    const tempRuns = localStorage.getItem('runs');
-    if (validRuns != null || validRuns !== tempRuns) {
-      validRuns = tempRuns;
-    }
+  console.log("onreadystatechange");
+  showPage(1);
+  if( localStorage.allthings !== undefined ){
+    allthings = returnallfromlocalstorage();
+    rerenderall();
   }
 };
+
+
 
 // #TODO: Create a way to illustrate that the back button is not an option
 /* 
@@ -45,224 +43,116 @@ function showPage(page) {
     }
   }
 }
-/* 
-  Description:
-    takes all form values and saves to an object
-  Parameters: None
-  Returns: the created object
-*/
-function storeRuns() {
-  let runForm = document.getElementById('runform');
-  let tempTeam = runForm.team.value;
-  let tempTask = runForm.task.value;
-  let run = {
-    team: tempTeam,
-    task: tempTask,
-  };
-  console.log(run);
-  return run;
-}
-/* 
-  Description:
-    takes all form values and saves to an object
-  Parameters: None
-  Returns: the created object
-*/
-function storeEvals() {
-  let evaluationForm = document.getElementById('evaluationForm');
-  let tempTeam = evaluationForm.team.value;
-  let tempTask = evaluationForm.task.value;
-  let tempResult = evaluationForm.result.value;
-  let tempPercent = evaluationForm.percent.value;
-  let tempConfig = evaluationForm.config.value;
-  //let tempTime = evaluationForm.time.value;
-  //let tempGoalTime = evaluationForm.goalTime.value;
-  let tempNotes = evaluationForm.notes.value;
-  let eval = {
-    team: tempTeam,
-    task: tempTask,
-    result: tempResult,
-    percent: tempPercent,
-    config: tempConfig,
-    //time: tempTime,
-    //goalTime: tempGoalTime,
-    notes: tempNotes,
 
-  };
-  console.log(eval);
-  return eval;
-}
-
-function gibObjectFromForm( idname ){
+/* 
+Description:
+  Iterate the elements of a form ID 
+  (don't give the hash in front),
+  and return as a key-value object where 
+  key is name and value is ... value ... 
+  from each form element.
+Parameters: one of 'runs', 'configs', 'evals', 'locations'
+Returns: the key:value object (like {team:"NERVE", task:"1-1A-1"} )
+*/
+function getObjectFromForm( idname ){
   var x = document.getElementById( idname );
   var e = x.elements;
   var kvobject = {};
   for( var i = 0; i < e.length; i ++ ){
+    if( e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
+    console.log(`${e[i].name} : ${e[i].value} from ${e[i]}`);
     kvobject[ e[i].name ] = e[i].value;
   }
   return kvobject;
 }
-/* 
-  Description:
-    takes all form values and saves to an object
-  Parameters: None
-  Returns: the created object
-*/
-function storeConfigs() {
-  let configurationForm = document.getElementById('configurationForm');
-  let tempTeam = configurationForm.team.value;
-  let tempName = configurationForm.name.value;
-  let tempairFrame = configurationForm.airFrame.value;
-  let tempRotors = configurationForm.rotors.value;
-  let tempBattery = configurationForm.battery.value;
-  let tempflightController = configurationForm.flightController.value;
-  let tempHeight = configurationForm.height.value;
-  let tempNotes = configurationForm.notes.value;
-  let config = {
-    team: tempTeam,
-    name: tempName,
-    airFrame: tempairFrame,
-    rotors: tempRotors,
-    battery: tempBattery,
-    flightController: tempflightController,
-    height: tempHeight,
-    notes: tempNotes,
 
-  };
-  console.log(config);
-  return config;
-}
 
 /* 
 Description:
-  function that takes in object and adds 
-  to the end and array.
-Parameters: the Object Select Method:
-          Object Select -> Will decdie what fucntion to call and grab the neccessary
-          Form Values.
-          objSelect Should values: runs, configs,evals
-Returns: that Array 
+  Save a form to the master storage object (global).
+Parameters: one of 'runs', 'configs', 'evals', 'locations'
+Returns: nothing
 */
-function saveToArray(e,objSelect){
-  event.preventDefault(e);
-  if(objSelect === 'runs'){
-    let tempObj = storeRuns(objSelect);
-    let tempArray = validRuns;
-  }else if( objSelect === 'configs'){
-    let tempObj = storeConfigs(objSelect);
-    let tempArray = validConfigs;
-  }else if( objSelect === 'evals'){
-    let tempObj = storeEvals(objSelect);
-    let tempArray = validEvals;
-  }
+function saveToArray(thingtosave){
+  var nameformidmap = {
+    'runs':'runform',
+    'evals':'evaluationForm',
+    'configs':'configurationForm',
+  } //TODO add to here for locations
+  event.preventDefault();
+  console.log(thingtosave);
+  var o = getObjectFromForm( nameformidmap[thingtosave] );
+  allthings[thingtosave].push(o);
+  savealltolocalstorage();
+  rerenderall();
+}
+/*
+Description:
+  removeElementFromAllThings
 
-  console.log(' trying to test array type:' + Array.isArray(tempArray));
-  console.log(tempObj);
-  tempArray.push(tempObj);
-  console.log(tempArray);
-  return tempArray;
+Parameters:
+  index to delete
+  thingtype is one of 'runs', 'configs', 'evals', 'locations'
+returns: thing removed
+*/
+function deleteElementFromAllThings(thingtype, idx){
+  var x= allthings[thingtype].splice(idx,1);
+  rerenderall(); //TODO - make this better?
+  savealltolocalstorage();
+  return x;
+}
+function rerenderall(){
+  rerenderRunElements();
+}
 
+function savealltolocalstorage(){
+  localStorage.setItem("allthings", JSON.stringify(allthings));
+}
+function returnallfromlocalstorage(){
+  return JSON.parse( localStorage.getItem("allthings"));
+}
+
+function rerenderRunElements(){
+  var runList = document.getElementById('runlist');
+  runList.innerHTML = "";
+  createRunElements();
 }
 
 
-
-const runList = document.getElementById('runlist');
-
 function createRunElements() {
-  //loads global array to save to temp 
-  console.log(validRuns);
-  for (x = 0; x < validRuns.length; x += 1) {
-    let teamValue = validRuns[x].team;
-    let taskValue = validRuns[x].task;
+  var runList = document.getElementById('runlist');
+  for (x = 0; x < allthings.runs.length; x += 1) {
+    let teamValue = allthings.runs[x].team;
+    let taskValue = allthings.runs[x].task;
     console.log(teamValue);
     console.log(taskValue);
+    var template = `
+    <!--- Start of a single Run -->
+    <div id='run${x}' class=" ui four column grid  segment">
+      <div class="stretched row">
+          <div class="column">
+              <div id='team' class="ui ">${teamValue}</div>
+          </div>
+          <div class="column">
+              <div id='task' class="ui ">${taskValue}</div>
+          </div>
+          <div class="column">
+              <button onclick="showPage(4)">GPS</button>
+          </div>
+          <div class="column">
+              <button onclick="showPage(2)">Edit </button>
+          </div>
+          <div class="column">
+            <button onclick="deleteElementFromAllThings('runs',${x})">Delete </button>
+          </div>
+      </div>
+    </div>
+    <!-- End of a single Run -->
+    `;
     if (x === 0) {
-      runList.innerHTML = `
-      <div id='run${x}' class=" ui four column grid  segment">
-        <div class="stretched row">
-            <div class="column">
-                <div id='team' class="ui ">${teamValue}</div>
-            </div>
-            <div class="column">
-                <div id='task' class="ui ">${taskValue}</div>
-            </div>
-            <div class="column">
-                <button onclick="showPage(4)">GPS</button>
-            </div>
-            <div class="column">
-                <button onclick="showPage(2)">Edit </button>
-            </div>
-        </div>
-      </div>
-      `;
+      runList.innerHTML = template;
     } else if (x !== null || x > 0) {
-      document.getElementById(`run${x - 1}`).insertAdjacentHTML('afterend', `
-      <div id='run${x}' class=" ui four column grid  segment">
-        <div class="stretched row">
-            <div class="column">
-                <div id='team' class="ui ">${teamValue}</div>
-            </div>
-            <div class="column">
-                <div id='task' class="ui ">${taskValue}</div>
-            </div>
-            <div class="column">
-                <button onclick="showPage(4)">GPS</button>
-            </div>
-            <div class="column">
-                <button onclick="showPage(2)">Edit </button>
-            </div>
-        </div>
-      </div>
-      `);
+      document.getElementById(`run${x - 1}`).insertAdjacentHTML('afterend', template);
     }
   }
 }
-
-
-// function compareArrays(arr1, arr2) {
-//   console.log('arr1: ' + typeof (arr1) + ' arr2: ' + typeof (arr2));
-//   if (arr1.length !== arr2.length)
-//     return false;
-//   for (var i = arr1.length; i--;) {
-//     if (arr1[i] !== arr2[i])
-//       return false;
-//   }
-
-//   return true;
-// }
-
-
-// function save() {
-//   if (!(compareArrays(validRuns, localStorage.getItem('runs')))) {
-//     localStorage.setItem('runs', JSON.stringify(validRuns));
-//     console.log('save succesful to Local Storage');
-//   } else {
-//     console.log('nothing to save')
-//   }
-//   if (!(compareArrays(validConfigs, localStorage.getItem('configs')))) {
-//     localStorage.setItem('configs', JSON.stringify(validConfigs));
-//     console.log('save succesful to Local Storage');
-//   } else {
-//     console.log('nothing to save')
-//   }
-//   if (!(compareArrays(evals, localStorage.getItem('evals')))) {
-//     localStorage.setItem('evals', JSON.stringify(evals));
-//     console.log('save succesful to Local Storage');
-//   } else {
-//     console.log('nothing to save')
-//   }
-//   if (!(compareArrays(validlocations, localStorage.getItem('locations')))) {
-//     localStorage.setItem('locations', JSON.stringify(validlocations));
-//     console.log('save succesful to Local Storage');
-//   } else {
-//     console.log('nothing to save')
-//   }
-// }
-
-// function resetDev() {
-//   localStorage.clear();
-//   INDEX = 0;
-//   validRuns = [];
-// }
-
-// setInterval(save, 20000);

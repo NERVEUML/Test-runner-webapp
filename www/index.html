@@ -43,28 +43,10 @@
                             <input type="text" name="task" placeholder="1-1">
                         </div>
                     </div>
-                    <input class="ui blue button" type="submit" onclick="saveToArray('runs')">
+                    <button class="ui blue button" type="submit" onclick="saveToArray('runs')">Submit</button>
                 </form>
             </div>
             <div id='runlist' class="ui container">
-                <!--- Start of a single Run -->
-                <div id='run' class=" ui four column grid  segment">
-                    <div class="stretched row">
-                        <div class="column">
-                            <div id='team' class="ui ">Team</div>
-                        </div>
-                        <div class="column">
-                            <div id='task' class="ui ">Task</div>
-                        </div>
-                        <div class="column">
-                            <button class="ui blue button" onclick="showPage(4)">GPS</button>
-                        </div>
-                        <div class="column">
-                            <button class="ui blue button" onclick="showPage(2)">Edit </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of a single Run -->
             </div>
         </div>
     </div>
@@ -76,7 +58,7 @@
     <!--evaluation -->
     <div class='ui segment container' id='evaluationPage'>
         <h3>Evaluation Form</h3>
-        <form id='evaluationForm' class="ui form">
+        <form id='evaluationForm' class="ui form"  action="">
             <div class="doubling stackable three column ui grid container">
                 <div class="column field">
                     <label>Team</label>
@@ -203,7 +185,7 @@
                     </textarea>
                 </div>
             </div>
-            <input class="ui blue button" type="submit" onclick="aveToArray('configs')">
+            <input class="ui blue button" type="submit" onclick="saveToArray('configs')">
         </form>
     </div>
 

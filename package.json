@@ -9,7 +9,7 @@
     "store": "^2.0.12"
   },
   "scripts": {
-    "dev": "pushd www; python2 -m SimpleHTTPServer 3000; popd;"
+    "dev": "cd www; python2 -m SimpleHTTPServer 3000; cd -"
   },
   "cordova": {
     "plugins": {
