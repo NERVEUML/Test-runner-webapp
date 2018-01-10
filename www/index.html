@@ -124,18 +124,29 @@
     <!-- PAGE 4 -->
     <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
     <div class='ui  segment container' id='gpsform'>
-        <div class="ui stackable two column vertically divided grid container">
-            <h3 class="row"> GPS Form</h3>
-            <div class="row">
-                <button class="ui blue button" onclick="getLocation()">
-                    Get Location
-                    <i class="location arrow icon"></i>
-                </button>
-                <button class="ui blue button">Submit</button>
-            </div>
-            <div class="row" id="coords">
+                <div class="ui segment container">
+                        <h3 class="row"> GPS Form</h3>
+                        <form id='gps' class="ui form">
+                            <div class="doubling stackable two column ui grid container">
+                                <div class="column field">
+                                    <label>Team </label>
+                                    <input type="text" name="team" placeholder="NERVE">
+                                </div>
+                                <div class="column field">
+                                    <label>Task</label>
+                                    <input type="text" name="task" placeholder="1-1">
+                                </div>
+                            </div>
+                            <button class="ui blue button" onclick="getLocation()">Get Location </button>
+                            <div class="row" id="coords">
 
-            </div>
+                            </div>
+                            <button class="ui blue button" type="submit" onclick="saveToArray('locations')">Submit</button>
+                        </form>
+                    </div>
+                </div>
+           
+          
         </div>
     </div>
 
@@ -192,7 +203,7 @@
     <!-- PAGE 6 -->
 
     <div class='ui segment container' id='configurationlist'>
-        <h3>Configuration List</h3>
+       
     </div>
 
     </div>

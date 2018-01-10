@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/semantic/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="styles/semantic/dist/semantic.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/helpers.js" type="text/javascript"></script>
+    <title>
+        Runs
+    </title>
+</head>
+
+<body>
+
+    <div id="runlist" class="ui container">
+        <!--- Start of a single Run -->
+        <div id="run0" class=" ui five column grid  segment">
+            <div class="stretched row">
+                <div class="column">
+                    <div id="team" class="ui  "> Team</div>
+                </div>
+                <div class="column">
+                    <div id="task" class="ui "> Task</div>
+                </div>
+                <div class="column">
+                    <button class="ui blue button" onclick="showPage(4)">GPS</button>
+                </div>
+                <div class="column">
+                    <button class="ui blue button" onclick="showPage(2)">Edit</button>
+                </div>
+                <div class="column">
+                    <button class="ui blue button" onclick="deleteElementFromAllThings('runs',0)">Delete</button>
+                </div>
+            </div>
+        </div>
+        <!-- End of a single Run -->
+    </div>
+
+
+</body>
+
+</html>
