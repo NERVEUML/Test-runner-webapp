@@ -57,11 +57,11 @@
             <div class="doubling stackable three column ui grid container">
                 <div class="column field">
                     <label>Team</label>
-                    <input name="team" placeholder="NERVE" type="text">
+                    <input id="evalTeam" name="team" placeholder="NERVE" type="text">
                 </div>
                 <div class="column field">
                     <label>Task</label>
-                    <input name="task" placeholder="1-1" type="text">
+                    <input id="evalTask" name="task" placeholder="1-1" type="text">
                 </div>
                 <div class="column field">
                     <label>Result</label>
@@ -105,9 +105,9 @@
                 </div>
                 <div class="column field">
                     <label>Config</label>
-                    <select name="config">
-                        <option value="TBD">
-                            will load all options soon
+                    <select id="selectConfig" name="config">
+                        <option value="None of the Below">
+                            None of the Below
                         </option>
                     </select>
                 </div>
@@ -138,7 +138,9 @@
     <!-- PAGE 3 -->
     <div class='ui segment container' id='elist'>
         <h3>Evaluation List</h3>
-        <div id="evaluationlist"></div>
+        <div id="evaluationlist">
+
+        </div>
     </div>
     <!-- PAGE 4 -->
     <div class='ui  container' id='gpsPage'>
