@@ -15,10 +15,11 @@
 <body>
     <div id="configurationlist" class="ui container">
         <!--- Start of a single config -->
-        <div id="config0" class=" ui four column grid  attached  blue segment">
+        <div id="configs${x}">
+            <div class="ui four column grid  attached  blue segment">
             <div class="column">
                 <div class="ui blue  large label">
-                        ${teamValue}
+                    ${teamValue}
                 </div>
                 <br />
                 <div class="ui  small label">
@@ -27,7 +28,7 @@
             </div>
             <div class="column">
                 <div class="ui blue  large label">
-                        ${nameValue}
+                    ${nameValue}
                 </div>
                 <br/>
                 <div class="ui  small label">
@@ -36,7 +37,7 @@
             </div>
             <div class="column">
                 <div class="ui blue large label">
-                        ${rotorsValue}
+                    ${rotorsValue}
                 </div>
                 <br/>
                 <div class="ui   small label">
@@ -44,14 +45,14 @@
                 </div>
             </div>
             <div class="column">
-                    <div class="ui blue large label">
-                            ${batteryValue}
-                    </div>
-                    <br/>
-                    <div class="ui   small label">
-                        Battery
-                    </div>
+                <div class="ui blue large label">
+                    ${batteryValue}
                 </div>
+                <br/>
+                <div class="ui   small label">
+                    Battery
+                </div>
+            </div>
             <div class="column">
                 <div class="ui blue large label">
                     ${flightControllerValue}
@@ -63,7 +64,7 @@
             </div>
             <div class="column">
                 <div class="ui blue large label">
-                   ${heightValue}
+                    ${heightValue}
                 </div>
                 <br/>
                 <div class="ui  label">
@@ -81,17 +82,18 @@
             </div>
             <div class="column">
                 <div class="ui blue large label">
-                    ${Notes}
+                    ${notesValue}
                 </div>
                 <br/>
                 <div class="ui  label">
                     Notes
                 </div>
             </div>
-        </div>
-        <div class="ui two bottom attached buttons">
-            <button class="ui  red button" onclick="deleteElementFromAllThings('evals',0) ">Delete</button>
-            <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+            </div>
+            <div class="ui two bottom attached buttons">
+                <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+                <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})">Delete</button>
+            </div>
         </div>
         <!-- End of a single Config -->
     </div>

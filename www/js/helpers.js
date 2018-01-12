@@ -7,25 +7,9 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    let result = `<table class="ui celled table">
-    <thead>
-      <tr><th>Latitude</th>
-      <th>Longitude</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>
-            ${position.coords.latitude} 
-        </td>
-        <td>
-            ${position.coords.longitude}
-        </td>
-      </tr>
-    </tbody>
-  </table>`
-        
-         console.log(result);
-    document.getElementById('coords').innerHTML= result;
-   
+    let latbox = position.coords.latitude;
+    document.getElementById('input-lat').value = latbox;
+    let longbox = position.coords.longitude;
+    document.getElementById('input-long').value = longbox;
 }
 // Stopwatch

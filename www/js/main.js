@@ -30,7 +30,7 @@ document.onreadystatechange = () => {
   Returns: Nothing
 */
 function showPage(page) {
-	const pages = ['home', 'evaluationPage', 'evaluationlist', 'gpsform', 'configurationPage'];
+	const pages = ['home', 'evaluationPage', 'elist', 'gpsPage', 'configurationPage'];
 	let i = 0;
 	for (i; i < pages.length; i += 1) {
 		if (page === i + 1) {
@@ -88,7 +88,8 @@ function saveToArray(thingtosave) {
 	var nameformidmap = {
 		'runs': 'runform',
 		'evals': 'evaluationForm',
-		'configs': 'configurationForm',
+    'configs': 'configurationForm',
+    'locations': 'gpsform'
 	} //TODO add to here for locations
   event.preventDefault();
   console.log("Step 2");
@@ -108,7 +109,7 @@ Parameters:
 returns: thing removed
 */
 function deleteElementFromAllThings(thingtype, idx) {
-  console.log("Step 6")
+  console.log(`Step 6.delete.${thingtype}`)
 	var x = allthings[thingtype].splice(idx, 1);
 	rerenderall(); //TODO - make this better?
 	savealltolocalstorage();
@@ -123,6 +124,8 @@ function rerenderall() {
   console.log("Step 4");
   rerenderElements('runs');
   rerenderElements('configs');
+  rerenderElements('evals');
+  rerenderElements('locations');
 }
 /*
 Description: saves global array to localStorage 
@@ -152,9 +155,11 @@ function rerenderElements(kv) {
 	var nameformidmap = {
 		'runs': 'runlist',
 		'evals': 'evaluationlist',
-		'configs': 'configurationlist',
+    'configs': 'configlist',
+    'locations': 'locationslist'
 	}
-	var list = document.getElementById(nameformidmap[kv]);
+  var list = document.getElementById(nameformidmap[kv]);
+  console.log(`${kv} = ${list}`)
 	list.innerHTML = "";
 	if (kv === 'runs') {
     console.log("Step 4.runs");
@@ -223,10 +228,10 @@ function createRunElements() {
 	}
 }
 
-// DEBUG: function is not being called at all 
+
 function createConfigElements() {
   console.log("Step 4.configs.create");
-	var configurationlist = document.getElementById('configurationlist');
+	var configlist = document.getElementById('configlist');
 	for (x = 0; x < allthings.configs.length; x += 1) {
 		let teamValue = allthings.configs[x].team;
 		let nameValue = allthings.configs[x].name;
@@ -236,88 +241,89 @@ function createConfigElements() {
 		let heightValue = allthings.configs[x].height;
 		let weightValue = allthings.configs[x].weight;
 		let notesValue = allthings.configs[x].notes;
-    var template = `<div id="config${x}" class="ui four column grid  attached  blue segment">
-    <div class="column">
-        <div class="ui blue  large label">
+    var template = `<!--- Start of a single config -->
+    <div id="configs${x}">
+        <div class="ui four column grid  attached  blue segment">
+        <div class="column">
+            <div class="ui blue  large label">
                 ${teamValue}
+            </div>
+            <br />
+            <div class="ui  small label">
+                Team
+            </div>
         </div>
-        <br />
-        <div class="ui  small label">
-            Team
-        </div>
-    </div>
-    <div class="column">
-        <div class="ui blue  large label">
+        <div class="column">
+            <div class="ui blue  large label">
                 ${nameValue}
+            </div>
+            <br/>
+            <div class="ui  small label">
+                Name
+            </div>
         </div>
-        <br/>
-        <div class="ui  small label">
-            Name
-        </div>
-    </div>
-    <div class="column">
-        <div class="ui blue large label">
-                ${rotorsValue}
-        </div>
-        <br/>
-        <div class="ui   small label">
-            Rotors
-        </div>
-    </div>
-    <div class="column">
+        <div class="column">
             <div class="ui blue large label">
-                    ${batteryValue}
+                ${rotorsValue}
+            </div>
+            <br/>
+            <div class="ui   small label">
+                Rotors
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${batteryValue}
             </div>
             <br/>
             <div class="ui   small label">
                 Battery
             </div>
         </div>
-    <div class="column">
-        <div class="ui blue large label">
-            ${flightControllerValue}
+        <div class="column">
+            <div class="ui blue large label">
+                ${flightControllerValue}
+            </div>
+            <br/>
+            <div class="ui small label">
+                Flight Controller
+            </div>
         </div>
-        <br/>
-        <div class="ui small label">
-            Flight Controller
+        <div class="column">
+            <div class="ui blue large label">
+                ${heightValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Height
+            </div>
         </div>
-    </div>
-    <div class="column">
-        <div class="ui blue large label">
-           ${heightValue}
+        <div class="column">
+            <div class="ui blue large label">
+                ${weightValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Weight
+            </div>
         </div>
-        <br/>
-        <div class="ui  label">
-            Height
+        <div class="column">
+            <div class="ui blue large label">
+                ${notesValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Notes
+            </div>
         </div>
-    </div>
-    <div class="column">
-        <div class="ui blue large label">
-            ${weightValue}
         </div>
-        <br/>
-        <div class="ui  label">
-            Weight
+        <div class="ui two bottom attached buttons">
+            <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+            <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})">Delete</button>
         </div>
-    </div>
-    <div class="column">
-        <div class="ui blue large label">
-            ${Notes}
-        </div>
-        <br/>
-        <div class="ui  label">
-            Notes
-        </div>
-    </div>
-</div>
-<div class="ui two bottom attached buttons">
-    <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x}) ">Delete</button>
-    <button class="ui  purple button" onclick="showPage(5)">Edit</button>
-</div>
-    
-    `;
+    </div>`;
 		if (x === 0) {
-			configurationlist.innerHTML = template;
+			configlist.innerHTML = template;
 		} else if (x !== null || x > 0) {
 			document.getElementById(`configs${x - 1}`).insertAdjacentHTML('afterend', template);
 		}
@@ -325,6 +331,7 @@ function createConfigElements() {
 }
 
 function createEvalElements() {
+  console.log("Step 4.evals.create");
 	var evlauationlist = document.getElementById('evaluationlist');
 	for (x = 0; x < allthings.evals.length; x += 1) {
 		let teamValue = allthings.evals[x].team;
@@ -336,9 +343,86 @@ function createEvalElements() {
 		let timeValue = allthings.evals[x].time;
 		let goaltimeValue = allthings.evals[x].goaltime;
 		let notesValue = allthings.evals[x].notes;
-		var template = `
-  
-    `;
+    var template = `<div id="evaluation${x}" class="ui">
+    <div class=" ui four column grid  attached  blue segment">
+        <div class="column">
+            <div class="ui blue  large label">
+                ${teamValue}
+            </div>
+            <br />
+            <div class="ui  small label">
+                Team
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue  large label">
+                ${taskValue}
+            </div>
+            <br/>
+            <div class="ui  small label">
+                Task
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${resultValue}
+            </div>
+            <br/>
+            <div class="ui   small label">
+                Result
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${percentValue}
+            </div>
+            <br/>
+            <div class="ui small label">
+                Success Percent
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${configValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Config
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${timeValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Total Time
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${goaltimeValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Goal Time
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+               ${notesValue}
+            </div>
+            <br/>
+            <div class="ui  label">
+                Notes
+            </div>
+        </div>
+    </div>
+    <div class="ui two bottom attached buttons">
+        <button class="ui  red button" onclick="deleteElementFromAllThings('evals',${x}) ">Delete</button>
+        <button class="ui  purple button" onclick="showPage(2) ">Edit</button>
+    </div>
+</div>`;
 		if (x === 0) {
 			evaluationlist.innerHTML = template;
 		} else if (x !== null || x > 0) {
@@ -347,4 +431,63 @@ function createEvalElements() {
 	}
 }
 
-function createConfigElements() {}
+function createLocationElements() {
+  console.log("Step 4.locations.create");
+	var locationlist = document.getElementById('locationlist');
+	for (x = 0; x < allthings.locations.length; x += 1) {
+		let teamValue = allthings.locations[x].team;
+		let taskValue = allthings.locations[x].task;
+    let latValue = allthings.locations[x].latitude;
+    let longValue = allthings.locations[x].longitude;
+    var template = `<div id="evaluation${x}" class="ui">
+    <div class=" ui four column grid  attached  blue segment">
+        <div class="column">
+            <div class="ui blue  large label">
+                ${teamValue}
+            </div>
+            <br />
+            <div class="ui  small label">
+                Team
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue  large label">
+                ${taskValue}
+            </div>
+            <br/>
+            <div class="ui  small label">
+                Task
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${latValue}
+            </div>
+            <br/>
+            <div class="ui   small label">
+                Latitude
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui blue large label">
+                ${longValue}
+            </div>
+            <br/>
+            <div class="ui small label">
+               Longitude
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="ui two bottom attached buttons">
+        <button class="ui  red button" onclick="deleteElementFromAllThings('locations',${x}) ">Delete</button>
+    </div>
+</div>`;
+		if (x === 0) {
+			locationslist.innerHTML = template;
+		} else if (x !== null || x > 0) {
+			document.getElementById(`locations${x - 1}`).insertAdjacentHTML('afterend', template);
+		}
+	}
+  
+}

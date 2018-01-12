@@ -125,15 +125,18 @@
         </form>
     </div>
     <!-- PAGE 3 -->
-    <div class='ui segment container' id='evaluationlist'>
+    <div class='ui segment container' id='elist'>
         <h3>Evaluation List</h3>
+        <div id="evaluationlist"></div>
     </div>
     <!-- PAGE 4 -->
-    <!-- TODO: find a better way to handle GPS with evalutions, considering Attempts, Tasks, and Teams -->
-    <div class='ui segment container' id='gpsform'>
-        <div class="ui segment container">
-            <h3 class="row">GPS Form</h3>
-            <form class="ui form" id='gps' name="gps">
+    <div class='ui  container' id='gpsPage'>
+        <div class="ui container">
+            <h3>GPS Form</h3>
+            <div class="ui attached buttons">
+                    <button class="ui green button" onclick="getLocation()">Get Location</button>
+            </div>
+            <form class="ui form attached segment " id='gpsform' >
                 <div class="doubling stackable two column ui grid container">
                     <div class="column field">
                         <label>Team</label>
@@ -143,11 +146,22 @@
                         <label>Task</label>
                         <input name="task" placeholder="1-1" type="text">
                     </div>
+                    <div class="column field">
+                            <label>Latitude</label>
+                            <input id="input-lat" name="latitude" placeholder="Lat" type="text" readonly>
+                        </div>
+                        <div class="column field">
+                            <label>longitude</label>
+                            <input id="input-long" name="longitude" placeholder="Long" type="text" readonly>
+                        </div>
+                        <div class="column">
+                        
+                    </div>
                 </div>
-                <button class="ui blue button" onclick="getLocation()">Get Location</button>
-                <div class="row" id="coords"></div>
+               
                 <button class="ui blue button" onclick="saveToArray('locations')" type="submit">Submit</button>
             </form>
+            <div id='locationslist'> </div>
         </div>
     </div>
     <!-- PAGE 5 -->
@@ -197,9 +211,7 @@
         </form>
         <br/>
         <button class="ui yellow button" onclick="rerenderall()">Load</button>
-        <div id='configurationlist' class='ui segment container' >
-
-        </div>
+        <div class="ui container" id='configlist'></div>
     </div>
 
 </body>
