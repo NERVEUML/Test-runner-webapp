@@ -113,8 +113,19 @@
                 </div>
                 <div class="column field">
                     <label>Stop Watch</label>
-                    <div id="time"></div>
-                    <div id="goalTime"></div>
+                    <div>
+                        <span id="minutes">00</span>:
+                        <span id="seconds">00</span>:
+                        <span id="tens">00</span>
+                    </div>
+                        <button id="button-start" onclick="start()">Start</button>
+                        <button id="button-stop" onclick="stop()">Stop</button>
+                        <button id="button-stop" onclick="goal()">Goal</button>
+                        <button id="button-reset" onclick="resetTime()">Reset</button>
+                    <label>Time</label>
+                    <input id="time" name="time" placeholder="00:00:00" type="text" readonly>
+                    <label> Goal Time</label>
+                    <input id="goaltime" name="goaltime" placeholder="00:00:00" type="text" readonly>
                 </div>
                 <div class=" column field">
                     <label>Notes</label>

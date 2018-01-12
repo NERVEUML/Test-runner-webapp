@@ -1,6 +1,6 @@
 // TODO: mape the objects of Team and Task from locations  and evals to be the same in runs 
 // NOTE: is there a better way to handle the consitent Keys of ( 'runs','configs', 'evals', 'location')
-var allthings = {
+let allthings = {
 	runs: [],
 	configs: [],
 	evals: [],
@@ -66,10 +66,10 @@ Parameters: one of 'runs', 'configs', 'evals', 'locations'
 Returns: the key:value object (like {team:"NERVE", task:"1-1A-1"} )
 */
 function getObjectFromForm(idname) {
-	var x = document.getElementById(idname);
-	var e = x.elements;
-	var kvobject = {};
-	for (var i = 0; i < e.length; i++) {
+	let x = document.getElementById(idname);
+	let e = x.elements;
+	let kvobject = {};
+	for (let i = 0; i < e.length; i++) {
 		if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
 		kvobject[e[i].name] = e[i].value;
   }
@@ -85,7 +85,7 @@ Parameters: one of 'runs', 'configs', 'evals', 'locations'
 Returns: nothing
 */
 function saveToArray(thingtosave) {
-	var nameformidmap = {
+	let nameformidmap = {
 		'runs': 'runform',
 		'evals': 'evaluationForm',
     'configs': 'configurationForm',
@@ -94,7 +94,7 @@ function saveToArray(thingtosave) {
   event.preventDefault();
   console.log("Step 2");
 	console.log(thingtosave);
-	var o = getObjectFromForm(nameformidmap[thingtosave]);
+	let o = getObjectFromForm(nameformidmap[thingtosave]);
   allthings[thingtosave].push(o);
   console.log(o);
 	savealltolocalstorage();
@@ -110,7 +110,7 @@ returns: thing removed
 */
 function deleteElementFromAllThings(thingtype, idx) {
   console.log(`Step 6.delete.${thingtype}`)
-	var x = allthings[thingtype].splice(idx, 1);
+	let x = allthings[thingtype].splice(idx, 1);
 	rerenderall(); //TODO - make this better?
 	savealltolocalstorage();
 	return x;
@@ -152,13 +152,13 @@ Return:
 */
 // REVIEW: there must be a better way to solve this then the IFs
 function rerenderElements(kv) {
-	var nameformidmap = {
+	let nameformidmap = {
 		'runs': 'runlist',
 		'evals': 'evaluationlist',
     'configs': 'configlist',
     'locations': 'locationslist'
 	}
-  var list = document.getElementById(nameformidmap[kv]);
+  let list = document.getElementById(nameformidmap[kv]);
   console.log(`${kv} = ${list}`)
 	list.innerHTML = "";
 	if (kv === 'runs') {
@@ -183,11 +183,11 @@ Return:
 // TODO: Create a function to create all configs, evals, and locations
 function createRunElements() {
   console.log("Step 4.runs.create");
-	var runList = document.getElementById('runlist');
+	let runList = document.getElementById('runlist');
 	for (x = 0; x < allthings.runs.length; x += 1) {
 		let teamValue = allthings.runs[x].team;
 		let taskValue = allthings.runs[x].task;
-		var template = `
+		let template = `
     <!--- Start of a single Run -->
    <div id="run${x}">
                 <div class="ui two top attached buttons">
@@ -231,7 +231,7 @@ function createRunElements() {
 
 function createConfigElements() {
   console.log("Step 4.configs.create");
-	var configlist = document.getElementById('configlist');
+	let configlist = document.getElementById('configlist');
 	for (x = 0; x < allthings.configs.length; x += 1) {
 		let teamValue = allthings.configs[x].team;
 		let nameValue = allthings.configs[x].name;
@@ -241,7 +241,7 @@ function createConfigElements() {
 		let heightValue = allthings.configs[x].height;
 		let weightValue = allthings.configs[x].weight;
 		let notesValue = allthings.configs[x].notes;
-    var template = `<!--- Start of a single config -->
+    let template = `<!--- Start of a single config -->
     <div id="configs${x}">
         <div class="ui four column grid  attached  blue segment">
         <div class="column">
@@ -332,8 +332,9 @@ function createConfigElements() {
 
 function createEvalElements() {
   console.log("Step 4.evals.create");
-	var evlauationlist = document.getElementById('evaluationlist');
+	let evaluationlist = document.getElementById('evaluationlist');
 	for (x = 0; x < allthings.evals.length; x += 1) {
+    console.log(` x = ${x}`)
 		let teamValue = allthings.evals[x].team;
 		let taskValue = allthings.evals[x].task;
 		let resultValue = allthings.evals[x].result;
@@ -343,7 +344,7 @@ function createEvalElements() {
 		let timeValue = allthings.evals[x].time;
 		let goaltimeValue = allthings.evals[x].goaltime;
 		let notesValue = allthings.evals[x].notes;
-    var template = `<div id="evaluation${x}" class="ui">
+    let template = `<div id="evaluation${x}" class="ui">
     <div class=" ui four column grid  attached  blue segment">
         <div class="column">
             <div class="ui blue  large label">
@@ -433,13 +434,13 @@ function createEvalElements() {
 
 function createLocationElements() {
   console.log("Step 4.locations.create");
-	var locationlist = document.getElementById('locationlist');
+	let locationlist = document.getElementById('locationlist');
 	for (x = 0; x < allthings.locations.length; x += 1) {
 		let teamValue = allthings.locations[x].team;
 		let taskValue = allthings.locations[x].task;
     let latValue = allthings.locations[x].latitude;
     let longValue = allthings.locations[x].longitude;
-    var template = `<div id="evaluation${x}" class="ui">
+    let template = `<div id="evaluation${x}" class="ui">
     <div class=" ui four column grid  attached  blue segment">
         <div class="column">
             <div class="ui blue  large label">
