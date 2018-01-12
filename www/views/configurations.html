@@ -5,65 +5,98 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="styles/semantic/dist/semantic.min.js"></script>
-    <script src="js/main.js" type="text/javascript"></script>
-    <script src="js/helpers.js" type="text/javascript"></script>
+    <script src="js/main.js"></script>
+    <script src="js/helpers.js"></script>
     <title>
         Configs
     </title>
 </head>
 
 <body>
-
-    // TODO: make this cable of having all data in one line with button options consider simplfying
     <div id="configurationlist" class="ui container">
-
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>Team</th>
-                    <th>Name</th>
-                    <th>Rotors</th>
-                    <th>Battery</th>
-                    <th>Flight Controller</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody id="configTableBody">
-                <!--- Start of a single Config -->
-                <tr id="config0">
-                    <td>
-                        Team
-                    </td>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        Rotors
-                    </td>
-                    <td>
+        <!--- Start of a single config -->
+        <div id="config0" class=" ui four column grid  attached  blue segment">
+            <div class="column">
+                <div class="ui blue  large label">
+                        ${teamValue}
+                </div>
+                <br />
+                <div class="ui  small label">
+                    Team
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue  large label">
+                        ${nameValue}
+                </div>
+                <br/>
+                <div class="ui  small label">
+                    Name
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                        ${rotorsValue}
+                </div>
+                <br/>
+                <div class="ui   small label">
+                    Rotors
+                </div>
+            </div>
+            <div class="column">
+                    <div class="ui blue large label">
+                            ${batteryValue}
+                    </div>
+                    <br/>
+                    <div class="ui   small label">
                         Battery
-                    </td>
-                    <td>
-                        Flight Controller
-                    </td>
-                    <td>
-                        Hieght
-                    </td>
-                    <td>
-                        weight
-                    </td>
-                    <td>
-                        Notes
-                    </td>
-                </tr>
-                <button> Edit</button>
-                <button>Delete</button>
-                <!-- End of a single Config -->
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${flightControllerValue}
+                </div>
+                <br/>
+                <div class="ui small label">
+                    Flight Controller
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                   ${heightValue}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Height
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${weightValue}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Weight
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${Notes}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Notes
+                </div>
+            </div>
+        </div>
+        <div class="ui two bottom attached buttons">
+            <button class="ui  red button" onclick="deleteElementFromAllThings('evals',0) ">Delete</button>
+            <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+        </div>
+        <!-- End of a single Config -->
     </div>
 </body>
 
 </html>
+
+<div id="evaluation0" class="ui">
