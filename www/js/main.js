@@ -1,5 +1,7 @@
 // NOTE: is there a better way to handle the consitent Keys of ( 'runs','configs', 'evals', 'location')
 // BRAIN BLAST: if i can export shouldn't I be allowed to import, like configs each day ?
+// TODO: EXPORT file for GPS, Evals and Configs.
+// TODO: Import file for Configs
 
 let allthings = {
     runs: [],
@@ -129,7 +131,6 @@ Description:  rerenders the specific elements by key value
 Parameters:  a key value of ( 'runs', 'configs', 'evals', 'locations' )
 Return: 
 */
-// REVIEW: there must be a better way to solve this then the IFs
 function rerenderElements(kv) {
     let nameformidmap = {
         'runs': 'runlist',

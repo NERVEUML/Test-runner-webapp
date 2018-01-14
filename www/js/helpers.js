@@ -83,5 +83,3 @@ function startTimer() {
     }
 
 }
-
-// LOADING Configs into options menu
