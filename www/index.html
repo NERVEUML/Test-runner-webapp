@@ -136,8 +136,10 @@
         </form>
     </div>
     <!-- PAGE 3 -->
-    <div class='ui segment container' id='elist'>
+    <div class='ui container' id='elist'>
         <h3>Evaluation List</h3>
+        <!-- TODO: need to add export function -->
+        <!-- TODO: need to add a serch function -->
         <div id="evaluationlist">
 
         </div>
@@ -153,11 +155,11 @@
                 <div class="doubling stackable two column ui grid container">
                     <div class="column field">
                         <label>Team</label>
-                        <input name="team" placeholder="NERVE" type="text">
+                        <input  id="gpsTeam" name="team" placeholder="NERVE" type="text">
                     </div>
                     <div class="column field">
                         <label>Task</label>
-                        <input name="task" placeholder="1-1" type="text">
+                        <input id="gpsTask" name="task" placeholder="1-1" type="text">
                     </div>
                     <div class="column field">
                             <label>Latitude</label>
@@ -179,9 +181,9 @@
     </div>
     <!-- PAGE 5 -->
     <!--configuration-->
-    <div class='ui segment container' id='configurationPage'>
+    <div class='ui  container' id='configurationPage'>
         <h3>Configuration Form</h3>
-        <form class="ui form" id='configurationForm' name="configurationForm">
+        <form class="ui segment form" id='configurationForm' name="configurationForm">
             <div class="doubling stackable three column ui grid container">
                 <div class="column field">
                     <label>Team</label>
@@ -223,8 +225,7 @@
             <input class="ui blue button" onclick="saveToArray('configs')" type="submit">
         </form>
         <br/>
-        <button class="ui yellow button" onclick="rerenderall()">Load</button>
-        <div class="ui container" id='configlist'></div>
+   <div class="ui container" id='configlist'></div>
     </div>
 
 </body>

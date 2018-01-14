@@ -5,8 +5,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
     <script src="styles/semantic/dist/semantic.min.js"></script>
-    <script src="js/main.js" ></script>
-    <script src="js/helpers.js" ></script>
+    <script src="js/main.js"></script>
+    <script src="js/helpers.js"></script>
     <title>
         Runs
     </title>
@@ -16,13 +16,10 @@
     <div id="runlist" class="ui container">
         <!--- Start of a single Run -->
         <div id="run${x}">
-                <div class="ui two top attached buttons">
-                        <button class="ui green button" onclick="showPage(4)">GPS</button>
-                    </div>
-                <div class=" ui two column grid  attached  segment">
+            <div class=" ui three column   centered grid  segment">
                 <div class="column">
                     <div class="ui blue  large label">
-                            ${teamValue}
+                        ${teamValue}
                     </div>
                     <br />
                     <div class="ui  small label">
@@ -31,17 +28,20 @@
                 </div>
                 <div class="column">
                     <div class="ui blue  large label">
-                            ${taskValue}
+                        ${taskValue}
                     </div>
                     <br/>
                     <div class="ui  small label">
                         Task
                     </div>
+
                 </div>
-            </div>
-            <div class="ui two bottom attached buttons">
+                <div class="column">
+                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},4)">GPS</button>
                     <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})">Delete</button>
-                    <button class="ui purple button" onclick="showPage(2)">Edit</button>
+                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},2)">Edit</button>
+                </div>
+
             </div>
         </div>
         <!-- End of a single Run -->
