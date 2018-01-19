@@ -17,7 +17,9 @@ Return:
 */
 document.onreadystatechange = () => {
     console.log("Step 0");
+    console.log(location);
     showPage(1);
+    console.log(location)
     if (localStorage.allthings !== undefined) {
         allthings = returnallfromlocalstorage();
         loadConfigs();
@@ -38,6 +40,7 @@ function showPage(page) {
     for (i; i < pages.length; i += 1) {
         if (page === i + 1) {
             document.getElementById(pages[i]).style.display = 'block';
+        
             location.hash = `${pages[i]}`;
         } else {
             document.getElementById(pages[i]).style.display = 'none';
@@ -73,8 +76,7 @@ function saveToArray(thingtosave) {
         'evals': 'evaluationForm',
         'configs': 'configurationForm',
         'locations': 'gpsform'
-    } //TODO add to here for locations
-    event.preventDefault();
+    }
     console.log("Step 1");
     console.log(thingtosave);
     let o = getObjectFromForm(nameformidmap[thingtosave]);
@@ -82,6 +84,7 @@ function saveToArray(thingtosave) {
     console.log(o);
     savealltolocalstorage();
     rerenderall();
+    location.search="";
 }
 /* 
 Description:
@@ -104,7 +107,21 @@ function getObjectFromForm(idname) {
     }
     console.log("Step 2");
     return kvobject;
-}s
+}
+
+ function loadFormFromObject(index,thingtype,form){
+     // get object
+     let x = allthings.thingtype[index];
+     //get form
+     let f = document.getElementById(form);
+     // get form elementss
+     let e = f.elements;
+     // set object values to form values
+     for( let i =0;  i < e.length; i++){
+         if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
+         e[i].value = 0
+     }
+ }
 /*
 Description: saves global array to localStorage 
 Parameters: 
@@ -139,7 +156,6 @@ function rerenderElements(kv) {
         'locations': 'locationslist'
     }
     let list = document.getElementById(nameformidmap[kv]);
-    console.log(`${kv} = ${list}`)
     list.innerHTML = "";
     if (kv === 'runs') {
         console.log("Step 4.runs");
@@ -204,7 +220,6 @@ function loadConfigs() {
     if (allthings.configs !== null) {
         for (var i = 0; i < allthings.configs.length; i++) {
             var opt = `Team:${allthings.configs[i].team} Name:${allthings.configs[i].name}`;
-            console.log(opt);
             var el = document.createElement("option");
             el.name = opt;
             el.textContent = opt;
@@ -374,7 +389,6 @@ function createEvalElements() {
     console.log("Step 4.evals.create");
     let evaluationlist = document.getElementById('evaluationlist');
     for (x = 0; x < allthings.evals.length; x += 1) {
-        console.log(` x = ${x}`)
         let teamValue = allthings.evals[x].team;
         let taskValue = allthings.evals[x].task;
         let resultValue = allthings.evals[x].result;

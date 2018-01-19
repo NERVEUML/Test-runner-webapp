@@ -9,7 +9,7 @@
     </script>
     <script src="styles/semantic/dist/semantic.min.js">
     </script>
-    <script src="js/main.js">
+    <script type="text/javascript" src="js/main.js">
     </script>
     <script src="js/helpers.js">
     </script>
@@ -43,7 +43,7 @@
                             <input name="task" placeholder="1-1" type="text">
                         </div>
                     </div>
-                    <button class="ui blue button" onclick="saveToArray('runs')" type="submit">Submit</button>
+                    <button class="ui blue button" onclick="saveToArray('runs');" >Submit</button>
                 </form>
             </div>
             <div class="ui container" id='runlist'></div>
@@ -132,7 +132,7 @@
                     <textarea name='notes'></textarea>
                 </div>
             </div>
-            <input class="ui blue button" onclick="saveToArray('evals')" type="submit">
+            <button class="ui blue button" onclick="saveToArray('evals')" >Submit</button>
         </form>
     </div>
     <!-- PAGE 3 -->
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                
-                <button class="ui blue button" onclick="saveToArray('locations')" type="submit">Submit</button>
+                <button class="ui blue button" onclick="saveToArray('locations')">Submit</button>
             </form>
             <div id='locationslist'> </div>
         </div>
@@ -220,7 +220,7 @@
                     <textarea name="notes"></textarea>
                 </div>
             </div>
-            <input class="ui blue button" onclick="saveToArray('configs')" type="submit">
+            <button class="ui blue button" onclick="saveToArray('configs')">Submit</button>
         </form>
         <br/>
    <div class="ui container" id='configlist'></div>
