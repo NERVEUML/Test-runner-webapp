@@ -43,7 +43,7 @@
                             <input name="task" placeholder="1-1" type="text">
                         </div>
                     </div>
-                    <button class="ui blue button" onclick="saveToArray('runs');" >Submit</button>
+                    <button id='runformSubmit' class="ui blue button" onclick="saveToArray('runs');" >Submit</button>
                 </form>
             </div>
             <div class="ui container" id='runlist'></div>
@@ -132,7 +132,7 @@
                     <textarea name='notes'></textarea>
                 </div>
             </div>
-            <button class="ui blue button" onclick="saveToArray('evals')" >Submit</button>
+            <button id='evaluationFormSubmit' class="ui blue button" onclick="saveToArray('evals')" >Submit</button>
         </form>
     </div>
     <!-- PAGE 3 -->
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                
-                <button class="ui blue button" onclick="saveToArray('locations')">Submit</button>
+                <button id='gpsformSubmit' class="ui blue button" onclick="saveToArray('locations')">Submit</button>
             </form>
             <div id='locationslist'> </div>
         </div>
@@ -220,7 +220,7 @@
                     <textarea name="notes"></textarea>
                 </div>
             </div>
-            <button class="ui blue button" onclick="saveToArray('configs')">Submit</button>
+            <button id='configurationFormSubmit' class="ui blue button" onclick="saveToArray('configs')">Submit</button>
         </form>
         <br/>
    <div class="ui container" id='configlist'></div>

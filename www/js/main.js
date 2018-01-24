@@ -84,12 +84,12 @@ function saveToArray(thingtosave) {
     console.log(o);
     savealltolocalstorage();
     rerenderall();
-    location.search="";
+
 }
 /* 
 Description:
   Iterate the elements of a form ID 
-  (don't give the hash in front),
+  (don't give the hash in front),eva
   and return as a key-value object where 
   key is name and value is ... value ... 
   from each form element.
@@ -108,20 +108,64 @@ function getObjectFromForm(idname) {
     console.log("Step 2");
     return kvobject;
 }
+/*
+Description: takes in a form and   
+Parameters: thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
+            index -> is used to determine which element to be picked from the above array
+Return: object that is being edited 
+*/
+ function loadFormFromObject(index,thingtype){
+    let nameformidmap = {
+        'runs': 'runform',
+        'evals': 'evaluationForm',
+        'configs': 'configurationForm',
+        'locations': 'gpsform'
+    }
+     let array = allthings[thingtype];
+     let keyobject = array[index]
+     let form = document.getElementById(nameformidmap[thingtype]);
+     let elements = form.elements;
+     let editedObject = {};
+  
+     let submitButton = document.getElementById(`${nameformidmap[thingtype]}Submit`);
 
- function loadFormFromObject(index,thingtype,form){
-     // get object
-     let x = allthings.thingtype[index];
-     //get form
-     let f = document.getElementById(form);
-     // get form elementss
-     let e = f.elements;
-     // set object values to form values
-     for( let i =0;  i < e.length; i++){
-         if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
-         e[i].value = 0
+     for( let i =0;  i < elements.length; i++){
+         if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
+         console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
+         elements[i].value = keyobject[elements[i].name]
+         editedObject[elements[i].name] = elements[i].value;
      }
+      submitButton.onclick=`${tempSubmitFunc(editedObject,index,thingtype, submitButton)}`
+
+     //object loaded to edit 
+ 
  }
+
+/*
+Description: takes in the edited object and overwrites the old one and then resets the 
+ onclick func to origanal fucntion 
+Parameters: edited object, index of edited element, thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
+Return: 
+*/
+ function tempSubmitFunc( newObject, index, thingtype, Sbutton){
+     console.log( newObject);
+
+     let array = allthings[thingtype];
+
+     let keyobject = array[index] 
+
+
+     console.log(newObject)
+
+     console.log(keyobject)
+
+     keyobject = newObject;
+     rerenderall();
+     savealltolocalstorage();
+
+     Sbutton.onclick = saveToArray(thingtype);
+ }
+
 /*
 Description: saves global array to localStorage 
 Parameters: 
@@ -191,7 +235,7 @@ returns: thing removed
 function deleteElementFromAllThings(thingtype, idx) {
     console.log(`Step 6.delete.${thingtype}`)
     let x = allthings[thingtype].splice(idx, 1);
-    rerenderall(); //TODO - make this better?
+    rerenderall(); // TODO: make this better?
     savealltolocalstorage();
     return x;
 }
