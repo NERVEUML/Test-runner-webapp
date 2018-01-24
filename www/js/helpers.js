@@ -23,25 +23,25 @@ let time = ''
 let Interval;
 
 function start() {
-    event.preventDefault();
+
     clearInterval(Interval);
     Interval = setInterval(startTimer, 10);
 
 }
 
 function stop() {
-    event.preventDefault();
+
     document.getElementById('time').value = ` ${minutes}:${seconds}:${tens}`;
     clearInterval(Interval);
 }
 function goal (){
-    event.preventDefault();
+
     document.getElementById('goaltime').value = ` ${minutes}:${seconds}:${tens}`;
 }
 
 
 function resetTime() {
-    event.preventDefault();
+  
     clearInterval(Interval);
     tens = "00";
     seconds = "00";
@@ -54,7 +54,6 @@ function resetTime() {
 
 
 function startTimer() {
-    console.log(`${minutes}:${seconds}:${tens}`)
     tens++;
 
     if (tens < 9) {

@@ -40,7 +40,7 @@ function showPage(page) {
     for (i; i < pages.length; i += 1) {
         if (page === i + 1) {
             document.getElementById(pages[i]).style.display = 'block';
-        
+
             location.hash = `${pages[i]}`;
         } else {
             document.getElementById(pages[i]).style.display = 'none';
@@ -114,32 +114,39 @@ Parameters: thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
             index -> is used to determine which element to be picked from the above array
 Return: object that is being edited 
 */
- function loadFormFromObject(index,thingtype){
+function loadFormFromObject(index, thingtype, page) {
+    showPage(page);
     let nameformidmap = {
         'runs': 'runform',
         'evals': 'evaluationForm',
         'configs': 'configurationForm',
         'locations': 'gpsform'
     }
-     let array = allthings[thingtype];
-     let keyobject = array[index]
-     let form = document.getElementById(nameformidmap[thingtype]);
-     let elements = form.elements;
-     let editedObject = {};
-  
-     let submitButton = document.getElementById(`${nameformidmap[thingtype]}Submit`);
+    let array = allthings[thingtype];
+    let keyobject = array[index]
+    let form = document.getElementById(nameformidmap[thingtype]);
+    let elements = form.elements;
+    let editedObject = {};
 
-     for( let i =0;  i < elements.length; i++){
-         if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
-         console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
-         elements[i].value = keyobject[elements[i].name]
-         editedObject[elements[i].name] = elements[i].value;
-     }
-      submitButton.onclick=`${tempSubmitFunc(editedObject,index,thingtype, submitButton)}`
+    let submitButton = document.getElementById(`${nameformidmap[thingtype]}Submit`);
+ console.log(submitButton);
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
+        console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
+        elements[i].value = keyobject[elements[i].name]
+        editedObject[elements[i].name] = elements[i].value;
+    }
 
-     //object loaded to edit 
- 
- }
+    // FIXME: need to make the onclick reasign work !!!
+    console.log(submitButton.onclick)
+    submitButton.onclick = function temp(){
+        tempSubmitFunc(editedObject,index,thingtype, submitButton);
+    }
+    console.log(submitButton.onclick)
+    
+    //object loaded to edit 
+
+}
 
 /*
 Description: takes in the edited object and overwrites the old one and then resets the 
@@ -147,24 +154,15 @@ Description: takes in the edited object and overwrites the old one and then rese
 Parameters: edited object, index of edited element, thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
 Return: 
 */
- function tempSubmitFunc( newObject, index, thingtype, Sbutton){
-     console.log( newObject);
-
-     let array = allthings[thingtype];
-
-     let keyobject = array[index] 
-
-
-     console.log(newObject)
-
-     console.log(keyobject)
-
-     keyobject = newObject;
-     rerenderall();
-     savealltolocalstorage();
-
-     Sbutton.onclick = saveToArray(thingtype);
- }
+function tempSubmitFunc(newObject, index, thingtype, Sbutton) {
+    allthings[thingtype][index] = newObject;
+    savealltolocalstorage();
+    rerenderall();
+    savealltolocalstorage();
+    // FIXME: need to make the onclick  re-reasign work !!!
+    Sbutton.onclick = function origin(){saveToArray(thingtype);
+    }
+}
 
 /*
 Description: saves global array to localStorage 
@@ -244,16 +242,16 @@ Description: Grabs the team and task from the run element and auto fills it in t
 Parameters: 
 Return: 
 */
-function teamTaskRetriever(option,keyNum,page) {
+function teamTaskRetriever(option, keyNum, page) {
     let runs = allthings.runs;
-    if(option === 'eval'){
+    if (option === 'eval') {
         document.getElementById('evalTeam').value = runs[keyNum].team;
         document.getElementById('evalTask').value = runs[keyNum].task;
-    }else if(option === 'gps'){
+    } else if (option === 'gps') {
         document.getElementById('gpsTeam').value = runs[keyNum].team;
         document.getElementById('gpsTask').value = runs[keyNum].task;
     }
-        showPage(page);
+    showPage(page);
 }
 /*
 Description:  loops through the config list and productions the drop down menu to have options 
@@ -308,9 +306,9 @@ function createRunElements() {
 
                 </div>
                 <div class="column">
-                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},4)">GPS</button>
-                    <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})">Delete</button>
-                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},2)">Edit</button>
+                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},4)" type="button" >GPS</button>
+                    <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})" type="button">Delete</button>
+                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},2)" type="button" >Edit</button>
                 </div>
             </div>
         </div>
@@ -323,6 +321,7 @@ function createRunElements() {
         }
     }
 }
+
 function createConfigElements() {
     console.log("Step 4.configs.create");
     let configlist = document.getElementById('configlist');
@@ -375,7 +374,7 @@ function createConfigElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+        <button class="ui  purple button" onclick="showPage(5)" type="button">Edit</button>
     </div>
         <div class="column">
             <div class="ui blue large label">
@@ -415,7 +414,7 @@ function createConfigElements() {
         </div>
       
         <div ="column">
-        <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})">Delete</button>
+        <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})" type="button">Delete</button>
         </div>
 
         </div>
@@ -429,6 +428,7 @@ function createConfigElements() {
         }
     }
 }
+
 function createEvalElements() {
     console.log("Step 4.evals.create");
     let evaluationlist = document.getElementById('evaluationlist');
@@ -481,7 +481,7 @@ function createEvalElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  purple button" onclick="showPage(2) ">Edit</button>
+        <button class="ui  purple button" onclick="loadFormFromObject(${x},'evals',2)"  type="button" ">Edit</button>
     </div>
         <div class="column">
             <div class="ui blue large label">
@@ -520,10 +520,9 @@ function createEvalElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  red button" onclick="deleteElementFromAllThings('evals',${x}) ">Delete</button>
+        <button class="ui  red button" onclick="deleteElementFromAllThings('evals',${x})" type="button">Delete</button>
        </div>
     </div>
-   
 </div>`;
         if (x === 0) {
             evaluationlist.innerHTML = template;
@@ -582,7 +581,7 @@ function createLocationElements() {
         </div>
     </div>
     <div class="ui two bottom attached buttons">
-        <button class="ui  red button" onclick="deleteElementFromAllThings('locations',${x}) ">Delete</button>
+        <button class="ui  red button" onclick="deleteElementFromAllThings('locations',${x})" type="button">Delete</button>
     </div>
 </div>`;
         if (x === 0) {

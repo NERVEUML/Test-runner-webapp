@@ -43,7 +43,7 @@
                             <input name="task" placeholder="1-1" type="text">
                         </div>
                     </div>
-                    <button id='runformSubmit' class="ui blue button" onclick="saveToArray('runs');" >Submit</button>
+                    <button id='runformSubmit' class="ui blue button" type="button" onclick="saveToArray('runs');" >Submit</button>
                 </form>
             </div>
             <div class="ui container" id='runlist'></div>
@@ -118,10 +118,10 @@
                         <span id="seconds">00</span>:
                         <span id="tens">00</span>
                     </div>
-                        <button id="button-start" onclick="start()">Start</button>
-                        <button id="button-stop" onclick="stop()">Stop</button>
-                        <button id="button-stop" onclick="goal()">Goal</button>
-                        <button id="button-reset" onclick="resetTime()">Reset</button>
+                        <button id="button-start" onclick="start()" type="button" >Start</button>
+                        <button id="button-stop" onclick="stop()" type="button">Stop</button>
+                        <button id="button-stop" onclick="goal()" type="button"  >Goal</button>
+                        <button id="button-reset" onclick="resetTime()" type="button"  >Reset</button>
                     <label>Time</label>
                     <input id="time" name="time" placeholder="00:00:00" type="text" readonly>
                     <label> Goal Time</label>
@@ -132,7 +132,7 @@
                     <textarea name='notes'></textarea>
                 </div>
             </div>
-            <button id='evaluationFormSubmit' class="ui blue button" onclick="saveToArray('evals')" >Submit</button>
+            <button id='evaluationFormSubmit' class="ui blue button"  type="button" onclick="saveToArray('evals')" >Submit</button>
         </form>
     </div>
     <!-- PAGE 3 -->
@@ -147,7 +147,7 @@
         <div class="ui container">
             <h3>GPS Form</h3>
             <div class="ui attached buttons">
-                    <button class="ui green button" onclick="getLocation()">Get Location</button>
+                    <button class="ui green button" onclick="getLocation()" type="button" >Get Location</button>
             </div>
             <form class="ui form attached segment " id='gpsform' >
                 <div class="doubling stackable two column ui grid container">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                
-                <button id='gpsformSubmit' class="ui blue button" onclick="saveToArray('locations')">Submit</button>
+                <button id='gpsformSubmit' class="ui blue button"  type="button" onclick="saveToArray('locations')">Submit</button>
             </form>
             <div id='locationslist'> </div>
         </div>
@@ -220,7 +220,7 @@
                     <textarea name="notes"></textarea>
                 </div>
             </div>
-            <button id='configurationFormSubmit' class="ui blue button" onclick="saveToArray('configs')">Submit</button>
+            <button id='configurationFormSubmit' class="ui blue button"  type="button" onclick="saveToArray('configs')">Submit</button>
         </form>
         <br/>
    <div class="ui container" id='configlist'></div>
