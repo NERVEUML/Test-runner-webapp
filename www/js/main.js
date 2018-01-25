@@ -18,7 +18,7 @@ Return:
 document.onreadystatechange = () => {
     console.log("Step 0");
     console.log(location);
-    showPage(1);
+    showPage('home');
     console.log(location)
     if (localStorage.allthings !== undefined) {
         allthings = returnallfromlocalstorage();
@@ -38,9 +38,8 @@ function showPage(page) {
     const pages = ['home', 'evaluationPage', 'elist', 'gpsPage', 'configurationPage'];
     let i = 0;
     for (i; i < pages.length; i += 1) {
-        if (page === i + 1) {
+        if (page === pages[i]) {
             document.getElementById(pages[i]).style.display = 'block';
-
             location.hash = `${pages[i]}`;
         } else {
             document.getElementById(pages[i]).style.display = 'none';
@@ -65,7 +64,8 @@ function hashCheck(hash) {
 
 window.addEventListener("hashchange",function(){
     console.log(window.location.hash);
-
+   let myHash = window.location.hash;
+   showPage(myHash.substring(1));
 });
 /* 
 Description:
@@ -311,9 +311,9 @@ function createRunElements() {
 
                 </div>
                 <div class="column">
-                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},4)" type="button" >GPS</button>
+                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},'gpsPage')" type="button" >GPS</button>
                     <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})" type="button">Delete</button>
-                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},2)" type="button" >Edit</button>
+                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},'evaluationPage')" type="button" >Edit</button>
                 </div>
             </div>
         </div>
@@ -379,7 +379,7 @@ function createConfigElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  purple button" onclick="showPage(5)" type="button">Edit</button>
+        <button class="ui  purple button" onclick="showPage('configurationPage')" type="button">Edit</button>
     </div>
         <div class="column">
             <div class="ui blue large label">
