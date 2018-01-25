@@ -62,6 +62,11 @@ function hashCheck(hash) {
         console.log("triggered onhaschange: " + window.location.href + " and " + window.location.hash);
     }
 }
+
+window.addEventListener("hashchange",function(){
+    console.log(window.location.hash);
+
+});
 /* 
 Description:
   Save a form to the master storage object (global).
