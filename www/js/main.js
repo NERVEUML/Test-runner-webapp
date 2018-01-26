@@ -132,43 +132,15 @@ function loadFormFromObject(index, thingtype, page) {
     let form = document.getElementById(nameformidmap[thingtype]);
     let elements = form.elements;
     let editedObject = {};
-
-    let submitButton = document.getElementById(`${nameformidmap[thingtype]}Submit`);
- console.log(submitButton);
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
         console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
         elements[i].value = keyobject[elements[i].name]
         editedObject[elements[i].name] = elements[i].value;
     }
-
-    // FIXME: need to make the onclick reasign work !!!
-    console.log(submitButton.onclick)
-    submitButton.onclick = function temp(){
-        tempSubmitFunc(editedObject,index,thingtype, submitButton);
-    }
-    console.log(submitButton.onclick)
-    
-    //object loaded to edit 
-
+    deleteElementFromAllThings(thingtype, index);
+ return editedObject;
 }
-
-/*
-Description: takes in the edited object and overwrites the old one and then resets the 
- onclick func to origanal fucntion 
-Parameters: edited object, index of edited element, thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
-Return: 
-*/
-function tempSubmitFunc(newObject, index, thingtype, Sbutton) {
-    allthings[thingtype][index] = newObject;
-    savealltolocalstorage();
-    rerenderall();
-    savealltolocalstorage();
-    // FIXME: need to make the onclick  re-reasign work !!!
-    Sbutton.onclick = function origin(){saveToArray(thingtype);
-    }
-}
-
 /*
 Description: saves global array to localStorage 
 Parameters: 
@@ -379,7 +351,7 @@ function createConfigElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  purple button" onclick="showPage('configurationPage')" type="button">Edit</button>
+        <button class="ui  purple button" onclick="loadFormFromObject(${x},'configs','configurationPage')" type="button">Edit</button>
     </div>
         <div class="column">
             <div class="ui blue large label">
@@ -486,7 +458,7 @@ function createEvalElements() {
             </div>
         </div>
         <div class="column">
-        <button class="ui  purple button" onclick="loadFormFromObject(${x},'evals',2)"  type="button" ">Edit</button>
+        <button class="ui  purple button" onclick="loadFormFromObject(${x},'evals','evaluationPage')"  type="button" ">Edit</button>
     </div>
         <div class="column">
             <div class="ui blue large label">
