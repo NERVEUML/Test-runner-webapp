@@ -34,6 +34,8 @@ function start() {
     clearInterval(Interval);
     Interval = setInterval(startTimer, 10);
 
+    let epoch = Date.now();
+    document.getElementById('eStart').value = epoch;
 }
 
 function stop() {
@@ -46,7 +48,12 @@ if(minutes < 10 && minutes != 0)
     minutes = "0" + minutes;
 
 
-    document.getElementById('time').value = ` ${minutes}:${seconds}:${tens}`;
+    document.getElementById('time').value = `${minutes}:${seconds}:${tens}`;
+    let epoch = Date.now();
+    let d = new Date();
+    let UTC = d.toISOString();
+    document.getElementById('eEnd').value = epoch;
+    document.getElementById('eUTC').value = UTC;
     clearInterval(Interval);
 }
 function goal (){
@@ -57,7 +64,7 @@ if(seconds < 10)
 if(minutes < 10 && minutes != 0)
     minutes = "0" + minutes;
 
-    document.getElementById('goaltime').value = ` ${minutes}:${seconds}:${tens}`;
+    document.getElementById('goaltime').value = `${minutes}:${seconds}:${tens}`;
 }
 
 
