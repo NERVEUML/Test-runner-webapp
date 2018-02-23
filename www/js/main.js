@@ -203,6 +203,7 @@ function getObjectFromForm(idname) {
     for (let i = 0; i < e.length; i++) {
         if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
         kvobject[e[i].name] = e[i].value;
+        console.log(e[i]);
         e[i].value = "";
     }
     console.log("Step 2");
@@ -512,16 +513,18 @@ function createEvalElements() {
     console.log("Step 4.evals.create");
     let evaluationlist = document.getElementById('evaluationlist');
     for (x = 0; x < allthings.evals.length; x += 1) {
-        let teamValue = allthings.evals[x].team;
-        let taskValue = allthings.evals[x].task;
-        let resultValue = allthings.evals[x].result;
-        let percentValue = allthings.evals[x].percent;
-        let flightControllerValue = allthings.evals[x].flightController;
-        let configValue = allthings.evals[x].config;
-        let timeValue = allthings.evals[x].time;
-        let goaltimeValue = allthings.evals[x].goaltime;
-        let notesValue = allthings.evals[x].notes;
-        let epochStart = allthings.evals[x].eStart;
+        let aex = allthings.evals[x];
+        let teamValue = aex.team;
+        let taskValue = aex.task;
+       let attemptValue = aex.attempt;
+       let resultValue = aex.result;
+        let percentValue = aex.percent;
+        let flightControllerValue = aex.flightController;
+        let configValue = aex.config;
+        let timeValue = aex.time;
+        let goaltimeValue = aex.goaltime;
+        let notesValue = aex.notes;
+        let epochStart = aex.eStart;
         let localTime = new Date(parseInt(epochStart));
         let template = `<div id="evals${x}" class="ui">
             <div class=" ui five column grid segment">
@@ -536,7 +539,7 @@ function createEvalElements() {
             </div>
             <div class="column">
             <div class="ui blue  large label">
-            ${taskValue}
+            ${taskValue}-${attemptValue}
         </div>
             <br/>
             <div class="ui  small label">
