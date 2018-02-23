@@ -181,8 +181,34 @@ function handleCSV(keyValue){
     console.log(myCSV);
 
     var blob = new Blob([myCSV], {type: "text/plain;charset=utf-8"});
-    filesaver.saveAs(blob, "my.csv");
+    //filesaver.saveAs(blob, "my.csv");
+    saveFile("my.csv", blob);
 
+}
+
+function saveFile (fileName, fileData) {
+    //https://stackoverflow.com/a/28966545
+    // Get access to the file system
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+        // Create the file.
+        fileSystem.root.getFile(fileName, { create: true, exclusive: false }, function (entry) {
+            // After you save the file, you can access it with this URL
+            myFileUrl = entry.toURL();
+            entry.createWriter(function (writer) {
+                writer.onwriteend = function (evt) {
+                    alert("Successfully saved file to " + myFileUrl);
+                };
+                // Write to the file
+                writer.write(fileData);
+            }, function (error) {
+                alert("Error: Could not create file writer, " + error.code);
+            });
+        }, function (error) {
+            alert("Error: Could not create file, " + error.code);
+        });
+    }, function (evt) {
+        alert("Error: Could not access file system, " + evt.target.error.code);
+    });
 }
 
 /*
