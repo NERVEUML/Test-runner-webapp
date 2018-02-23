@@ -13,7 +13,7 @@
     </script>
     <script type="text/javascript" src="js/main.js">
     </script>
-    <script src="js/helpers.js">
+    <script type="text/javascript" src="js/helpers.js">
     </script>
     <title>Test Runner</title>
 </head>
@@ -45,7 +45,7 @@
                             <input name="task" placeholder="1-1" type="text">
                         </div>
                     </div>
-                    <button id='runformSubmit' class="ui blue button" type="button" onclick="saveToArray('runs');" >Submit</button>
+                    <button id='runformSubmit' class="ui green button" type="button" onclick="saveToArray('runs');" >Submit</button>
                 </form>
             </div>
             <div class="ui container" id='runlist'></div>
@@ -64,6 +64,10 @@
                 <div class="column field">
                     <label>Task</label>
                     <input id="evalTask" name="task" placeholder="1-1" type="text">
+                </div>
+                <div>
+                    <label> Attmepts</label>
+                    <input id="evalAttempt" name="attempt" placeholder="1" value="1" type="text">
                 </div>
                 <div class="column field">
                     <label>Result</label>
@@ -134,7 +138,14 @@
                     <textarea name='notes'></textarea>
                 </div>
             </div>
-            <button id='evaluationFormSubmit' class="ui blue button"  type="button" onclick="saveToArray('evals')" >Submit</button>
+            <div class=" stackable two column ui grid containeru">
+            <div  class="column">
+             <button id='evaluationFormAttempt' class="ui teal button"  type="button" onclick="incrementSaveAttempt('evals')" >Submit Attempt</button>
+    </div>
+             <div class="column">
+             <button id='evaluationFormSubmit' class="ui green button"  type="button" onclick="saveToArray('evals');showPage('home')" >Submit Task</button>
+             </div>
+            </div>
         </form>
     </div>
     <!-- PAGE 3 -->
@@ -148,9 +159,6 @@
     <div class='ui  container' id='gpsPage'>
         <div class="ui container">
             <h3>GPS Form</h3>
-            <div class="ui attached buttons">
-                    <button class="ui green button" onclick="getLocation()" type="button" >Get Location</button>
-            </div>
             <form class="ui form attached segment " id='gpsform' >
                 <div class="doubling stackable two column ui grid container">
                     <div class="column field">
@@ -173,8 +181,15 @@
                         
                     </div>
                 </div>
-               
-                <button id='gpsformSubmit' class="ui blue button"  type="button" onclick="saveToArray('locations')">Submit</button>
+                <div class="doubling stackable two column ui grid container">
+                    <div class="column">
+                    <button class="ui teal button" onclick="getLocation()" type="button" >Get Location</button>
+                </div>
+               <div class="column">
+               <button id='gpsformSubmit' class="ui green button"  type="button" onclick="saveToArray('locations')">Submit</button>
+                </div>
+        </div>
+            
             </form>
             <div id='locationslist'> </div>
         </div>
@@ -222,7 +237,7 @@
                     <textarea name="notes"></textarea>
                 </div>
             </div>
-            <button id='configurationFormSubmit' class="ui blue button"  type="button" onclick="saveToArray('configs')">Submit</button>
+            <button id='configurationFormSubmit' class="ui green button"  type="button" onclick="saveToArray('configs')">Submit</button>
         </form>
         <br/>
    <div class="ui container" id='configlist'></div>

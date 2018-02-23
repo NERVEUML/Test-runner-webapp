@@ -1,8 +1,8 @@
 // NOTE: is there a better way to handle the consitent Keys of ( 'runs','configs', 'evals', 'location')
 // BRAIN BLAST: if i can export shouldn't I be allowed to import, like configs each day ?
-// TODO: EXPORT file for GPS, Evals and Configs.
+// TODO: EXPORT file for GPS, Evals.
 // TODO: Import file for Configs
-
+// TODO: create a Trash bin for chance of recovery in the all things object so all delete objects go there
 let allthings = {
     runs: [],
     configs: [],
@@ -12,8 +12,8 @@ let allthings = {
 /*
 Description: Runs on page to process what page to show
  Also handles loading LocalStorage loading from old content
-Parameters: 
-Return: 
+Parameters:
+Return:
 */
 document.onreadystatechange = () => {
     console.log("Step 0");
@@ -26,12 +26,12 @@ document.onreadystatechange = () => {
         rerenderall();
     }
 };
-/* 
+/*
   Description:
     This is the paging function, has a value of all page ids
-    stored in an array and then will show or hide the neccessary 
+    stored in an array and then will show or hide the neccessary
     elements. This effect will create the Paging effect
-  Parameters: Takes the page value of 1,2, ... 6 
+  Parameters: Takes the page value of 1,2, ... 6
   Returns: Nothing
 */
 function showPage(page) {
@@ -47,9 +47,9 @@ function showPage(page) {
     }
 }
 /*
-Description: 
-Parameters: 
-Return: 
+Description:
+Parameters:
+Return:
 */
 // TODO: Create a way to illustrate that the back button is not an option
 // DEBUG: the onhash change event dosent get called on the url changing but gets called only on page refresh/reload
@@ -67,11 +67,11 @@ window.addEventListener("hashchange",function(){
    let myHash = window.location.hash;
    showPage(myHash.substring(1));
 });
-/* 
+/*
 Description:
   Save a form to the master storage object (global).
   Saves to localstorage
-  Then removes all elements and shows all elements in Array 
+  Then removes all elements and shows all elements in Array
 Parameters: one of 'runs', 'configs', 'evals', 'locations'
 Returns: nothing
 */
@@ -89,18 +89,69 @@ function saveToArray(thingtosave) {
     console.log(o);
     savealltolocalstorage();
     rerenderall();
+    return o;
+}
+  //grab form to object
+
+  //save create object to variable
+
+  //load form back with previous save object
+
+  //increment Attempt Number
+// NOTE:
+function incrementSaveAttempt(eval){
+    let o = saveToArray(eval);
+    let keyobject = o
+    let form = document.getElementById('evaluationForm');
+    let elements = form.elements;
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
+        console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
+        elements[i].value = keyobject[elements[i].name]
+    }
+   let  oldAttemptField = document.getElementById('evalAttempt');
+   console.log("ATTEMPT DATA:" + oldAttemptField);
+   let  attemptValue = parseInt(oldAttemptField.value)
+   console.log("ATTEMPT DATA:" + attemptValue);
+    let newAttemptValue =  attemptValue + 1;
+    oldAttemptField.value = newAttemptValue.toString();
 
 }
-/* 
+
+
+function ConvertToCSV(objArray) {
+            var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+            var str = '';
+
+            for (var i = 0; i < array.length; i++) {
+                var line = '';
+                for (var index in array[i]) {
+                    if (line != '') line += ','
+
+                    line += array[i][index];
+                }
+
+                str += line + '\r\n';
+            }
+
+            return str;
+        }
+// example file
+// line 1: Team Name, task Name, Config Name, Run/Attempt, Total Time, Goal Time, Start Date Epoch, End Date Epoch,notes, Percent Complete, Location, end Time UTC
+// line 2: MIT, 1-1, Batman,1,2:35,1:30,1519243095649 , 1519243095649(+-),they stunk, 50%,
+
+
+/*
 Description:
-  Iterate the elements of a form ID 
+  Iterate the elements of a form ID
   (don't give the hash in front),eva
-  and return as a key-value object where 
-  key is name and value is ... value ... 
+  and return as a key-value object where
+  key is name and value is ... value ...
   from each form element.
 Parameters: one of 'runs', 'configs', 'evals', 'locations'
 Returns: the key:value object (like {team:"NERVE", task:"1-1A-1"} )
 */
+
 function getObjectFromForm(idname) {
     let x = document.getElementById(idname);
     let e = x.elements;
@@ -114,11 +165,16 @@ function getObjectFromForm(idname) {
     return kvobject;
 }
 /*
-Description: takes in a form and   
+Description: takes in a form and
 Parameters: thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
             index -> is used to determine which element to be picked from the above array
-Return: object that is being edited 
+Return: object that is being edited
 */
+
+
+// TODO: Seperate this into two functions load form from object
+// and then edit object which deletes and loads to correct page
+// AKA rewrite when you have time
 function loadFormFromObject(index, thingtype, page) {
     showPage(page);
     let nameformidmap = {
@@ -142,9 +198,9 @@ function loadFormFromObject(index, thingtype, page) {
  return editedObject;
 }
 /*
-Description: saves global array to localStorage 
-Parameters: 
-Return: 
+Description: saves global array to localStorage
+Parameters:
+Return:
 */
 function savealltolocalstorage() {
     console.log("Step 3")
@@ -152,8 +208,8 @@ function savealltolocalstorage() {
 }
 /*
 Description: Function for master rerender
-Parameters: 
-Return: 
+Parameters:
+Return:
 */
 function rerenderall() {
     console.log("Step 4");
@@ -163,9 +219,9 @@ function rerenderall() {
     rerenderElements('locations');
 }
 /*
-Description:  rerenders the specific elements by key value 
+Description:  rerenders the specific elements by key value
 Parameters:  a key value of ( 'runs', 'configs', 'evals', 'locations' )
-Return: 
+Return:
 */
 function rerenderElements(kv) {
     let nameformidmap = {
@@ -192,8 +248,8 @@ function rerenderElements(kv) {
 }
 /*
 Description: loads the allthings localStorage object to the allthings gloabl objects
-Parameters: 
-Return: 
+Parameters:
+Return:
 */
 function returnallfromlocalstorage() {
     console.log("Step 5")
@@ -215,9 +271,9 @@ function deleteElementFromAllThings(thingtype, idx) {
     return x;
 }
 /*
-Description: Grabs the team and task from the run element and auto fills it in the form 
-Parameters: 
-Return: 
+Description: Grabs the team and task from the run element and auto fills it in the form
+Parameters:
+Return:
 */
 function teamTaskRetriever(option, keyNum, page) {
     let runs = allthings.runs;
@@ -231,9 +287,9 @@ function teamTaskRetriever(option, keyNum, page) {
     showPage(page);
 }
 /*
-Description:  loops through the config list and productions the drop down menu to have options 
-Parameters: 
-Return: 
+Description:  loops through the config list and productions the drop down menu to have options
+Parameters:
+Return:
 */
 function loadConfigs() {
     if (allthings.configs !== null) {
@@ -248,9 +304,9 @@ function loadConfigs() {
     }
 }
 /*
-Description: 
-Parameters: 
-Return: 
+Description:
+Parameters:
+Return:
 */
 // TODO: Create a function to create all configs, evals, and locations
 function createRunElements() {
@@ -283,10 +339,12 @@ function createRunElements() {
 
                 </div>
                 <div class="column">
-                    <button class="ui green button" onclick="teamTaskRetriever('gps',${x},'gpsPage')" type="button" >GPS</button>
-                    <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})" type="button">Delete</button>
-                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},'evaluationPage')" type="button" >Edit</button>
-                </div>
+                    <button class="ui teal button" onclick="teamTaskRetriever('gps',${x},'gpsPage')" type="button" >GPS</button>
+                    <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},'evaluationPage')" type="button" >Evaluate</button>
+            </div>
+            <div class="column">
+               <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})" type="button">Delete</button>
+</div>
             </div>
         </div>
         <!-- End of a single Run -->
@@ -389,14 +447,14 @@ function createConfigElements() {
                 Notes
             </div>
         </div>
-      
+
         <div ="column">
         <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})" type="button">Delete</button>
         </div>
 
         </div>
         </div>
-      
+
     </div>`;
         if (x === 0) {
             configlist.innerHTML = template;
@@ -508,7 +566,7 @@ function createEvalElements() {
         }
     }
 }
-
+//TODO: update function to reflect other create functions
 function createLocationElements() {
     console.log("Step 4.locations.create");
     let locationlist = document.getElementById('locationlist');
@@ -517,8 +575,8 @@ function createLocationElements() {
         let taskValue = allthings.locations[x].task;
         let latValue = allthings.locations[x].latitude;
         let longValue = allthings.locations[x].longitude;
-        let template = `<div id="evaluation${x}" class="ui">
-    <div class=" ui four column grid  attached  blue segment">
+        let template = `<div id="locations${x}" class="ui">
+    <div class=" ui five column grid   segment  ">
         <div class="column">
             <div class="ui blue  large label">
                 ${teamValue}
@@ -555,11 +613,11 @@ function createLocationElements() {
                Longitude
             </div>
         </div>
-        </div>
-    </div>
-    <div class="ui two bottom attached buttons">
+    <div class="column">
         <button class="ui  red button" onclick="deleteElementFromAllThings('locations',${x})" type="button">Delete</button>
     </div>
+    </div>
+</div>
 </div>`;
         if (x === 0) {
             locationslist.innerHTML = template;

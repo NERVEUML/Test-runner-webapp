@@ -1,18 +1,25 @@
 // Get gps coordinates for attempts
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition,error);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+function error (err){
 
+window.alert(err);
+console.log(`GPS ERROR: ${err}`);
+}
 function showPosition(position) {
+    console.log(position.coords);
+
     let latbox = position.coords.latitude;
     document.getElementById('input-lat').value = latbox;
     let longbox = position.coords.longitude;
     document.getElementById('input-long').value = longbox;
 }
+
 // Stopwatch
 
 let seconds = 00;
@@ -41,7 +48,7 @@ function goal (){
 
 
 function resetTime() {
-  
+
     clearInterval(Interval);
     tens = "00";
     seconds = "00";
@@ -82,7 +89,7 @@ function startTimer() {
     }
 
 }
-// Export 
+// Export
 function exportData(){
 }
 
