@@ -38,10 +38,24 @@ function start() {
 
 function stop() {
 
+if(tens < 10)
+    tens = "0"+tens;
+if(seconds < 10)
+    seconds = "0" +seconds;
+if(minutes < 10 && minutes != 0)
+    minutes = "0" + minutes;
+
+
     document.getElementById('time').value = ` ${minutes}:${seconds}:${tens}`;
     clearInterval(Interval);
 }
 function goal (){
+if(tens < 10)
+    tens = "0"+tens;
+if(seconds < 10)
+    seconds = "0" +seconds;
+if(minutes < 10 && minutes != 0)
+    minutes = "0" + minutes;
 
     document.getElementById('goaltime').value = ` ${minutes}:${seconds}:${tens}`;
 }
@@ -55,7 +69,9 @@ function resetTime() {
     minutes = "00";
     document.getElementById('tens').innerHTML = tens;
     document.getElementById("seconds").innerText = seconds;
-    document.getElementById("minutes").innerHTML = minutes
+    document.getElementById("minutes").innerHTML = minutes;
+ document.getElementById('goaltime').value = " ";
+ document.getElementById('time').value =" ";
 }
 
 
@@ -87,9 +103,4 @@ function startTimer() {
     if (minutes > 9) {
         document.getElementById("minutes").innerHTML = minutes;
     }
-
 }
-// Export
-function exportData(){
-}
-
