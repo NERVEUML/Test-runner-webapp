@@ -1,18 +1,25 @@
 // Get gps coordinates for attempts
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition,error);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+function error (err){
 
+window.alert(err);
+console.log(`GPS ERROR: ${err}`);
+}
 function showPosition(position) {
+    console.log(position.coords);
+
     let latbox = position.coords.latitude;
     document.getElementById('input-lat').value = latbox;
     let longbox = position.coords.longitude;
     document.getElementById('input-long').value = longbox;
 }
+
 // Stopwatch
 
 let seconds = 00;
@@ -27,28 +34,51 @@ function start() {
     clearInterval(Interval);
     Interval = setInterval(startTimer, 10);
 
+    let epoch = Date.now();
+    document.getElementById('eStart').value = epoch;
 }
 
 function stop() {
 
-    document.getElementById('time').value = ` ${minutes}:${seconds}:${tens}`;
+if(tens < 10)
+    tens = "0"+tens;
+if(seconds < 10)
+    seconds = "0" +seconds;
+if(minutes < 10 && minutes != 0)
+    minutes = "0" + minutes;
+
+
+    document.getElementById('time').value = `${minutes}:${seconds}:${tens}`;
+    let epoch = Date.now();
+    let d = new Date();
+    let UTC = d.toISOString();
+    document.getElementById('eEnd').value = epoch;
+    document.getElementById('eUTC').value = UTC;
     clearInterval(Interval);
 }
 function goal (){
+if(tens < 10)
+    tens = "0"+tens;
+if(seconds < 10)
+    seconds = "0" +seconds;
+if(minutes < 10 && minutes != 0)
+    minutes = "0" + minutes;
 
-    document.getElementById('goaltime').value = ` ${minutes}:${seconds}:${tens}`;
+    document.getElementById('goaltime').value = `${minutes}:${seconds}:${tens}`;
 }
 
 
 function resetTime() {
-  
+
     clearInterval(Interval);
     tens = "00";
     seconds = "00";
     minutes = "00";
     document.getElementById('tens').innerHTML = tens;
     document.getElementById("seconds").innerText = seconds;
-    document.getElementById("minutes").innerHTML = minutes
+    document.getElementById("minutes").innerHTML = minutes;
+ document.getElementById('goaltime').value = " ";
+ document.getElementById('time').value =" ";
 }
 
 
@@ -80,9 +110,4 @@ function startTimer() {
     if (minutes > 9) {
         document.getElementById("minutes").innerHTML = minutes;
     }
-
 }
-// Export 
-function exportData(){
-}
-
