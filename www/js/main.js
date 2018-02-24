@@ -19,12 +19,12 @@ document.onreadystatechange = () => {
     console.log("Step 0");
     console.log(location);
     showPage('home');
-    console.log(location)
-        if (localStorage.allthings !== undefined) {
-            allthings = returnallfromlocalstorage();
-            loadConfigs();
-            rerenderall();
-        }
+    console.log(location);
+    if (localStorage.allthings !== undefined) {
+        allthings = returnallfromlocalstorage();
+        loadConfigs();
+        rerenderall();
+    }
 };
 /*
    Description:
@@ -180,16 +180,19 @@ function handleCSV(keyValue){
     let myCSV = ConvertToCSV(keyValue);
     console.log(myCSV);
 
-    var blob = new Blob([myCSV], {type: "text/plain;charset=utf-8"});
+    //var blob = new Blob([myCSV], {type: "text/plain;charset=utf-8"});
     //filesaver.saveAs(blob, "my.csv");
-    saveFile("my.csv", blob);
+    saveFile("my.csv", myCSV);
 
 }
 
 function saveFile (fileName, fileData) {
     //https://stackoverflow.com/a/28966545
     // Get access to the file system
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+    //LocalFileSystem undefined, trying to replace with value per
+    //https://stackoverflow.com/questions/27985512/cordova-localfilesystem-is-not-defined
+    //
+    window.requestFileSystem( 1, 1024*1024, function (fileSystem) {
         // Create the file.
         fileSystem.root.getFile(fileName, { create: true, exclusive: false }, function (entry) {
             // After you save the file, you can access it with this URL
