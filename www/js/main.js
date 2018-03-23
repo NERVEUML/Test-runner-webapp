@@ -4,11 +4,12 @@
 // TODO: Import file for Configs
 // TODO: create a Trash bin for chance of recovery in the all things object so all delete objects go there
 let allthings = {
-    runs: [],
-    configs: [],
-    evals: [],
-    locations: [],
-}
+  runs: [],
+  configs: [],
+  evals: [],
+  locations: []
+};
+
 /*
    Description: Runs on page to process what page to show
    Also handles loading LocalStorage loading from old content
@@ -16,14 +17,14 @@ let allthings = {
    Return:
    */
 document.onreadystatechange = () => {
-    console.log("Step 0");
-    console.log(location);
-    showPage('home');
-    console.log(location);
-    if (localStorage.allthings !== undefined) {
-        allthings = returnallfromlocalstorage();
-        rerenderall();
-    }
+  console.log("Step 0");
+  console.log(location);
+  showPage("home");
+  console.log(location);
+  if (localStorage.allthings !== undefined) {
+    allthings = returnallfromlocalstorage();
+    rerenderall();
+  }
 };
 /*
    Description:
@@ -34,16 +35,22 @@ document.onreadystatechange = () => {
    Returns: Nothing
    */
 function showPage(page) {
-    const pages = ['home', 'evaluationPage', 'elist', 'gpsPage', 'configurationPage'];
-    let i = 0;
-    for (i; i < pages.length; i += 1) {
-        if (page === pages[i]) {
-            document.getElementById(pages[i]).style.display = 'block';
-            location.hash = `${pages[i]}`;
-        } else {
-            document.getElementById(pages[i]).style.display = 'none';
-        }
+  const pages = [
+    "home",
+    "evaluationPage",
+    "elist",
+    "gpsPage",
+    "configurationPage"
+  ];
+  let i = 0;
+  for (i; i < pages.length; i += 1) {
+    if (page === pages[i]) {
+      document.getElementById(pages[i]).style.display = "block";
+      location.hash = `${pages[i]}`;
+    } else {
+      document.getElementById(pages[i]).style.display = "none";
     }
+  }
 }
 /*
    Description:
@@ -55,16 +62,21 @@ function showPage(page) {
 setTimeout(hashCheck(window.location.hash), 100);
 
 function hashCheck(hash) {
-    console.log("running func");
-    if (hash != window.location.hash) {
-        console.log("triggered onhaschange: " + window.location.href + " and " + window.location.hash);
-    }
+  console.log("running func");
+  if (hash != window.location.hash) {
+    console.log(
+      "triggered onhaschange: " +
+        window.location.href +
+        " and " +
+        window.location.hash
+    );
+  }
 }
 
-window.addEventListener("hashchange", function () {
-    console.log(window.location.hash);
-    let myHash = window.location.hash;
-    showPage(myHash.substring(1));
+window.addEventListener("hashchange", function() {
+  console.log(window.location.hash);
+  let myHash = window.location.hash;
+  showPage(myHash.substring(1));
 });
 /*
    Description:
@@ -75,31 +87,29 @@ window.addEventListener("hashchange", function () {
    Returns: nothing
    */
 function saveToArray(thingtosave) {
-    let nameformidmap = {
-        'runs': 'runform',
-        'evals': 'evaluationForm',
-        'configs': 'configurationForm',
-        'locations': 'gpsform'
-    }
-    console.log("Step 1");
-    console.log(thingtosave);
-    let o = getObjectFromForm(nameformidmap[thingtosave]);
-    allthings[thingtosave].push(o);
-    console.log(o);
-    savealltolocalstorage();
-    rerenderall();
-    return o;
+  let nameformidmap = {
+    runs: "runform",
+    evals: "evaluationForm",
+    configs: "configurationForm",
+    locations: "gpsform"
+  };
+  console.log("Step 1");
+  console.log(thingtosave);
+  let o = getObjectFromForm(nameformidmap[thingtosave]);
+  allthings[thingtosave].push(o);
+  console.log(o);
+  savealltolocalstorage();
+  rerenderall();
+  return o;
 }
 
-
 function clearNonEssential() {
-    document.getElementById('evalFormNotes').value = " ";
-    document.getElementById('eStart').value = "---";
-    document.getElementById('eEnd').value = "---";
-    document.getElementById('evalSuccessForm').value = "0";
-    document.getElementById('evalResultForm').value = "Return_To_Start";
-    document.getElementById('eUTC').value = "---";
-
+  document.getElementById("evalFormNotes").value = " ";
+  document.getElementById("eStart").value = "---";
+  document.getElementById("eEnd").value = "---";
+  document.getElementById("evalSuccessForm").value = "0";
+  document.getElementById("evalResultForm").value = "Return_To_Start";
+  document.getElementById("eUTC").value = "---";
 }
 
 //grab form to object
@@ -111,29 +121,34 @@ function clearNonEssential() {
 //increment Attempt Number
 // NOTE:
 function incrementSaveAttempt(eval) {
-    let o = saveToArray(eval);
-    let keyobject = o
-    let form = document.getElementById('evaluationForm');
-    let elements = form.elements;
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
-        console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
-        elements[i].value = keyobject[elements[i].name]
-    }
-    let oldAttemptField = document.getElementById('evalAttempt');
-    console.log("ATTEMPT DATA:" + oldAttemptField);
-    let attemptValue = parseInt(oldAttemptField.value)
-    console.log("ATTEMPT DATA:" + attemptValue);
-    let newAttemptValue = attemptValue + 1;
-    oldAttemptField.value = newAttemptValue.toString();
-    resetTime();
-    clearNonEssential();
+  let o = saveToArray(eval);
+  let keyobject = o;
+  let form = document.getElementById("evaluationForm");
+  let elements = form.elements;
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].tagName == "BUTTON" || elements[i].type == "submit")
+      continue;
+    console.log(
+      `Form elements value: ${elements[i].value} and allthings object ${
+        keyobject[elements[i].name]
+      }`
+    );
+    elements[i].value = keyobject[elements[i].name];
+  }
+  let oldAttemptField = document.getElementById("evalAttempt");
+  console.log("ATTEMPT DATA:" + oldAttemptField);
+  let attemptValue = parseInt(oldAttemptField.value);
+  console.log("ATTEMPT DATA:" + attemptValue);
+  let newAttemptValue = attemptValue + 1;
+  oldAttemptField.value = newAttemptValue.toString();
+  resetTime();
+  clearNonEssential();
 }
 //Takes in the allthings.evalutions object
 function handleCSV(keyValue) {
-    let myCSV = ConvertToCSV(keyValue);
-    console.log(myCSV);
-    saveFile("my.csv", myCSV);
+  let myCSV = ConvertToCSV(keyValue);
+  console.log(myCSV);
+  saveFile("my.csv", myCSV);
 }
 /*
    Description:
@@ -147,17 +162,17 @@ function handleCSV(keyValue) {
    */
 
 function getObjectFromForm(idname) {
-    let x = document.getElementById(idname);
-    let e = x.elements;
-    let kvobject = {};
-    for (let i = 0; i < e.length; i++) {
-        if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
-        kvobject[e[i].name] = e[i].value;
-        console.log(e[i]);
-        e[i].value = "";
-    }
-    console.log("Step 2");
-    return kvobject;
+  let x = document.getElementById(idname);
+  let e = x.elements;
+  let kvobject = {};
+  for (let i = 0; i < e.length; i++) {
+    if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
+    kvobject[e[i].name] = e[i].value;
+    console.log(e[i]);
+    e[i].value = "";
+  }
+  console.log("Step 2");
+  return kvobject;
 }
 /*
    Description: takes in a form and
@@ -166,31 +181,35 @@ function getObjectFromForm(idname) {
    Return: object that is being edited
    */
 
-
 // TODO: Seperate this into two functions load form from object
 // and then edit object which deletes and loads to correct page
 // AKA rewrite when you have time
 function loadFormFromObject(index, thingtype, page) {
-    showPage(page);
-    let nameformidmap = {
-        'runs': 'runform',
-        'evals': 'evaluationForm',
-        'configs': 'configurationForm',
-        'locations': 'gpsform'
-    }
-    let array = allthings[thingtype];
-    let keyobject = array[index]
-    let form = document.getElementById(nameformidmap[thingtype]);
-    let elements = form.elements;
-    let editedObject = {};
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i].tagName == "BUTTON" || elements[i].type == "submit") continue;
-        console.log(`Form elements value: ${elements[i].value} and allthings object ${keyobject[elements[i].name]}`)
-        elements[i].value = keyobject[elements[i].name]
-        editedObject[elements[i].name] = elements[i].value;
-    }
-    deleteElementFromAllThings(thingtype, index);
-    return editedObject;
+  showPage(page);
+  let nameformidmap = {
+    runs: "runform",
+    evals: "evaluationForm",
+    configs: "configurationForm",
+    locations: "gpsform"
+  };
+  let array = allthings[thingtype];
+  let keyobject = array[index];
+  let form = document.getElementById(nameformidmap[thingtype]);
+  let elements = form.elements;
+  let editedObject = {};
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].tagName == "BUTTON" || elements[i].type == "submit")
+      continue;
+    console.log(
+      `Form elements value: ${elements[i].value} and allthings object ${
+        keyobject[elements[i].name]
+      }`
+    );
+    elements[i].value = keyobject[elements[i].name];
+    editedObject[elements[i].name] = elements[i].value;
+  }
+  deleteElementFromAllThings(thingtype, index);
+  return editedObject;
 }
 /*
    Description: saves global array to localStorage
@@ -198,8 +217,8 @@ function loadFormFromObject(index, thingtype, page) {
    Return:
    */
 function savealltolocalstorage() {
-    console.log("Step 3")
-    localStorage.setItem("allthings", JSON.stringify(allthings));
+  console.log("Step 3");
+  localStorage.setItem("allthings", JSON.stringify(allthings));
 }
 /*
    Description: Function for master rerender
@@ -207,11 +226,11 @@ function savealltolocalstorage() {
    Return:
    */
 function rerenderall() {
-    console.log("Step 4");
-    rerenderElements('runs');
-    rerenderElements('configs');
-    rerenderElements('evals');
-    rerenderElements('locations');
+  console.log("Step 4");
+  rerenderElements("runs");
+  rerenderElements("configs");
+  rerenderElements("evals");
+  rerenderElements("locations");
 }
 /*
    Description:  rerenders the specific elements by key value
@@ -219,27 +238,27 @@ function rerenderall() {
    Return:
    */
 function rerenderElements(kv) {
-    let nameformidmap = {
-        'runs': 'runlist',
-        'evals': 'evaluationlist',
-        'configs': 'configlist',
-        'locations': 'locationslist'
-    }
-    let list = document.getElementById(nameformidmap[kv]);
-    list.innerHTML = "";
-    if (kv === 'runs') {
-        console.log("Step 4.runs");
-        createRunElements();
-    } else if (kv == 'configs') {
-        console.log("Step 4.configs");
-        createConfigElements();
-    } else if (kv == 'evals') {
-        console.log("Step 4.evals");
-        createEvalElements()
-    } else if (kv == 'locations') {
-        console.log("Step 4.locations");
-        createLocationElements()
-    }
+  let nameformidmap = {
+    runs: "runlist",
+    evals: "evaluationlist",
+    configs: "configlist",
+    locations: "locationslist"
+  };
+  let list = document.getElementById(nameformidmap[kv]);
+  list.innerHTML = "";
+  if (kv === "runs") {
+    console.log("Step 4.runs");
+    createRunElements();
+  } else if (kv == "configs") {
+    console.log("Step 4.configs");
+    createConfigElements();
+  } else if (kv == "evals") {
+    console.log("Step 4.evals");
+    createEvalElements();
+  } else if (kv == "locations") {
+    console.log("Step 4.locations");
+    createLocationElements();
+  }
 }
 /*
    Description: loads the allthings localStorage object to the allthings gloabl objects
@@ -247,8 +266,8 @@ function rerenderElements(kv) {
    Return:
    */
 function returnallfromlocalstorage() {
-    console.log("Step 5")
-    return JSON.parse(localStorage.getItem("allthings"));
+  console.log("Step 5");
+  return JSON.parse(localStorage.getItem("allthings"));
 }
 /*
    Description:
@@ -259,11 +278,11 @@ function returnallfromlocalstorage() {
    returns: thing removed
    */
 function deleteElementFromAllThings(thingtype, idx) {
-    console.log(`Step 6.delete.${thingtype}`)
-    let x = allthings[thingtype].splice(idx, 1);
-    rerenderall(); // TODO: make this better?
-    savealltolocalstorage();
-    return x;
+  console.log(`Step 6.delete.${thingtype}`);
+  let x = allthings[thingtype].splice(idx, 1);
+  rerenderall(); // TODO: make this better?
+  savealltolocalstorage();
+  return x;
 }
 /*
    Description: Grabs the team and task from the run element and auto fills it in the form
@@ -271,15 +290,15 @@ function deleteElementFromAllThings(thingtype, idx) {
    Return:
    */
 function teamTaskRetriever(option, keyNum, page) {
-    let runs = allthings.runs;
-    if (option === 'eval') {
-        document.getElementById('evalTeam').value = runs[keyNum].team;
-        document.getElementById('evalTask').value = runs[keyNum].task;
-    } else if (option === 'gps') {
-        document.getElementById('gpsTeam').value = runs[keyNum].team;
-        document.getElementById('gpsTask').value = runs[keyNum].task;
-    }
-    showPage(page);
+  let runs = allthings.runs;
+  if (option === "eval") {
+    document.getElementById("evalTeam").value = runs[keyNum].team;
+    document.getElementById("evalTask").value = runs[keyNum].task;
+  } else if (option === "gps") {
+    document.getElementById("gpsTeam").value = runs[keyNum].team;
+    document.getElementById("gpsTask").value = runs[keyNum].task;
+  }
+  showPage(page);
 }
 /*
    Description:  loops through the config list and productions the drop down menu to have options
@@ -287,14 +306,16 @@ function teamTaskRetriever(option, keyNum, page) {
    Return:
    */
 function loadConfigs() {
-    if (allthings.configs !== null) {
-        for (var i = 0; i < allthings.configs.length; i++) {
-            var opt = `Team:${allthings.configs[i].team} Name:${allthings.configs[i].name}`;
-            var el = document.createElement("option");
-            el.name = opt;
-            el.textContent = opt;
-            el.value = opt;
-            document.getElementById('selectConfig').appendChild(el);
-        }
+  if (allthings.configs !== null) {
+    for (var i = 0; i < allthings.configs.length; i++) {
+      var opt = `Team:${allthings.configs[i].team} Name:${
+        allthings.configs[i].name
+      }`;
+      var el = document.createElement("option");
+      el.name = opt;
+      el.textContent = opt;
+      el.value = opt;
+      document.getElementById("selectConfig").appendChild(el);
     }
+  }
 }
