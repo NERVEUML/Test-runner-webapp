@@ -1,3 +1,16 @@
+let nameformidmap = {
+  runs: "runform",
+  evals: "evaluationForm",
+  configs: "configurationForm",
+  locations: "gpsform"
+};
+let namelistidmap = {
+  runs: "runlist",
+  evals: "evaluationlist",
+  configs: "configlist",
+  locations: "locationslist"
+};
+
 // Get gps coordinates for attempts
 function getLocation() {
   if (navigator.geolocation) {
@@ -97,7 +110,7 @@ function startTimer() {
     document.getElementById("minutes").innerHTML = minutes;
   }
 }
-// example file
+// CSV work.
 // line 1: Team Name, task Name, Config Name, Run/Attempt, Total Time, Goal Time, Start Date Epoch, End Date Epoch,notes, Percent Complete, Location, end Time UTC
 // line 2: MIT, 1-1, Batman,1,2:35,1:30,1519243095649 , 1519243095649(+-),they stunk, 50%,
 function ConvertToCSV(key) {

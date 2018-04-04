@@ -1,3 +1,18 @@
 * {
-    display: hidden;
+  display: hidden;
+  -webkit-overflow-scrolling: none;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  transform: scale(1.1);
+}
+.stp {
+  margin: 20px !important;
+}
+.stp-buttons {
+  width: 200px;
+  height: 100px;
 }

@@ -9,16 +9,9 @@ let allthings = {
   evals: [],
   locations: []
 };
-
-/*
-   Description: Runs on page to process what page to show
-   Also handles loading LocalStorage loading from old content
-   Parameters:
-   Return:
-   */
+// Description: handles loading of Local Storage and rendering on any created sub components
 document.onreadystatechange = () => {
   console.log("Step 0");
-  console.log(location);
   showPage("home");
   console.log(location);
   if (localStorage.allthings !== undefined) {
@@ -26,14 +19,7 @@ document.onreadystatechange = () => {
     rerenderall();
   }
 };
-/*
-   Description:
-   This is the paging function, has a value of all page ids
-   stored in an array and then will show or hide the neccessary
-   elements. This effect will create the Paging effect
-   Parameters: Takes the page value of 1,2, ... 6
-   Returns: Nothing
-   */
+// Description: Shows only neccesary components based on page value given
 function showPage(page) {
   const pages = [
     "home",
@@ -52,27 +38,7 @@ function showPage(page) {
     }
   }
 }
-/*
-   Description:
-   Parameters:
-   Return:
-   */
-// TODO: Create a way to illustrate that the back button is not an option
-// DEBUG: the onhash change event dosent get called on the url changing but gets called only on page refresh/reload
-setTimeout(hashCheck(window.location.hash), 100);
-
-function hashCheck(hash) {
-  console.log("running func");
-  if (hash != window.location.hash) {
-    console.log(
-      "triggered onhaschange: " +
-        window.location.href +
-        " and " +
-        window.location.hash
-    );
-  }
-}
-
+//  Description: Allows the back button to work as it would on a normal multi-page website
 window.addEventListener("hashchange", function() {
   console.log(window.location.hash);
   let myHash = window.location.hash;
@@ -87,17 +53,9 @@ window.addEventListener("hashchange", function() {
    Returns: nothing
    */
 function saveToArray(thingtosave) {
-  let nameformidmap = {
-    runs: "runform",
-    evals: "evaluationForm",
-    configs: "configurationForm",
-    locations: "gpsform"
-  };
   console.log("Step 1");
-  console.log(thingtosave);
   let o = getObjectFromForm(nameformidmap[thingtosave]);
   allthings[thingtosave].push(o);
-  console.log(o);
   savealltolocalstorage();
   rerenderall();
   return o;
@@ -113,36 +71,22 @@ function clearNonEssential() {
 }
 
 //grab form to object
-
 //save create object to variable
-
 //load form back with previous save object
-
 //increment Attempt Number
-// NOTE:
 function incrementSaveAttempt(eval) {
-  let o = saveToArray(eval);
-  let keyobject = o;
+  let keyobject = saveToArray(eval);
   let form = document.getElementById("evaluationForm");
   let elements = form.elements;
   for (let i = 0; i < elements.length; i++) {
     if (elements[i].tagName == "BUTTON" || elements[i].type == "submit")
       continue;
-    console.log(
-      `Form elements value: ${elements[i].value} and allthings object ${
-        keyobject[elements[i].name]
-      }`
-    );
     elements[i].value = keyobject[elements[i].name];
   }
   let oldAttemptField = document.getElementById("evalAttempt");
-  console.log("ATTEMPT DATA:" + oldAttemptField);
   let attemptValue = parseInt(oldAttemptField.value);
-  console.log("ATTEMPT DATA:" + attemptValue);
   let newAttemptValue = attemptValue + 1;
   oldAttemptField.value = newAttemptValue.toString();
-  resetTime();
-  clearNonEssential();
 }
 //Takes in the allthings.evalutions object
 function handleCSV(keyValue) {
@@ -186,12 +130,6 @@ function getObjectFromForm(idname) {
 // AKA rewrite when you have time
 function loadFormFromObject(index, thingtype, page) {
   showPage(page);
-  let nameformidmap = {
-    runs: "runform",
-    evals: "evaluationForm",
-    configs: "configurationForm",
-    locations: "gpsform"
-  };
   let array = allthings[thingtype];
   let keyobject = array[index];
   let form = document.getElementById(nameformidmap[thingtype]);
@@ -238,13 +176,7 @@ function rerenderall() {
    Return:
    */
 function rerenderElements(kv) {
-  let nameformidmap = {
-    runs: "runlist",
-    evals: "evaluationlist",
-    configs: "configlist",
-    locations: "locationslist"
-  };
-  let list = document.getElementById(nameformidmap[kv]);
+  let list = document.getElementById(namelistidmap[kv]);
   list.innerHTML = "";
   if (kv === "runs") {
     console.log("Step 4.runs");
@@ -307,8 +239,8 @@ function teamTaskRetriever(option, keyNum, page) {
    */
 function loadConfigs() {
   if (allthings.configs !== null) {
-    for (var i = 0; i < allthings.configs.length; i++) {
-      var opt = `Team:${allthings.configs[i].team} Name:${
+    for (let i = 0; i < allthings.configs.length; i++) {
+      let opt = `Team:${allthings.configs[i].team} Name:${
         allthings.configs[i].name
       }`;
       var el = document.createElement("option");

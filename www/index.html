@@ -115,6 +115,7 @@
                         </option>
                     </select>
                 </div>
+                <!--DEBUG: fix styling -->
                 <div class="column field">
                     <label>Stop Watch</label>
                     <div>
@@ -122,10 +123,10 @@
                         <span id="seconds">00</span>:
                         <span id="tens">00</span>
                     </div>
-                    <button id="button-start" onclick="start()" type="button">Start</button>
-                    <button id="button-stop" onclick="stop()" type="button">Stop</button>
-                    <button id="button-stop" onclick="goal()" type="button">Goal</button>
-                    <button id="button-reset" onclick="resetTime()" type="button">Reset</button>
+                    <button class="huge ui button stp" id="button-start" onclick="start()" type="button">Start</button>
+                    <button class="huge ui button stp" id="button-stop" onclick="stop()" type="button">Stop</button>
+                    <button class="huge ui button stp" id="button-stop" onclick="goal()" type="button">Goal</button>
+                    <button class="huge ui button stp" id="button-reset" onclick="resetTime()" type="button">Reset</button>
                     <label>Time</label>
                     <input id="time" name="time" placeholder="00:00:00" type="text" readonly>
                     <label> Goal Time</label>
@@ -151,10 +152,10 @@
 
             <div class=" stackable two column ui grid">
                 <div class="column">
-                    <button id='evaluationFormAttempt' class="ui teal button" type="button" onclick="incrementSaveAttempt('evals')">Submit Attempt</button>
+                    <button id='evaluationFormAttempt' class="ui teal button" type="button" onclick="incrementSaveAttempt('evals');resetTime();clearNonEssential();">Submit Attempt</button>
                 </div>
                 <div class="column">
-                    <button id='evaluationFormSubmit' class="ui green button" type="button" onclick="saveToArray('evals');showPage('home')">Submit Task</button>
+                    <button id='evaluationFormSubmit' class="ui green button" type="button" onclick="saveToArray('evals');showPage('home'); resetTime(); ">Submit Task</button>
                 </div>
             </div>
         </form>
@@ -203,6 +204,9 @@
                 <div class="doubling stackable two column ui grid container">
                     <div class="column">
                         <button class="ui teal button" onclick="getLocation()" type="button">Get Location</button>
+                    </div>
+                    <div class="column">
+                        <button id='exportGPSButton' class="ui green button" type="button" onclick="handleCSV('locations')">Export Data</button>
                     </div>
                     <div class="column">
                         <button id='gpsformSubmit' class="ui green button" type="button" onclick="saveToArray('locations')">Submit</button>
