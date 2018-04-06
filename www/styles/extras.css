@@ -9,10 +9,16 @@ button {
 button:hover {
   transform: scale(1.1);
 }
-.stp {
-  margin: 20px !important;
-}
+
 .stp-buttons {
-  width: 200px;
-  height: 100px;
+  padding: 40px;
+}
+.evalForm {
+  margin: 25px;
+}
+.clock {
+  font-size: 100px;
+}
+.stopwatch {
+  padding: 30px;
 }

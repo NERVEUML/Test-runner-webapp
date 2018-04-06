@@ -210,11 +210,13 @@ function returnallfromlocalstorage() {
    returns: thing removed
    */
 function deleteElementFromAllThings(thingtype, idx) {
-  console.log(`Step 6.delete.${thingtype}`);
-  let x = allthings[thingtype].splice(idx, 1);
-  rerenderall(); // TODO: make this better?
-  savealltolocalstorage();
-  return x;
+  if (confirm("Are you sure you want to delete?")) {
+    console.log(`Step 6.delete.${thingtype}`);
+    let x = allthings[thingtype].splice(idx, 1);
+    rerenderall(); // TODO: make this better?
+    savealltolocalstorage();
+    return x;
+  }
 }
 /*
    Description: Grabs the team and task from the run element and auto fills it in the form
