@@ -9,6 +9,116 @@ let allthings = {
   evals: [],
   locations: []
 };
+let nameformidmap = {
+  runs: "runform",
+  evals: "evaluationForm",
+  configs: "configurationForm",
+  locations: "gpsform"
+};
+let namelistidmap = {
+  runs: "runlist",
+  evals: "evaluationlist",
+  configs: "configlist",
+  locations: "locationslist"
+};
+// Get gps coordinates for attempts
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, error);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function error(err) {
+  window.alert(err);
+  console.log(`GPS ERROR: ${err}`);
+}
+function showPosition(position) {
+  console.log(position.coords);
+
+  let latbox = position.coords.latitude;
+  document.getElementById("input-lat").value = latbox;
+  let longbox = position.coords.longitude;
+  document.getElementById("input-long").value = longbox;
+}
+// Stopwatch
+
+let seconds = 00;
+let tens = 00;
+let minutes = 00;
+let goalTime = "";
+let time = "";
+let Interval;
+
+function start() {
+  clearInterval(Interval);
+  Interval = setInterval(startTimer, 10);
+
+  let epoch = Date.now();
+  document.getElementById("eStart").value = epoch;
+}
+
+function stop() {
+  if (tens < 10) tens = "0" + tens;
+  if (seconds < 10) seconds = "0" + seconds;
+  if (minutes < 10 && minutes != 0) minutes = "0" + minutes;
+
+  document.getElementById("time").value = `${minutes}:${seconds}:${tens}`;
+  let epoch = Date.now();
+  let d = new Date();
+  let UTC = d.toISOString();
+  document.getElementById("eEnd").value = epoch;
+  document.getElementById("eUTC").value = UTC;
+  clearInterval(Interval);
+}
+function goal() {
+  if (tens < 10) tens = "0" + tens;
+  if (seconds < 10) seconds = "0" + seconds;
+  if (minutes < 10 && minutes != 0) minutes = "0" + minutes;
+
+  document.getElementById("goaltime").value = `${minutes}:${seconds}:${tens}`;
+}
+
+function resetTime() {
+  clearInterval(Interval);
+  tens = "00";
+  seconds = "00";
+  minutes = "00";
+  document.getElementById("tens").innerHTML = tens;
+  document.getElementById("seconds").innerText = seconds;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("goaltime").value = " ";
+  document.getElementById("time").value = " ";
+}
+
+function startTimer() {
+  tens++;
+
+  if (tens < 9) {
+    document.getElementById("tens").innerHTML = "0" + tens;
+  }
+  if (tens > 9) {
+    document.getElementById("tens").innerHTML = tens;
+  }
+  if (tens > 99) {
+    seconds++;
+    document.getElementById("seconds").innerHTML = "0" + seconds;
+    tens = 0;
+    document.getElementById("tens").innerHTML = "0" + 0;
+  }
+  if (seconds > 9) {
+    document.getElementById("seconds").innerHTML = seconds;
+  }
+  if (seconds > 59) {
+    minutes++;
+    document.getElementById("minutes").innerHTML = "0" + minutes;
+    seconds = 0;
+    document.getElementById("seconds").innerHTML = "0" + 0;
+  }
+  if (minutes > 9) {
+    document.getElementById("minutes").innerHTML = minutes;
+  }
+}
 // Description: handles loading of Local Storage and rendering on any created sub components
 document.onreadystatechange = () => {
   console.log("Step 0");
@@ -88,11 +198,88 @@ function incrementSaveAttempt(eval) {
   let newAttemptValue = attemptValue + 1;
   oldAttemptField.value = newAttemptValue.toString();
 }
+// example file
+// line 1: Team Name, task Name, Config Name, Run/Attempt, Total Time, Goal Time, Start Date Epoch, End Date Epoch,notes, Percent Complete, Location, end Time UTC
+// line 2: MIT, 1-1, Batman,1,2:35,1:30,1519243095649 , 1519243095649(+-),they stunk, 50%,
+function ConvertToCSV(key) {
+  let nameformidmap = {
+      'evals': allthings.evals,
+      'locations': allthings.locations
+
+  }
+  // TODO: csv format handle spaces
+  if( key === 'evals'){
+      var  headers= [ "Team Name", "Task Name", "Config Name", "Attempt", "Total Time", "Goal Time", "Start Date Epoch", "End Date Epoch","notes", "Percent Complete", "end Time UTC"];
+      var icky = [ "team", "task", "config", "attempt", "time", "goaltime", "eStart", "eEnd", "notes", "percent", "eUTC" ];
+  }
+
+  let str = '';
+  for(let x = 0; x < headers.length; x++){
+      str += "\""+ headers[x] +'",'
+  }
+  str+= '\n';
+
+
+
+  console.log('key: ' + key);
+  let objArray = nameformidmap[key];
+  console.log('objArray: '+ objArray);
+
+
+// TODO: csv format line end include comma
+  for (var i = 0; i < objArray.length; i++) {
+      var line = '';
+      for (var fieldIndex in icky) {
+          var fieldName = icky[fieldIndex];
+          if (line != '')
+              line += ',';
+          line += objArray[i][fieldName];
+
+      }
+
+      str += line + '\r\n';
+  }
+
+  return str;
+}
+
 //Takes in the allthings.evalutions object
-function handleCSV(keyValue) {
+function handleCSV(keyValue){
   let myCSV = ConvertToCSV(keyValue);
   console.log(myCSV);
+
+  //var blob = new Blob([myCSV], {type: "text/plain;charset=utf-8"});
+  //filesaver.saveAs(blob, "my.csv");
   saveFile("my.csv", myCSV);
+
+}
+
+function saveFile (fileName, fileData) {
+  //https://stackoverflow.com/a/28966545
+  // Get access to the file system
+  //LocalFileSystem undefined, trying to replace with value per
+  //https://stackoverflow.com/questions/27985512/cordova-localfilesystem-is-not-defined
+  //
+  window.requestFileSystem( 1, 1024*1024, function (fileSystem) {
+      // Create the file.
+      fileSystem.root.getFile(fileName, { create: true, exclusive: false }, function (entry) {
+          // After you save the file, you can access it with this URL
+          myFileUrl = entry.toURL();
+          entry.createWriter(function (writer) {
+              writer.onwriteend = function (evt) {
+                  alert("Successfully saved file to " + myFileUrl);
+              };
+              // Write to the file
+              writer.write(fileData);
+          }, function (error) {
+              alert("Error: Could not create file writer, " + error.code);
+          });
+      }, function (error) {
+          alert("Error: Could not create file, " + error.code);
+      });
+  }, function (evt) {
+      alert("Error: Could not access file system, " + evt.target.error.code);
+  });
 }
 /*
    Description:
@@ -250,6 +437,340 @@ function loadConfigs() {
       el.textContent = opt;
       el.value = opt;
       document.getElementById("selectConfig").appendChild(el);
+    }
+  }
+}
+// TODO: Create a function to create all configs, evals, and locations
+
+function createRunElements() {
+  console.log("Step 4.runs.create");
+  let runList = document.getElementById("runlist");
+  for (x = 0; x < allthings.runs.length; x += 1) {
+    let teamValue = allthings.runs[x].team;
+    let taskValue = allthings.runs[x].task;
+    let template = `
+            <!--- Start of a single Run -->
+            <div id="run${x}">
+            <div class=" ui three column   centered grid  segment">
+            <div class="column">
+            <div class="ui blue  large label">
+            ${teamValue}
+        </div>
+            <br />
+            <div class="ui  small label">
+            Team
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue  large label">
+            ${taskValue}
+        </div>
+            <br/>
+            <div class="ui  small label">
+            Task
+            </div>
+
+            </div>
+            <div class="column">
+            <button class="ui teal button" onclick="teamTaskRetriever('gps',${x},'gpsPage')" type="button" >GPS</button>
+            <button class="ui purple button" onclick="teamTaskRetriever('eval',${x},'evaluationPage')" type="button" >Evaluate</button>
+            </div>
+            <div class="column">
+            <button class="ui red button" onclick="deleteElementFromAllThings('runs',${x})" type="button">Delete</button>
+            </div>
+            </div>
+            </div>
+            <!-- End of a single Run -->
+            `;
+    if (x === 0) {
+      runList.innerHTML = template;
+    } else if (x !== null || x > 0) {
+      document
+        .getElementById(`run${x - 1}`)
+        .insertAdjacentHTML("afterend", template);
+    }
+  }
+}
+
+function createConfigElements() {
+  console.log("Step 4.configs.create");
+  let configlist = document.getElementById("configlist");
+  for (x = 0; x < allthings.configs.length; x += 1) {
+    let teamValue = allthings.configs[x].team;
+    let nameValue = allthings.configs[x].name;
+    let rotorsValue = allthings.configs[x].rotors;
+    let batteryValue = allthings.configs[x].battery;
+    let flightControllerValue = allthings.configs[x].flightController;
+    let heightValue = allthings.configs[x].height;
+    let weightValue = allthings.configs[x].weight;
+    let notesValue = allthings.configs[x].notes;
+    let template = `<!--- Start of a single config -->
+            <div id="configs${x}">
+            <div class="ui five column grid segment">
+            <div class="column">
+            <div class="ui blue  large label">
+            ${teamValue}
+        </div>
+            <br />
+            <div class="ui  small label">
+            Team
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue  large label">
+            ${nameValue}
+        </div>
+            <br/>
+            <div class="ui  small label">
+            Name
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${rotorsValue}
+        </div>
+            <br/>
+            <div class="ui   small label">
+            Rotors
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${batteryValue}
+        </div>
+            <br/>
+            <div class="ui   small label">
+            Battery
+            </div>
+            </div>
+            <div class="column">
+            <button class="ui  purple button" onclick="loadFormFromObject(${x},'configs','configurationPage')" type="button">Edit</button>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${flightControllerValue}
+        </div>
+            <br/>
+            <div class="ui small label">
+            Flight Controller
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${heightValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Height
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${weightValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Weight
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${notesValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Notes
+            </div>
+            </div>
+
+            <div ="column">
+            <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})" type="button">Delete</button>
+            </div>
+
+            </div>
+            </div>
+
+            </div>`;
+    if (x === 0) {
+      configlist.innerHTML = template;
+    } else if (x !== null || x > 0) {
+      document
+        .getElementById(`configs${x - 1}`)
+        .insertAdjacentHTML("afterend", template);
+    }
+  }
+}
+
+function createEvalElements() {
+  console.log("Step 4.evals.create");
+  let evaluationlist = document.getElementById("evaluationlist");
+  for (x = 0; x < allthings.evals.length; x += 1) {
+    let aex = allthings.evals[x];
+    let teamValue = aex.team;
+    let taskValue = aex.task;
+    let attemptValue = aex.attempt;
+    let resultValue = aex.result;
+    let percentValue = aex.percent;
+    let flightControllerValue = aex.flightController;
+    let configValue = aex.config;
+    let timeValue = aex.time;
+    let goaltimeValue = aex.goaltime;
+    let notesValue = aex.notes;
+    let epochStart = aex.eStart;
+    let localTime = new Date(parseInt(epochStart));
+    let template = `<div id="evals${x}" class="ui">
+            <div class=" ui five column grid segment">
+            <div class="column">
+            <div class="ui blue  large label">
+            ${teamValue}
+        </div>
+            <br />
+            <div class="ui  small label">
+            Team
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue  large label">
+            ${taskValue}-${attemptValue}
+        </div>
+            <br/>
+            <div class="ui  small label">
+            Task
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${resultValue}
+        </div>
+            <br/>
+            <div class="ui   small label">
+            Result
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${percentValue}
+        </div>
+            <br/>
+            <div class="ui small label">
+            Success Percent
+            </div>
+            </div>
+            <div class="column">
+            <button class="ui  purple button" onclick="loadFormFromObject(${x},'evals','evaluationPage')"  type="button" ">Edit</button>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${configValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Config
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${timeValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Total Time
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${goaltimeValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Goal Time
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${notesValue}
+        </div>
+            <br/>
+            <div class="ui  label">
+            Notes
+            </div>
+            </div>
+            <div class="column">
+            <button class="ui  red button" onclick="deleteElementFromAllThings('evals',${x})" type="button">Delete</button>
+            </div>
+            <div class="bottom blue  attached ui segment">
+            Started At: ${localTime}
+        </div>
+            </div>
+            </div>`;
+    if (x === 0) {
+      evaluationlist.innerHTML = template;
+    } else if (x !== null || x > 0) {
+      document
+        .getElementById(`evals${x - 1}`)
+        .insertAdjacentHTML("afterend", template);
+    }
+  }
+}
+//TODO: update function to reflect other create functions
+function createLocationElements() {
+  console.log("Step 4.locations.create");
+  let locationlist = document.getElementById("locationlist");
+  for (x = 0; x < allthings.locations.length; x += 1) {
+    let teamValue = allthings.locations[x].team;
+    let taskValue = allthings.locations[x].task;
+    let latValue = allthings.locations[x].latitude;
+    let longValue = allthings.locations[x].longitude;
+    let template = `<div id="locations${x}" class="ui">
+            <div class=" ui five column grid   segment  ">
+            <div class="column">
+            <div class="ui blue  large label">
+            ${teamValue}
+        </div>
+            <br />
+            <div class="ui  small label">
+            Team
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue  large label">
+            ${taskValue}
+        </div>
+            <br/>
+            <div class="ui  small label">
+            Task
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${latValue}
+        </div>
+            <br/>
+            <div class="ui   small label">
+            Latitude
+            </div>
+            </div>
+            <div class="column">
+            <div class="ui blue large label">
+            ${longValue}
+        </div>
+            <br/>
+            <div class="ui small label">
+            Longitude
+            </div>
+            </div>
+            <div class="column">
+            <button class="ui  red button" onclick="deleteElementFromAllThings('locations',${x})" type="button">Delete</button>
+            </div>
+            </div>
+            </div>
+            </div>`;
+    if (x === 0) {
+      locationslist.innerHTML = template;
+    } else if (x !== null || x > 0) {
+      document
+        .getElementById(`locations${x - 1}`)
+        .insertAdjacentHTML("afterend", template);
     }
   }
 }

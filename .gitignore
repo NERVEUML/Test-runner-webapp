@@ -1,10 +1,7 @@
 .DS_Store
 node_modules
-www/js/keys.js
 www/js/bundle.js
 www/js/logs
-www/css/*.css
-platforms/*/
-!platforms/*.json
 .sass-cache
 *.css.map
+package-lock.json
