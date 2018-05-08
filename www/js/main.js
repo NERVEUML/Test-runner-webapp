@@ -263,10 +263,10 @@ function ConvertToCSV(key) {
 
 //Takes in the allthings.evalutions object
 function handleCSV(keyValue) {
+  date = Date();
   let myCSV = ConvertToCSV(keyValue);
-  var fileName = prompt("Please name your file without the extention(.txt,.csv,.etc");
+  var fileName = `${moment().locale()}_${allthings.evals.length}_eval(s)`;
   console.log(myCSV);
-
   var blob = new Blob([myCSV], { type: "text/plain;charset=utf-8" });
   filesaver.saveAs(blob, `${fileName}.csv`);
   
