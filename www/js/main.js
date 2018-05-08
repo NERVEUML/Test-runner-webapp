@@ -203,83 +203,73 @@ function incrementSaveAttempt(eval) {
 // line 2: MIT, 1-1, Batman,1,2:35,1:30,1519243095649 , 1519243095649(+-),they stunk, 50%,
 function ConvertToCSV(key) {
   let nameformidmap = {
-      'evals': allthings.evals,
-      'locations': allthings.locations
-
-  }
+    evals: allthings.evals,
+    locations: allthings.locations
+  };
   // TODO: csv format handle spaces
-  if( key === 'evals'){
-      var  headers= [ "Team Name", "Task Name", "Config Name", "Attempt", "Total Time", "Goal Time", "Start Date Epoch", "End Date Epoch","notes", "Percent Complete", "end Time UTC"];
-      var icky = [ "team", "task", "config", "attempt", "time", "goaltime", "eStart", "eEnd", "notes", "percent", "eUTC" ];
+  if (key === "evals") {
+    var headers = [
+      "Team Name",
+      "Task Name",
+      "Config Name",
+      "Attempt",
+      "Total Time",
+      "Goal Time",
+      "Start Date Epoch",
+      "End Date Epoch",
+      "notes",
+      "Percent Complete",
+      "end Time UTC"
+    ];
+    var icky = [
+      "team",
+      "task",
+      "config",
+      "attempt",
+      "time",
+      "goaltime",
+      "eStart",
+      "eEnd",
+      "notes",
+      "percent",
+      "eUTC"
+    ];
   }
 
-  let str = '';
-  for(let x = 0; x < headers.length; x++){
-      str += "\""+ headers[x] +'",'
+  let str = "";
+  for (let x = 0; x < headers.length; x++) {
+    str += '"' + headers[x] + '",';
   }
-  str+= '\n';
+  str += "\n";
 
-
-
-  console.log('key: ' + key);
+  console.log("key: " + key);
   let objArray = nameformidmap[key];
-  console.log('objArray: '+ objArray);
+  console.log("objArray: " + objArray);
 
-
-// TODO: csv format line end include comma
+  // TODO: csv format line end include comma
   for (var i = 0; i < objArray.length; i++) {
-      var line = '';
-      for (var fieldIndex in icky) {
-          var fieldName = icky[fieldIndex];
-          if (line != '')
-              line += ',';
-          line += objArray[i][fieldName];
+    var line = "";
+    for (var fieldIndex in icky) {
+      var fieldName = icky[fieldIndex];
+      if (line != "") line += ",";
+      line += objArray[i][fieldName];
+    }
 
-      }
-
-      str += line + '\r\n';
+    str += line + "\r\n";
   }
 
   return str;
 }
 
 //Takes in the allthings.evalutions object
-function handleCSV(keyValue){
+function handleCSV(keyValue) {
   let myCSV = ConvertToCSV(keyValue);
+  var fileName = prompt("Please name your file without the extention(.txt,.csv,.etc");
   console.log(myCSV);
 
-  //var blob = new Blob([myCSV], {type: "text/plain;charset=utf-8"});
-  //filesaver.saveAs(blob, "my.csv");
-  saveFile("my.csv", myCSV);
-
-}
-
-function saveFile (fileName, fileData) {
-  //https://stackoverflow.com/a/28966545
-  // Get access to the file system
-  //LocalFileSystem undefined, trying to replace with value per
-  //https://stackoverflow.com/questions/27985512/cordova-localfilesystem-is-not-defined
-  //
-  window.requestFileSystem( 1, 1024*1024, function (fileSystem) {
-      // Create the file.
-      fileSystem.root.getFile(fileName, { create: true, exclusive: false }, function (entry) {
-          // After you save the file, you can access it with this URL
-          myFileUrl = entry.toURL();
-          entry.createWriter(function (writer) {
-              writer.onwriteend = function (evt) {
-                  alert("Successfully saved file to " + myFileUrl);
-              };
-              // Write to the file
-              writer.write(fileData);
-          }, function (error) {
-              alert("Error: Could not create file writer, " + error.code);
-          });
-      }, function (error) {
-          alert("Error: Could not create file, " + error.code);
-      });
-  }, function (evt) {
-      alert("Error: Could not access file system, " + evt.target.error.code);
-  });
+  var blob = new Blob([myCSV], { type: "text/plain;charset=utf-8" });
+  filesaver.saveAs(blob, `${fileName}.csv`);
+  
 }
 /*
    Description:

@@ -4,4 +4,3 @@ www/js/bundle.js
 www/js/logs
 .sass-cache
 *.css.map
-package-lock.json
