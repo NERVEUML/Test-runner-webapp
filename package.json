@@ -12,8 +12,9 @@
     "semantic-ui": "^2.2.13"
   },
   "scripts": {
-    "dev": "cd www; python2 -m SimpleHTTPServer 3000; cd -",
-    "build": "browserify www/js/index.js > www/js/bundle.js"
+    "dev":"cd www; python2 -m SimpleHTTPServer 3000; cd -",
+    "build":"browserify www/js/index.js > www/js/bundle.js",
+    "start":"serve www/ "
   },
   "cordova": {
     "plugins": {
