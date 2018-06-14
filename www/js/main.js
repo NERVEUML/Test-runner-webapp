@@ -1,8 +1,10 @@
-// NOTE: is there a better way to handle the consitent Keys of ( 'runs','configs', 'evals', 'location')
+// NOTE: is there a better way to handle the consistent Keys of ( 'runs','configs', 'evals', 'location')
 // BRAIN BLAST: if i can export shouldn't I be allowed to import, like configs each day ?
 // TODO: EXPORT file for GPS, Evals.
 // TODO: Import file for Configs
 // TODO: create a Trash bin for chance of recovery in the all things object so all delete objects go there
+
+// All data mappings and keys for the application 
 let allthings = {
   runs: [],
   configs: [],
@@ -21,6 +23,8 @@ let namelistidmap = {
   configs: "configlist",
   locations: "locationslist"
 };
+
+//*************************************************************************
 // Get gps coordinates for attempts
 function getLocation() {
   if (navigator.geolocation) {
@@ -41,8 +45,9 @@ function showPosition(position) {
   let longbox = position.coords.longitude;
   document.getElementById("input-long").value = longbox;
 }
-// Stopwatch
 
+//*************************************************************************
+// Stopwatch
 let seconds = 00;
 let tens = 00;
 let minutes = 00;
@@ -119,6 +124,8 @@ function startTimer() {
     document.getElementById("minutes").innerHTML = minutes;
   }
 }
+//*************************************************************************
+
 // Description: handles loading of Local Storage and rendering on any created sub components
 document.onreadystatechange = () => {
   console.log("Step 0");
@@ -162,6 +169,9 @@ window.addEventListener("hashchange", function() {
    Parameters: one of 'runs', 'configs', 'evals', 'locations'
    Returns: nothing
    */
+
+//*************************************************************************
+
 function saveToArray(thingtosave) {
   console.log("Step 1");
   let o = getObjectFromForm(nameformidmap[thingtosave]);
@@ -198,6 +208,8 @@ function incrementSaveAttempt(eval) {
   let newAttemptValue = attemptValue + 1;
   oldAttemptField.value = newAttemptValue.toString();
 }
+
+//*************************************************************************
 // example file
 // line 1: Team Name, task Name, Config Name, Run/Attempt, Total Time, Goal Time, Start Date Epoch, End Date Epoch,notes, Percent Complete, Location, end Time UTC
 // line 2: MIT, 1-1, Batman,1,2:35,1:30,1519243095649 , 1519243095649(+-),they stunk, 50%,
@@ -271,6 +283,8 @@ function handleCSV(keyValue) {
   filesaver.saveAs(blob, `${fileName}.csv`);
 
 }
+
+//*************************************************************************
 /*
    Description:
    Iterate the elements of a form ID
@@ -282,154 +296,154 @@ function handleCSV(keyValue) {
    Returns: the key:value object (like {team:"NERVE", task:"1-1A-1"} )
    */
 
-function getObjectFromForm(idname) {
-  let x = document.getElementById(idname);
-  let e = x.elements;
-  let kvobject = {};
-  for (let i = 0; i < e.length; i++) {
-    if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
-    kvobject[e[i].name] = e[i].value;
-    console.log(e[i]);
-    e[i].value = "";
+  function getObjectFromForm(idname) {
+    let x = document.getElementById(idname);
+    let e = x.elements;
+    let kvobject = {};
+    for (let i = 0; i < e.length; i++) {
+      if (e[i].tagName == "BUTTON" || e[i].type == "submit") continue;
+      kvobject[e[i].name] = e[i].value;
+      console.log(e[i]);
+      e[i].value = "";
+    }
+    console.log("Step 2");
+    return kvobject;
   }
-  console.log("Step 2");
-  return kvobject;
-}
-/*
-   Description: takes in a form and
-   Parameters: thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
-   index -> is used to determine which element to be picked from the above array
-   Return: object that is being edited
-   */
-
-// TODO: Seperate this into two functions load form from object
-// and then edit object which deletes and loads to correct page
-// AKA rewrite when you have time
-function loadFormFromObject(index, thingtype, page) {
-  showPage(page);
-  let array = allthings[thingtype];
-  let keyobject = array[index];
-  let form = document.getElementById(nameformidmap[thingtype]);
-  let elements = form.elements;
-  let editedObject = {};
-  for (let i = 0; i < elements.length; i++) {
-    if (elements[i].tagName == "BUTTON" || elements[i].type == "submit")
-      continue;
-    console.log(
-      `Form elements value: ${elements[i].value} and allthings object ${
-	keyobject[elements[i].name]
-      }`
-    );
-    elements[i].value = keyobject[elements[i].name];
-    editedObject[elements[i].name] = elements[i].value;
+  /*
+     Description: takes in a form and
+     Parameters: thingtype -> which can 'runs', 'locations' , 'configs', 'evals'
+     index -> is used to determine which element to be picked from the above array
+     Return: object that is being edited
+     */
+  
+  // TODO: seperates this into two functions load form from object
+  // and then edit object which deletes and loads to correct page
+  // AKA rewrite when you have time
+  function loadFormFromObject(index, thingtype, page) {
+    showPage(page);
+    let array = allthings[thingtype];
+    let keyobject = array[index];
+    let form = document.getElementById(nameformidmap[thingtype]);
+    let elements = form.elements;
+    let editedObject = {};
+    for (let i = 0; i < elements.length; i++) {
+      if (elements[i].tagName == "BUTTON" || elements[i].type == "submit")
+        continue;
+      console.log(
+        `Form elements value: ${elements[i].value} and allthings object ${
+    keyobject[elements[i].name]
+        }`
+      );
+      elements[i].value = keyobject[elements[i].name];
+      editedObject[elements[i].name] = elements[i].value;
+    }
+    deleteElementFromAllThings(thingtype, index);
+    return editedObject;
   }
-  deleteElementFromAllThings(thingtype, index);
-  return editedObject;
-}
-/*
-   Description: saves global array to localStorage
-   Parameters:
-   Return:
-   */
-function savealltolocalstorage() {
-  console.log("Step 3");
-  localStorage.setItem("allthings", JSON.stringify(allthings));
-}
-/*
-   Description: Function for master rerender
-   Parameters:
-   Return:
-   */
-function rerenderall() {
-  console.log("Step 4");
-  rerenderElements("runs");
-  rerenderElements("configs");
-  rerenderElements("evals");
-  rerenderElements("locations");
-}
-/*
-   Description:  rerenders the specific elements by key value
-   Parameters:  a key value of ( 'runs', 'configs', 'evals', 'locations' )
-   Return:
-   */
-function rerenderElements(kv) {
-  let list = document.getElementById(namelistidmap[kv]);
-  list.innerHTML = "";
-  if (kv === "runs") {
-    console.log("Step 4.runs");
-    createRunElements();
-  } else if (kv == "configs") {
-    console.log("Step 4.configs");
-    createConfigElements();
-  } else if (kv == "evals") {
-    console.log("Step 4.evals");
-    createEvalElements();
-  } else if (kv == "locations") {
-    console.log("Step 4.locations");
-    createLocationElements();
+  /*
+     Description: saves global array to localStorage
+     Parameters:
+     Return:
+     */
+  function savealltolocalstorage() {
+    console.log("Step 3");
+    localStorage.setItem("allthings", JSON.stringify(allthings));
   }
-}
-/*
-   Description: loads the allthings localStorage object to the allthings gloabl objects
-   Parameters:
-   Return:
-   */
-function returnallfromlocalstorage() {
-  console.log("Step 5");
-  return JSON.parse(localStorage.getItem("allthings"));
-}
-/*
-   Description:
-   removeElementFromAllThings -> delete one element from the thingtype array and re-saves to localStorage
-   Parameters:
-   index to delete
-   thingtype is one of 'runs', 'configs', 'evals', 'locations'
-   returns: thing removed
-   */
-function deleteElementFromAllThings(thingtype, idx) {
-  if (confirm("Are you sure you want to delete?")) {
-    console.log(`Step 6.delete.${thingtype}`);
-    let x = allthings[thingtype].splice(idx, 1);
-    rerenderall(); // TODO: make this better?
-    savealltolocalstorage();
-    return x;
+  /*
+     Description: Function for master rerender
+     Parameters:
+     Return:
+     */
+  function rerenderall() {
+    console.log("Step 4");
+    rerenderElements("runs");
+    rerenderElements("configs");
+    rerenderElements("evals");
+    rerenderElements("locations");
   }
-}
-/*
-   Description: Grabs the team and task from the run element and auto fills it in the form
-   Parameters:
-   Return:
-   */
-function teamTaskRetriever(option, keyNum, page) {
-  let runs = allthings.runs;
-  if (option === "eval") {
-    document.getElementById("evalTeam").value = runs[keyNum].team;
-    document.getElementById("evalTask").value = runs[keyNum].task;
-  } else if (option === "gps") {
-    document.getElementById("gpsTeam").value = runs[keyNum].team;
-    document.getElementById("gpsTask").value = runs[keyNum].task;
-  }
-  showPage(page);
-}
-/*
-   Description:  loops through the config list and productions the drop down menu to have options
-   Parameters:
-   Return:
-   */
-function loadConfigs() {
-  if (allthings.configs !== null) {
-    for (let i = 0; i < allthings.configs.length; i++) {
-      let opt = `Team:${allthings.configs[i].team} Name:${
-	allthings.configs[i].name
-      }`;
-      var el = document.createElement("option");
-      el.name = opt;
-      el.textContent = opt;
-      el.value = opt;
-      document.getElementById("selectConfig").appendChild(el);
+  /*
+     Description:  rerenders the specific elements by key value
+     Parameters:  a key value of ( 'runs', 'configs', 'evals', 'locations' )
+     Return:
+     */
+  function rerenderElements(kv) {
+    let list = document.getElementById(namelistidmap[kv]);
+    list.innerHTML = "";
+    if (kv === "runs") {
+      console.log("Step 4.runs");
+      createRunElements();
+    } else if (kv == "configs") {
+      console.log("Step 4.configs");
+      createConfigElements();
+    } else if (kv == "evals") {
+      console.log("Step 4.evals");
+      createEvalElements();
+    } else if (kv == "locations") {
+      console.log("Step 4.locations");
+      createLocationElements();
     }
   }
-}
+  /*
+     Description: loads the allthings localStorage object to the allthings gloabl objects
+     Parameters:
+     Return:
+     */
+  function returnallfromlocalstorage() {
+    console.log("Step 5");
+    return JSON.parse(localStorage.getItem("allthings"));
+  }
+  /*
+     Description:
+     removeElementFromAllThings -> delete one element from the thingtype array and re-saves to localStorage
+     Parameters:
+     index to delete
+     thingtype is one of 'runs', 'configs', 'evals', 'locations'
+     returns: thing removed
+     */
+  function deleteElementFromAllThings(thingtype, idx) {
+    if (confirm("Are you sure you want to delete?")) {
+      console.log(`Step 6.delete.${thingtype}`);
+      let x = allthings[thingtype].splice(idx, 1);
+      rerenderall(); // TODO: make this better?
+      savealltolocalstorage();
+      return x;
+    }
+  }
+  /*
+     Description: Grabs the team and task from the run element and auto fills it in the form
+     Parameters:
+     Return:
+     */
+  function teamTaskRetriever(option, keyNum, page) {
+    let runs = allthings.runs;
+    if (option === "eval") {
+      document.getElementById("evalTeam").value = runs[keyNum].team;
+      document.getElementById("evalTask").value = runs[keyNum].task;
+    } else if (option === "gps") {
+      document.getElementById("gpsTeam").value = runs[keyNum].team;
+      document.getElementById("gpsTask").value = runs[keyNum].task;
+    }
+    showPage(page);
+  }
+  /*
+     Description:  loops through the config list and productions the drop down menu to have options
+     Parameters:
+     Return:
+     */
+  function loadConfigs() {
+    if (allthings.configs !== null) {
+      for (let i = 0; i < allthings.configs.length; i++) {
+        let opt = `Team:${allthings.configs[i].team} Name:${
+    allthings.configs[i].name
+        }`;
+        var el = document.createElement("option");
+        el.name = opt;
+        el.textContent = opt;
+        el.value = opt;
+        document.getElementById("selectConfig").appendChild(el);
+      }
+    }
+  }
 // TODO: Create a function to create all configs, evals, and locations
 
 function createRunElements() {

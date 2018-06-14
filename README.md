@@ -20,6 +20,10 @@ Enter the newly cloned directory and start the process of installing all package
 
 ```$ npm install```
 
+### Build
+
+``` npm run build ```
+
 ### Run
 
 ```$ npm run dev```

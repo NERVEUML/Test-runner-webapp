@@ -6,5 +6,7 @@ www/js/logs
 www/css/*.css
 platforms/*/
 !platforms/*.json
-.sass-cache
+package-lock.json
+yarn.lock
 *.css.map
+.npmignore
