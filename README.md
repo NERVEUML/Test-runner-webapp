@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/master/src/media/assets/Logo.png"></p>
+<p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/single/www/Logo.png"></p>
 
 # Test Runner Web App
 
