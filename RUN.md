@@ -14,9 +14,9 @@ Assume anything after a "$" you can copy into a terminal to run
 ### BUILDING FOR RUNINNG 
 * now clone this repo with git:
   - $ git clone git@github.com:NERVEUML/Test-runner-webapp.git
-  - change to the adirectory with $ cd Test-runner-webapp
-  - run $ npm install -g serve browserify 
-  - if it fails you can try it with sudo 
+  - change to the directory with $ cd Test-runner-webapp
+  - run $ npm install -g serve browserify
+  - if it fails you can try it with sudo
 * run $ npm install 
 * run $ npm run build 
 ### RUN ON MACHINE

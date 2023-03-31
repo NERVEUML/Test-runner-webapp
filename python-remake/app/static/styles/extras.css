@@ -1,0 +1,24 @@
+* {
+  display: hidden;
+  -webkit-overflow-scrolling: none;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  transform: scale(1.1);
+}
+
+.stp-buttons {
+  padding: 40px;
+}
+.evalForm {
+  margin: 25px;
+}
+.clock {
+  font-size: 100px;
+}
+.stopwatch {
+  padding: 30px;
+}

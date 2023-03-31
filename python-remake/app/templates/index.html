@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ROS Topic</title>
+</head>
+
+<body>
+    <h1>ROS Topic</h1>
+    <div id="message"></div>
+    <script src="https://cdn.jsdelivr.net/npm/roslib@0.22.1/dist/roslib.min.js"></script>
+    <script>
+        var ros = new ROSLIB.Ros({
+            url: 'ws://' + window.location.hostname + ':9090'
+        });
+
+        var topic = new ROSLIB.Topic({
+            ros: ros,
+            name: '/topic_name',
+            messageType: 'message_type'
+        });
+
+        topic.subscribe(function (message) {
+            document.getElementById('message').innerHTML = message;
+        });
+    </script>
+</body>
+
+</html>

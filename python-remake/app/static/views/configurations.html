@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/semantic/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="styles/semantic/dist/semantic.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/helpers.js"></script>
+    <title>
+        Configs
+    </title>
+</head>
+
+<body>
+    <div id="configurationlist" class="ui container">
+        <!--- Start of a single config -->
+        <div id="configs${x}">
+            <div class="ui four column grid  attached  blue segment">
+            <div class="column">
+                <div class="ui blue  large label">
+                    ${teamValue}
+                </div>
+                <br />
+                <div class="ui  small label">
+                    Team
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue  large label">
+                    ${nameValue}
+                </div>
+                <br/>
+                <div class="ui  small label">
+                    Name
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${rotorsValue}
+                </div>
+                <br/>
+                <div class="ui   small label">
+                    Rotors
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${batteryValue}
+                </div>
+                <br/>
+                <div class="ui   small label">
+                    Battery
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${flightControllerValue}
+                </div>
+                <br/>
+                <div class="ui small label">
+                    Flight Controller
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${heightValue}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Height
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${weightValue}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Weight
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui blue large label">
+                    ${notesValue}
+                </div>
+                <br/>
+                <div class="ui  label">
+                    Notes
+                </div>
+            </div>
+            </div>
+            <div class="ui two bottom attached buttons">
+                <button class="ui  purple button" onclick="showPage(5)">Edit</button>
+                <button class="ui  red button" onclick="deleteElementFromAllThings('configs',${x})">Delete</button>
+            </div>
+        </div>
+        <!-- End of a single Config -->
+    </div>
+</body>
+
+</html>
+
+<div id="evaluation0" class="ui">

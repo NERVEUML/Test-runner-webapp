@@ -8,3 +8,4 @@ platforms/*/
 !platforms/*.json
 .sass-cache
 *.css.map
+env/

@@ -9,7 +9,7 @@
     "semantic-ui": "^2.2.13"
   },
   "scripts": {
-    "dev": "cd www; python2 -m SimpleHTTPServer 3000; cd -",
+    "dev": "cd www; python3 -m  http.server 3000",
     "build": "browserify www/js/index.js > www/js/bundle.js",
     "start": "serve www/ "
   }
