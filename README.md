@@ -1,6 +1,8 @@
 <p align="center"><img src="https://github.com/NERVEUML/Test-runner-webapp/blob/single/www/Logo.png"></p>
 
 # Test Runner Web App
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNERVEUML%2FTest-runner-webapp.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FNERVEUML%2FTest-runner-webapp?ref=badge_shield)
+
 
 GXM rebuild of an app designed to log autonomous robot data. If you want to see more detailed information  on the break down of the app please consult the [wiki](https://github.com/NERVEUML/Test-runner-webapp/wiki)
 
@@ -43,3 +45,7 @@ Navigate to  [localhost on port 3000](http://localhost:3000)
 ## Authors
 
 * **Joseph Meli** - *Initial work* - [JosephMeli](https://github.com/JosephMeli)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNERVEUML%2FTest-runner-webapp.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FNERVEUML%2FTest-runner-webapp?ref=badge_large)
